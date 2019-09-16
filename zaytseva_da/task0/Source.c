@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <math.h>
+int main(void) {
+	double  x1, x2, y1, y2, a, b, d, c, v, r1, r2;
+	printf("введите координаты центра и радиус первой окружности x1 y1 r1:");
+	scanf_s("%lf %lf %lf", &x1, &y1, &r1);
+	printf("введите координаты центра и радиус второй окружности x2 y2 r2:");
+	scanf_s("%lf %lf %lf", &x2, &y2, &r2);
+	a = pow((x1 - x2), 2);
+	b = pow((y1 - y2), 2);
+	d = sqrt(a + b);
+	c = fabs(r1 - r2);
+	v = r1 + r2;
+	if ((d > c) && (d < v))
+	{
+		printf("окружности пересекаются");
+		return;
+	}
+	if (d < c)
+		{
+		printf("одна окружность лежит внутри другой");
+		return;
+		}
+	if (d>v)
+		{ 
+		printf("одна окружность находится вне другой");
+		return;
+		}
+	if (d == v)
+		{
+		printf("окружности касаются внешним образом");
+		return;
+		}
+	if (d == c)
+		{
+		printf("окружности касаются внутренним образом");
+		return;
+		}
+	if ((d==0)&&(r1==r2))
+		{
+		printf("окружности совпадают");
+		return;
+		}
+	return;
+}
