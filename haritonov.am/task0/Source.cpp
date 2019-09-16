@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <math.h>
+#include <clocale>
+
 
 void main()
 {
+	setlocale(LC_ALL, "Russian");
 	double x1, y1, a, x2, y2, b, l, k, q;
 	printf("¬ведите a, (x1,y1) и b, (x2,y2)");
 	scanf_s("%lf %lf %lf %lf %lf %lf", &a, &x1, &y1, &b, &x2, &y2);
