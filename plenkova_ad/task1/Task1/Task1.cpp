@@ -1,12 +1,12 @@
 ﻿#include <stdio.h>
 #include <math.h>
 #include <locale.h>
-int main()
+void main()
 {
 	setlocale(LC_ALL, "Rus");
-	 double m,m1, m2, m3, m4, m5, dsp, dvp, der;
-	 int n, h, w, d;
-	 der = 0.0006; // кг/см3
+	 float m, m1, m2, m3, m4, m5, dsp, dvp, der, h, w, d;
+	 int n;
+	 der = 0.0006; // кг\см3
 	 dsp = 0.00085;
 	 dvp = 0.0007;
 
