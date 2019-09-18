@@ -18,13 +18,13 @@ void main ()
 		else
 			printf("Внутреннее касание окружностей");
 	}
-	if (s < fabs(R1 - R2))
+	else if (s < fabs(R1 - R2))
 		printf("Одна окружность внутри другой");
-	if (s == R1 + R2)
+	else if (s == R1 + R2)
 		printf("Внешнее касание окружностей");
-	if (s > R1 + R2)
-		printf("Окружности не касаются друг друга");
-	if ((s > fabs(R1 - R2)) && (s < R1 + R2))
+	else if (s > R1 + R2)
+		printf("Окружности не имеют общих точек");
+	else if ((s > fabs(R1 - R2)) && (s < R1 + R2))
 		printf("Окружности пересекаются");
 	_getch();
 }
