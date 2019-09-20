@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> 
 #include <math.h>
 #include <locale.h>
 int main(void) {
@@ -8,7 +8,7 @@ int main(void) {
 	scanf_s("%f %f %f", &r1, &x1, &y1);
 	printf("Введите радус второй окружности r2, координаты её центра x2 и y2");
 	scanf_s("%f %f %f", &r2, &x2, &y2);
-	d = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)); // Расстояние между центрами
+	d = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)); // Расстояние между центрами 
 	b = r1 + r2;
 	if (d == 0 && r1 > r2) {
 		printf("Вторая окружность находится внутри первой");
@@ -27,10 +27,3 @@ int main(void) {
 	}
 
 }
-
-
-
-
-
-
-
