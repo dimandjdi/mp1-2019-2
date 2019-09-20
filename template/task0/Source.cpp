@@ -18,7 +18,7 @@ int main(void)
 		printf("peresekautsa\n");
 	else if ((d < r2 - r1) || (d > r2 + r1))
 		printf("net obscih tochek\n");
-	else if ((d == r2 + r1) || ((d == r2 - r1) && r2 - r1 != 0))
+	else if ((d == r2 + r1) || ((d == r2 - r1) && (r2 - r1 != 0))
 		printf("kasautsa\n");
 	else if (r1 + r2 == 2 * r1)
 		printf("sovpadaut\n");
