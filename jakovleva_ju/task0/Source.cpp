@@ -16,13 +16,13 @@ int main(void)
 	r = rasst(x1, x2, y1, y2);
 	if (r == (b - a))
 		printf("okruznosti kasauca vnutrennim obrazom\n");
-	if (r <= (b - a))
+	if (r < (b - a))
 		printf("odna okruznost vnytri drugoy\n");
-	if ((r >= (b - a)) && (r <= (b + a)))
+	if ((r > (b - a)) && (r < (b + a)))
 		printf("okruznosti peresekauca\n");
 	if (r == (a + b))
 		printf("okruznosti kasauca vnechnim obrazom\n");
-	if (r >= (a + b))
+	if (r > (a + b))
 		printf("okruznosti ne imeut tochek kasaniya i ni odna ne nahodica vnutri drugoy\n");
 	if ((r == 0) && (a == b))
 		printf("okruznosti sovpadaut\n");
