@@ -19,7 +19,10 @@ int main(void)
 	}
 	else {
 		if (k == (R1 + R2)) {
-			printf("Окружностиь соприкасаются");
+			printf("Окружностиь соприкасаются снаружи");
+		}
+		if (R2 == (k + R1)) {
+			printf("Окружностиь соприкасаются внутри");
 		}
 		else {
 			if (k < R1 + R2) {
@@ -32,5 +35,5 @@ int main(void)
 			}
 		}
 	}
-	return 0;
+	system("pause");
 }
