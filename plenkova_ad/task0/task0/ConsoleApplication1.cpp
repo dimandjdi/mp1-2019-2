@@ -34,7 +34,7 @@ int main()
 
 	else if (((fabs(r1 - r2)) < d) && (d < (fabs(r1 + r2))))
 		printf("\n Окружности пересекаются");
-		
+
 	else if (d == fabs(r1 - r2))
 		printf("\n Окружности касаются внутренне");
 
