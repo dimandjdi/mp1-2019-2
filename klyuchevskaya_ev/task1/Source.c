@@ -26,7 +26,7 @@ void main()
 		door = h * w * 1 * pder;                                    //масса дверей в г
 		shelfs = N * (w - 3) * d * 1.5*pdsp;                       //масса полок в г
 		M = (zst + bok + krvn + door + shelfs)/1000;              //масса шкафа в кг
-		printf("Масса шкафа = %.2f ", shelfs);
+		printf("Масса шкафа = %.2f ", M);
 		printf("кг \n");
 	}
 	else {
