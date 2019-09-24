@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "math.h"
 #include "locale.h"
-
+setlocale(LC_ALL, "Rus");
 #define DWP 820;
 #define DSP 650;
 #define BLACKWOOD 1300;  /*Используется чёрное дерево*/
