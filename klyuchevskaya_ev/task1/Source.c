@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include <locale.h>
 #include <math.h>
-void main() 
+int main(void) 
 {
-
 	setlocale(LC_ALL, "Russian");
 	const double pder = 0.67;          // пл-ть дерева в г/см^3
 	const double pdvp = 0.85;         //  пл-ть двп в г/см^3
 	const double pdsp = 0.80;        //   пл-ть дсп в г/см^3
-	float zst, bok, krvn, door, shelfs,N, M,m;
+	double zst, bok, krvn, door, shelfs,N, M;
 	float h,w,d;
 	printf ("¬ведите высоту шкафа (от 180 до 220 см): " );
 	scanf_s (" %f", & h);
@@ -16,7 +15,6 @@ void main()
 	scanf_s (" %f", & w);
 	printf ("¬ведите глубина шкафа (от 50 до 90 см) : " );
 	scanf_s (" %f", & d);
-	m = 7;
 	if (((h >= 180) && (h <= 220)) && ((w >= 80) && (w <= 120)) && ((d >= 50) && (d <= 90)))
 	{
 		N = floor((h-2*1.5) / 41.5);                                    //количество полок в шкафу
