@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "math.h"
 #include "locale.h"
-setlocale(LC_ALL, "Rus");
+
 #define DWP 820;
 #define DSP 650;
 #define BLACKWOOD 1300;  /*»спользуетс€ чЄрное дерево*/
@@ -11,6 +11,7 @@ int s;
 
 void main()
 {
+	setlocale(LC_ALL, "Russian");
 	printf("¬ведите ширину, высоту и глубину шкафа");
 	scanf_s("%lf, %lf, %lf" & h, &w, &d);
 	s = 0;
