@@ -5,12 +5,12 @@
 #define DWP 820;
 #define DSP 650;
 #define BLACKWOOD 1300;  /*Используется чёрное дерево*/
-
-double h, w, d, back, top_and_bot, sidewalls, shelfs, doors, m;
-int s;
-
 void main()
 {
+	double h, w, d, back, top_and_bot, sidewalls, shelfs, doors, m;
+	int s;
+
+
 	setlocale(LC_ALL, "Russian");
 	printf("Введите ширину, высоту и глубину шкафа");
 	scanf_s("%lf, %lf, %lf" & h, &w, &d);
@@ -32,4 +32,6 @@ void main()
 
 	}
 	else printf("Данные параметры не удовлетворяют стандартам нашей компании!");
+}
+
 
