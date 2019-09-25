@@ -3,7 +3,6 @@
 #include<locale.h>
 int main()
 {
-
 	setlocale(LC_ALL, "Russian");
 	double h, w, d, b, z;
 	double b_wall, s_wall, updown, sh, weight, door;
