@@ -7,13 +7,13 @@ const double DSP = 0.00075;
 const double DVP = 0.00085;
 const double WOOD = 0.00051;
 
-double vvod(int min, int max, int k)
+double vvod(int min, int max, int count)
 {
 	double value;
 
 	do
 	{
-		switch (k)
+		switch (count)
 		{
 		case 1:
 		{
