@@ -5,12 +5,12 @@ int main()
 {
 	const int  dvp = 800, dsp = 735, der = 690, x = 5, y = 15, z = 15, k = 10, m = 400;
 	double h, w, d;
-		printf("Введите значения высоты h, ширины w, глубины d: ");
+		printf("Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёСЏ РІС‹СЃРѕС‚С‹ h, С€РёСЂРёРЅС‹ w, РіР»СѓР±РёРЅС‹ d: ");
 		scanf_s("%lf %lf %lf", &h, &w, &d);
 		if (((1800 <= h) and (h <= 2200)) and ((800 <= w) and (w <= 1200)) and ((500 <= d) and (d <= 900))) {
 			double massa = (h * x * w * dvp + 2 * h * y * d * dsp + 2 * w * z * d * dsp + h * w * k * der + (h / (m + y)) * w * d * dsp) / 1000000000;
-			printf("Общая масса шкафа М = %f\n",  massa);
+			printf("РћР±С‰Р°СЏ РјР°СЃСЃР° С€РєР°С„Р° Рњ = %f\n",  massa);
 		}
-		else printf("Введены неверные значения\n");
+		else printf("Р’РІРµРґРµРЅС‹ РЅРµРІРµСЂРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ\n");
 	return 0;
 }
