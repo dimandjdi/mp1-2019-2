@@ -16,22 +16,22 @@ double vvod(int min, int max, int k)
 		switch (k)
 		{
 		case 1:
-		
-			printf("Введите высоту от %d до %d см: ", min, max);
-			break;
-		
+		{
+		printf("Введите высоту от %d до %d см: ", min, max);
+		break;
+		}
 		case 2:
-	
+		{
 			printf("Введите ширину от %d до %d см: ", min, max);
 			break;
-		
+		}
 		case 3:
-		
+		{
 			printf("Введите глубину от %d до %d см: ", min, max);
 			break;
-		
 		}
-		scanf_s("%if", &value);
+		}
+		scanf_s("%lf", &value);
 
 		if ((value < min) || (value > max))
 		{
@@ -57,6 +57,6 @@ void main()
 	x = (h - 3) / 41.5;
 	m = h * w * 0.5 * DVP + 2 * h * d * 1.5 * DSP + w * d * 1.5 * 2 * DSP + h * w * 1 * WOOD + x * (w - 3) * 1.5 * d * DSP;
 
-	printf("Масса шкафа: %lf (кг)\n", m);
-	_getch();
+	printf("Масса шкафа: %.2lf (кг)\n", m);
+	system("pause");
 }
