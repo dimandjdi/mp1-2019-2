@@ -20,7 +20,7 @@ int main(void)
 		WOODv = 0.01 * h * w; // Объём дверей
 		k = h / 0.415 - 1; // Количество полок
 		m = DVPp * DVPv + DSPp * DSPv + WOODp * WOODv + k * 0.015 * (d - 0.005) * (w - 2 * 0.015);
-		printf("%.2f\n", m);
+		printf("%.2lf\n", m);
 	}
 	else
 		printf("error 404\n"); //Попросить перезапустить программу
