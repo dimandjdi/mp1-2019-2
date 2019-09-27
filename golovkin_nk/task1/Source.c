@@ -15,21 +15,21 @@ double vvod(int min, int max, int count)
 	{
 		switch (count)
 		{
-		case 1:
-		{
-		printf("¬ведите высоту от %d до %d см: ", min, max);
-		break;
-		}
-		case 2:
-		{
-			printf("¬ведите ширину от %d до %d см: ", min, max);
-			break;
-		}
-		case 3:
-		{
-			printf("¬ведите глубину от %d до %d см: ", min, max);
-			break;
-		}
+		    case 1:
+		    {
+			    printf("¬ведите высоту от %d до %d см: ", min, max);
+			    break;
+		    }
+		    case 2:
+		    {
+			    printf("¬ведите ширину от %d до %d см: ", min, max);
+			    break;
+		    }
+		    case 3:
+		    {
+			    printf("¬ведите глубину от %d до %d см: ", min, max);
+			    break;
+		    }
 		}
 		scanf_s("%lf", &value);
 
