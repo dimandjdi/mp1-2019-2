@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <locale.h>
 #include <math.h>
+#include <locale.h>
 const double pWood = 640;
 const double pDSP = 650;
 const double pDVP = 850;
