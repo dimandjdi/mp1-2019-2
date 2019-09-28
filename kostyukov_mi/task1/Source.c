@@ -15,7 +15,7 @@ double checked_input(char V[7],int minL, int maxL)
 		printf("Некорректные данные");
 		exit(0);
 	}
-	return 0.1;
+	return 0;
 }
 
 void main()
