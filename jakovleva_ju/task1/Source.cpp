@@ -9,7 +9,7 @@ int main(void)
 	double p3 = 850;
 
 	double h, w, d, M;
-	printf("vvedite h,w,d v kilogrammah\n");
+	printf("vvedite h,w,d v metrah\n");
 	scanf_s("%lf%lf%lf", &h, &w, &d);
 	if ((h >= 1.8) && (h <= 2.2) && (w >= 0.8) && (w <= 1.2) && (d >= 0.5) && (d <= 0.9))
 	{
