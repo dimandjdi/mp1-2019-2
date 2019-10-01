@@ -37,6 +37,7 @@ int r2(void)
 		printf("%d\n", n);
 		c = getchar();
 		o = getchar();
+		o = getchar();
 		i++;
 		if ( (c == '>') || (o == '>') )
 		{
