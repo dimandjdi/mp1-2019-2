@@ -13,7 +13,7 @@ void main()
 
 	setlocale(LC_ALL, "Russian");
 	printf("¬ведите ширину, высоту и глубину шкафа");
-	scanf_s("%lf, %lf, %lf" & h, &w, &d);
+	scanf_s("%lf, %lf, %lf" &h, &w, &d);
 	s = 0;
 	if ((h >= 0.18) && (h <= 0.22) && (w >= 0.08) && (w <= 0.12) && (d >= 0.05) && (d <= 0.09))
 	{
