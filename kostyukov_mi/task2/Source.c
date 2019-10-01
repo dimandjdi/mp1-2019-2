@@ -25,7 +25,7 @@ int r1(void)
 }
 int r2(void)
 {
-	char c=0, o;
+	char c=0, o=0;
 	int n1 = 1;
 	int n2 = 1000;
 	int n = 0;
@@ -38,15 +38,15 @@ int r2(void)
 		c = getchar();
 		o = getchar();
 		i++;
-		if (c == '>')
+		if ( (c == '>') || (o == '>') )
 		{
 			n1 = n;
 		}
-		if (c == '<')
+		if ((c == '<') || (o == '<'))
 		{
 			n2 = n;
 		}
-	} while (c != '=');
+	} while ( (c != '=') && (o != '=' ));
 	printf("Я угадал за %d попыток\n", i);
 }
 
