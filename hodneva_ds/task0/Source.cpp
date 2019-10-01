@@ -5,13 +5,9 @@
 int main()
 
 {
-
 	double a, R;
-
 	printf("Введите a и R: ");
-
 	scanf_s("%f %f", &a, &R);
-
 	if (2 * R == a)
 
 		printf("Сторона квадрата касается окружности");
