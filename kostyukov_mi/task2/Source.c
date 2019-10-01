@@ -25,7 +25,7 @@ int r1(void)
 }
 int r2(void)
 {
-	char c=0, o=0;
+	char c1=0, c2=0;
 	int n1 = 1;
 	int n2 = 1000;
 	int n = 0;
@@ -35,19 +35,18 @@ int r2(void)
 	{
 		n = (n1 + n2) / 2;
 		printf("%d\n", n);
-		c = getchar();
-		o = getchar();
-		o = getchar();
+		c1 = getchar();
+		c2 = getchar();
 		i++;
-		if ( (c == '>') || (o == '>') )
+		if ( (c1 == '>') || (c2 == '>') )
 		{
 			n1 = n;
 		}
-		if ((c == '<') || (o == '<'))
+		if ((c1 == '<') || (c2 == '<'))
 		{
 			n2 = n;
 		}
-	} while ( (c != '=') && (o != '=' ));
+	} while ( (c1 != '=') && (c2 != '=' ));
 	printf("Я угадал за %d попыток\n", i);
 }
 
@@ -68,28 +67,4 @@ int main(void)
 			func[r]();
 		}
 	} while (2 * 2 == 4);
-
-	/* 
-
-	Какой вариант более предпочтителен: использованный в программе или приведенный ниже?
-
-	do
-	{
-		printf("Выберите режим\n1)Ты угадываешь\n2)Я угадываю\n0)Выйти\n");
-		scanf("%d", &r);
-		switch (r)
-		{
-		case 0:
-			exit();
-			break;
-		case 1:
-			r1();
-			break;
-		case 2:
-			r2();
-		default:
-			break;
-		}
-	} while (2 * 2 == 4);
-	*/
 }
