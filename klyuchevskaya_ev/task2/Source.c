@@ -64,7 +64,9 @@ int main(void)
 					usl = 1;
 				}
 			}
+			break;
 		}
+		
 	}
 		system("pause");
 }
