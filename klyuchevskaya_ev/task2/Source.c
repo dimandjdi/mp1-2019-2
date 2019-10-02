@@ -2,15 +2,11 @@
 #include<locale.h>
 #include<stdlib.h>
 #include<conio.h>
-#include<time.h>
-
 int main(void)
-
 {
-
 	setlocale(LC_ALL, "Russian");
 	srand(time(0));
-	int x , y , r , z , l , n = 0 , A = 1 , B = 1000 , k = 0 , usl = 0;
+	int x , r , z , l , n = 0 , A = 1 , B = 1000 , k = 0 , usl = 0;
 	char zn = ' ';
 	printf("Если вы хотите угадать число-введите 1, если вы хотите загадать число-введите 2 : ");
 	scanf_s("%d", &r);
@@ -63,16 +59,12 @@ int main(void)
 					B =x-1;
 				}
 				
-				
 				if (zn == '=') {
 					printf("УРА! Программа угадала число с %d попытки! \n", k);
 					usl = 1;
 				}
 			}
 		}
-	
-		
 	}
 		system("pause");
-
 }
