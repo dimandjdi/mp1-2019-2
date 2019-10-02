@@ -9,24 +9,6 @@ void main()
 	pdr = 640;
 	pds = 650;
 	pdv = 850;
-<<<<<<< HEAD
-	printf("Введите высоту h");
-	scanf_s("%lf", &h);
-	printf("Введите глубину d");
-	scanf_s("%lf", &hd);
-	printf("Введите ширину w");
-	scanf_s("%lf", &w);
-	h = h / 100;
-	w = w / 100;
-	d = d / 100;
-	m1 = 0.005 * w * h * pdv;
-	m2 = 0.015 * d * h * pds * 2;
-	m3 = 0.015 * d * w * pds * 2;
-	m4 = 0.01 * h * w * 2;
-	m5 = 0.015 * d * w * (h / 0.415);
-	ms = m1 + m2 + m3 + m4 + m5;
-	printf("Масса шкафа: %lf", ms);
-=======
 	printf("Введите высоту h,см  180<h<220     h=");
 	scanf_s("%lf", &h);
 	printf("Введите глубину d,см  50<d<90     d=");
@@ -48,6 +30,5 @@ void main()
 	}
 	else
 		printf("Данные некорректны");
->>>>>>> 0661451e5bcd3225dbb9b239cb84deab34f2f556
 	scanf_s("%lf", &end);
 }
