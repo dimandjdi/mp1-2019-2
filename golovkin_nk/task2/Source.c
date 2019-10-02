@@ -54,7 +54,7 @@ float mode(int count)
 		scanf_s("%i", &chelovek); //×ÈÑËÎ ÇÀÃÀÄÀÍÍÎÅ ×ÅËÎÂÅÊÎÌ
 		do
 		{
-			comp = min + rand() % (max - min);//÷åëîâåê ïðîâåðÿåò ÷èñëî êîìïüþòåðà ÷åðåç ñâè÷è ñ 3-ìÿ êåéñàìè (1:>,2:<,3:=)
+			comp = min + rand() % (max - min);
 			printf("Êîìïüþòåð ñ÷èòàåò,÷òî: %i ", comp);
 			getchar(); scanf_s("%c", &g);
 			if (g == '>')
