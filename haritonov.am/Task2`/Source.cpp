@@ -26,5 +26,5 @@ void main()
 			break;
 	}
 	printf("Количество цифр = %i, Количество букв = %i\n", num, word);
-	scanf_s("%i", &end);
+	scanf_s("%i", &end); 
 }
