@@ -32,7 +32,7 @@ void programm_quesses()
 	int r = 1;
 	char c = ' ';
 	printf("\nZagada'ite chislo\nIgra'ite chestno;)\n");
-	int a = 500; // Vmesto randoma vvodim opredelye chislo, ymen'shaya diapazon v 2 raza  
+	int a = 500; // Vmesto randoma vvodim opredelyennoe chislo, ymen'shaya diapazon v 2 raza  
 	int step = a / 2;
 	while (true)
 	{
