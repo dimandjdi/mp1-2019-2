@@ -58,8 +58,8 @@ int main()
 {
 	int q;
 	srand(time(0));
-	printf("1 T'i zagadivaech\n");
-	printf("2 Ya zagad'ivayu\n");
+	printf("1 Ya zagadivayu\n");
+	printf("2 T'i zagad'ivaesh\n");
 	printf("V'iberite rezhim: ");
 	scanf_s("%d", &q);
 	switch (q)
