@@ -12,7 +12,9 @@ void main()
 	printf("Введите строку\n");
 	while ((s=getchar()) != '\n')
 	{
-		if ((s >= '0') && (s <= '9'))
+		if (s == ' ')
+			getchar();
+		else if ((s >= '0') && (s <= '9'))
 		{
 			num = num + 1;
 			while (((s = getchar()) != ' ') && (s != '\n')) {}
@@ -25,6 +27,6 @@ void main()
 		if (s == '\n')
 			break;
 	}
-	printf("Количество цифр = %i, Количество букв = %i\n", num, word);
+	printf("Количество цифр = %i, Количество слов = %i\n", num, word);
 	scanf_s("%i", &end); 
 }
