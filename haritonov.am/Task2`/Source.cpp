@@ -12,8 +12,7 @@ void main()
 	printf("Введите строку\n");
 	while ((s=getchar()) != '\n')
 	{
-		if (s == ' ')
-			getchar();
+		if (s == ' ');
 		else if ((s >= '0') && (s <= '9'))
 		{
 			num = num + 1;
