@@ -11,7 +11,7 @@
 int main(void)
 {
 	setlocale(LC_ALL, "Rus");
-	char c=0;
+	char c = 0;
 	int i = 0;
 	int nums = 0;
 	int words = 0;
