@@ -51,15 +51,15 @@ void main()
 	scanf_s("%d", &regime);
 	switch (regime)
 	{
-	case 1:
-		user();
-		break;
-	case 2:
-		compukter();
-		break;
-	default:
-		printf("Ошибка выбора\n");
-		break;
+	    case 1:
+		    user();
+		    break;
+	    case 2:
+		    compukter();
+		    break;
+	    default:
+		    printf("Ошибка выбора\n");
+		    break;
 	}
 	int choice;
 	do
@@ -70,15 +70,15 @@ void main()
 		scanf_s("%d", &choice);
 		switch (choice)
 		{
-		case 1:
-			main();
-			break;
-		case 2:
-			return 0;
-			break;
-		default:
-			printf("Ошибка выбора\n");
-			break;
+		    case 1:
+			    main();
+			    break;
+		    case 2:
+			    return 0;
+			    break;
+		    default:
+			    printf("Ошибка выбора\n");
+			    break;
 		}
 	} while ((choice != 1) || (choice != 2));
 	system("pause");
