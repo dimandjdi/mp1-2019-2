@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <locale.h>
-
-
 int main(void)
 {
 	int  a, x, y, n;
@@ -31,8 +29,6 @@ int main(void)
 		}
 		printf("Количество попыток: %i \n", n);
 		break;
-
-
 	case 2:
 		a = 0;
 		x = 1000;
@@ -41,7 +37,6 @@ int main(void)
 		while (simbol != '=')
 		{
 			y = (a + x) / 2;
-
 			printf("Ваше число %i? Если да, введите '=', если нет, введите '<' или '>'\n", y);
 			scanf_s("%c", &simbol);
 			scanf_s("%c", &simbol);
@@ -54,10 +49,10 @@ int main(void)
 			case '>':
 				a = y;
 				break;
-			
+
 			case '=':
 
-				printf("Программа угадала Ваше число за %i попыток.\n", n); 
+				printf("Программа угадала Ваше число за %i попыток.\n", n);
 				break;
 			default:
 
@@ -65,6 +60,7 @@ int main(void)
 				break;
 			}
 		}
+		break;
 	default:
 		printf("Вы допустили ошибку при выборе режима программы, пожалуйста, попробуйте еще раз \n");
 		break;
