@@ -1,44 +1,45 @@
-п»ї#include <stdio.h>
+#include <stdio.h>
 #include <locale.h>
+#include <ctype.h>
 void main()
 {
 	setlocale(LC_ALL, "Rus");
 	int ndigit = 0, nword = 0, choice;
 	char c, p = ' ';
-	printf("Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚:\n");
+	printf("Введите текст:\n");
 	do
 	{
 		c = getchar();
 		switch (c)
 		{
-		    case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
-			    if ((p == ' ') || (p == '\t'))
-				    ndigit++;
-			    break;
-		    default:
-			    if (((p == ' ') || (p == '\t')) && ((c != ' ') || (c != '\t')))
-				    nword++;
-			    break;
+		case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
+			if ((p == ' ') || (p == '\t'))
+				ndigit++;
+			break;
+		default:
+			if (((p == ' ') || (p == '\t')) && ((isalpha(c)) || (c < (int)(NULL))))
+				nword++;
+			break;
 		}
 		p = c;
 	} while (c != '\n');
-	printf("РљРѕР»РёС‡РµС‚СЃРІРѕ СЃР»РѕРІ: %d\n", nword);
-	printf("РљРѕР»РёС‡РµСЃС‚РІРѕ С‡РёСЃРµР»: %d\n", ndigit);
+	printf("Количетсво слов: %d\n", nword);
+	printf("Количество чисел: %d\n", ndigit);
 	do
 	{
-		printf("Р’РІРµСЃС‚Рё РЅРѕРІС‹Р№ С‚РµРєСЃС‚?\n");
-		printf("1)Р”Р°\n");
-		printf("2)РќРµС‚\n");
+		printf("Ввести новый текст?\n");
+		printf("1)Да\n");
+		printf("2)Нет\n");
 		scanf_s("%d", &choice);
 		switch (choice)
 		{
-		    case 1:
-			    getchar();
-			    main();
-		    case 2:
-			    return 0;
-		    default:
-			    printf("РћС€РёР±РєР° РІС‹Р±РѕСЂР°\n");
+		case 1:
+			getchar();
+			main();
+		case 2:
+			return 0;
+		default:
+			printf("Ошибка выбора\n");
 		}
 	} while ((choice != 1) || (choice != 2));
 	system("pause");
