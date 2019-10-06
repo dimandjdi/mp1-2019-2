@@ -1,12 +1,12 @@
-#include <stdio.h>
-#include <locale.h>
+п»ї#include <stdio.h>
 #include <ctype.h>
+#include <locale.h>
 void main()
 {
 	setlocale(LC_ALL, "Rus");
 	int ndigit = 0, nword = 0, choice;
 	char c, p = ' ';
-	printf("Введите текст:\n");
+	printf("Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚:\n");
 	do
 	{
 		c = getchar();
@@ -23,13 +23,13 @@ void main()
 		}
 		p = c;
 	} while (c != '\n');
-	printf("Количетсво слов: %d\n", nword);
-	printf("Количество чисел: %d\n", ndigit);
+	printf("РљРѕР»РёС‡РµС‚СЃРІРѕ СЃР»РѕРІ: %d\n", nword);
+	printf("РљРѕР»РёС‡РµСЃС‚РІРѕ С‡РёСЃРµР»: %d\n", ndigit);
 	do
 	{
-		printf("Ввести новый текст?\n");
-		printf("1)Да\n");
-		printf("2)Нет\n");
+		printf("Р’РІРµСЃС‚Рё РЅРѕРІС‹Р№ С‚РµРєСЃС‚?\n");
+		printf("1)Р”Р°\n");
+		printf("2)РќРµС‚\n");
 		scanf_s("%d", &choice);
 		switch (choice)
 		{
@@ -39,7 +39,7 @@ void main()
 		case 2:
 			return 0;
 		default:
-			printf("Ошибка выбора\n");
+			printf("РћС€РёР±РєР° РІС‹Р±РѕСЂР°\n");
 		}
 	} while ((choice != 1) || (choice != 2));
 	system("pause");
