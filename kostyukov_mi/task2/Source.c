@@ -23,6 +23,7 @@ int r1(void)
 	printf("Ты угадал загаданное число за %d попыток\n", i);
 	return 0;
 }
+
 int r2(void)
 {
 	char c1=0, c2=0;
@@ -38,7 +39,7 @@ int r2(void)
 		c1 = getchar();
 		c2 = getchar();
 		i++;
-		if ( (c1 == '>') || (c2 == '>') )
+		if ((c1 == '>') || (c2 == '>'))
 		{
 			n1 = n;
 		}
@@ -46,18 +47,17 @@ int r2(void)
 		{
 			n2 = n;
 		}
-	} while ( (c1 != '=') && (c2 != '=' ));
+	} while ((c1 != '=') && (c2 != '='));
 	printf("Я угадал за %d попыток\n", i);
 }
 
 
 int main(void)
 {
-	setlocale(LC_ALL, "Rus");
-
 	int r;
+	setlocale(LC_ALL, "Rus");
+	int(*func[3])() = {exit, r1,r2};
 
-	int(*func[3])() = { exit, r1,r2 };
 	do
 	{
 		printf("Выберите режим\n1)Ты угадываешь\n2)Я угадываю\n0)Выйти\n");
