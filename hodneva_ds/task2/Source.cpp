@@ -30,6 +30,6 @@ int main()
 			}
 		}
 	}
-	printf"Угадали");
+	printf("Угадали");
 	return 0;
 }
