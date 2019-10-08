@@ -46,7 +46,8 @@ void programm_quesses()
 			a += step;
 		else if (c == '=')
 		{
-			printf("Ura, ya ugadal! :%c\n");
+			printf("Ura, ya ugadal!\n");
+			r--;
 			printf("Kolichestvo pop'itok: %d\n", r);
 			break;
 		}
@@ -58,14 +59,9 @@ int main()
 {
 	int q;
 	srand(time(0));
-<<<<<<< HEAD
-	printf("1 Ya zagad'ivayu\n");
-	printf("2 T'i zagadivaech\n");
-=======
-	printf("1 Ya zagadivayu\n");
-	printf("2 T'i zagad'ivaesh\n");
->>>>>>> af29c2cad12afb089a3895532d2f6523e9d2d654
-	printf("V'iberite rezhim: ");
+		printf("1 Ya zagadivayu\n");
+	    printf("2 T'i zagad'ivaesh\n");
+		printf("V'iberite rezhim: ");
 	scanf_s("%d", &q);
 	switch (q)
 	{
@@ -77,8 +73,5 @@ int main()
 		break;
 	}
 	system("pause");
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> af29c2cad12afb089a3895532d2f6523e9d2d654
