@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -28,4 +26,3 @@ int main(void)
 		printf("error 404\n"); // Просьба перезапустить программу
 	system("pause");
 }
->>>>>>> af29c2cad12afb089a3895532d2f6523e9d2d654
