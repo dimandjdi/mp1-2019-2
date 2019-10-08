@@ -1,20 +1,16 @@
-﻿#include "stdio.h"
-
-#include "math.h"
-
+#include "stdio.h"
 #include<locale.h>
-
 #include <stdlib.h>
-
 #include <time.h>
 
 int main()
 
 {
 	setlocale(LC_ALL, "Russian");
+	srand(time(0));
 	int num = rand() % 1000;
 	printf("%d", num);
-	int a,b;
+	int a, b;
 	b = 1;
 	printf("Введите число: ");
 	scanf_s("%d", &a);
