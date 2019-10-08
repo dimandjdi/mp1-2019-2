@@ -59,9 +59,9 @@ int main()
 {
 	int q;
 	srand(time(0));
-		printf("1 Ya zagadivayu\n");
-	    printf("2 T'i zagad'ivaesh\n");
-		printf("V'iberite rezhim: ");
+	printf("1 Ya zagadivayu\n");
+	printf("2 T'i zagad'ivaesh\n");
+	printf("V'iberite rezhim: ");
 	scanf_s("%d", &q);
 	switch (q)
 	{
