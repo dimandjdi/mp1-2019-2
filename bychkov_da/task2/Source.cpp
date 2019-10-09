@@ -7,28 +7,28 @@ int main() {
 	srand(time(NULL));
 	int mode, ugadal, k = 1, razbros, predpoloj, c, k2 = 0;
 	char znak = 0;
-	printf("Выбор ржима: \n 1 - компьютер загадывает число \n 2 - вы загадываете число \n");
+	printf("Р’С‹Р±РѕСЂ СЂР¶РёРјР°: \n 1 - РєРѕРјРїСЊСЋС‚РµСЂ Р·Р°РіР°РґС‹РІР°РµС‚ С‡РёСЃР»Рѕ \n 2 - РІС‹ Р·Р°РіР°РґС‹РІР°РµС‚Рµ С‡РёСЃР»Рѕ \n");
 	scanf_s("%d", &mode);
 
 	if (mode == 1)
 	{
 		c = 1 + (rand() % 1000);
-		printf("Компьютрер загадал, пробуйте \n");
+		printf("РљРѕРјРїСЊСЋС‚СЂРµСЂ Р·Р°РіР°РґР°Р», РїСЂРѕР±СѓР№С‚Рµ \n");
 		scanf_s("%d", &predpoloj);
 		while (predpoloj != c)
 		{
 			if (predpoloj > c)
 			{
-				printf("Нужно число поменьше \n");
+				printf("РќСѓР¶РЅРѕ С‡РёСЃР»Рѕ РїРѕРјРµРЅСЊС€Рµ \n");
 			}
 			if (predpoloj < c)
 			{
-				printf("Нужно число побольше \n");
+				printf("РќСѓР¶РЅРѕ С‡РёСЃР»Рѕ РїРѕР±РѕР»СЊС€Рµ \n");
 			}
 			scanf_s("%d", &predpoloj);
 			k++;
 		}
-		printf("Неплохо, количество попыток = ");
+		printf("РќРµРїР»РѕС…Рѕ, РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРїС‹С‚РѕРє = ");
 		printf("%d", k);
 		printf("\n");
 		system("pause");
@@ -41,7 +41,7 @@ int main() {
 		razbros = ugadal / 2;
 		while (znak != '=')
 		{
-			printf("Ваше число %d? \n", ugadal);
+			printf("Р’Р°С€Рµ С‡РёСЃР»Рѕ %d? \n", ugadal);
 			scanf_s(" %c", &znak);
 			if (znak == '>')
 			{
@@ -58,8 +58,8 @@ int main() {
 
 
 		}
-		printf("Ваше число - %d \n", ugadal);
-		printf("Компьютер угадал за %d попыток \n", k2);
+		printf("Р’Р°С€Рµ С‡РёСЃР»Рѕ - %d \n", ugadal);
+		printf("РљРѕРјРїСЊСЋС‚РµСЂ СѓРіР°РґР°Р» Р·Р° %d РїРѕРїС‹С‚РѕРє \n", k2);
 		system("pause");
 
 	}
