@@ -1,44 +1,43 @@
-﻿#include<stdio.h>
-#include<locale.h>
-void main()
+﻿#include <stdio.h> 
+#include <locale.h> 
+#include <time.h> 
+#include <stdlib.h> 
+
+int main()
 {
-	setlocale(LC_CTYPE, "Russian");
+	setlocale(LC_CTYPE, "rus");
 
-	int word, numder;
-	char c;
-	char n ;
-	word = numder = c = 0;
-	printf("Введите строку: ");
+	int a[10], b[10], x, n, rmin, rmax, f;
 
-	do
+	printf("Введите n: "); //Ввод данных 
+	scanf_s("%d", &n);
+	rmin = 0;
+	rmax = 9;
+
+	srand((unsigned int)time(0)); //Заполнение массива рандомными числами 
+	a[0] = (rmax - 1) * ((double)rand()) / RAND_MAX + 1;
+
+	for (int i = 1; i < n; i++)
 	{
-		c = getchar();
-
-		if ((c >= '0') && (c <= '9'))
+		f = 1;
+		while (f != 0)
 		{
-			while ((c != ' ') && (c != '\t') && (c != '\n'))
-			{
-				c = getchar();
-			}
-			numder++;
-		}
-
-		else
-		{
-			if ((c != ' ') && (c != '\n'))
-			{
-				do
+			f = 0;
+			a[i] = (rmax - rmin) * ((double)rand()) / RAND_MAX + rmin;
+			for (int j = 0; j < i; j++)
+				if (a[i] == a[j])
 				{
-					c = getchar();
+					f = 1;
+					break;
 				}
-				while ((c != ' ') && (c != '\t') && (c != '\n'));
-				word++;
-			}
 		}
-     } 
-	while (c != '\n');
+	}
 
-	printf("Количество чисел: %d \n", numder);
-	printf("Количество слов: %d \n", word);
+	for (int i = 0; i < n; i++)
+		printf("%d", a[i]);
+
+
+
+	printf("\n");
 	system("pause");
 }
