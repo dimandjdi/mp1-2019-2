@@ -1,8 +1,8 @@
 ﻿#include<stdio.h>
 #include<locale.h>
 #include<time.h>
-#include <stdlib.h>
 #include<math.h>
+#include <stdlib.h>
 int main()
 {
 	setlocale(LC_CTYPE, "Russian"); 
