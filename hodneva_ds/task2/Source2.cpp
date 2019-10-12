@@ -13,6 +13,7 @@ int main()
 	scanf_s("%d", &a);
 	w = 500;
 	k = w / 2;
+	b = 0;
 	while (a != w)
 	{
 		printf ("Число равно %d? \n", w);
@@ -29,7 +30,7 @@ int main()
 		b = b + 1;
 	}
 	printf ("Ваше число %d", k);
-	scanf_s("%c", x);
+	scanf_s("%c", &x);
 	printf ("Угадали с %d попытки ", b);
 	system("pause");
 	return 0;
