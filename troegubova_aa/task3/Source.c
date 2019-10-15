@@ -5,18 +5,21 @@
 #include <stdlib.h>
 int main()
 {
-	setlocale(LC_CTYPE, "Russian"); 
-	int n, k, t, x, f, w, bull, cow, choice;
-	bull = cow = choice = n = x = t = f = k = w = 0;
+	setlocale(LC_CTYPE, "Russian");
+	int n, k, t, x, f, w, bull, cow;
+	bull = cow = n = x = t = f = k = w = 0;
 	int a[5], b[5];
-    while ((n < 2) || (n > 5))
+	printf("\n");
+	printf("Если ты захочешь сдаться, то введи: -1 \n");
+	printf("\n");
+	while ((n < 2) || (n > 5))
 	{
-		printf("Выберите количество цифр в загаданом числе (от 2 до 5 цифр): ");
+		printf("Выбери количество цифр в загаданом числе (от 2 до 5 цифр): ");
 		scanf_s("%d", &n);
 	}
-	srand(time(NULL)); 
+	srand(time(NULL));
 	a[0] = rand() % 9 + 1;
-    for (int i = 1; i < n; i++)
+	for (int i = 1; i < n; i++)
 	{
 		f = 1;
 		while (f != 0)
@@ -31,23 +34,31 @@ int main()
 				}
 		}
 	}
-
-    while (bull != n)
+	while (bull != n)
 	{
 		do
 		{
 			do
 			{
-				printf("Введите число: "); 
+				printf("Введи число: ");
 				scanf_s("%d", &t);
 				k = 0;
 				x = t;
+				if (t == -1)
+				{
+					printf("Игра проиграна, в следующий раз тебе повезёт больше. \n");
+					break;
+				}
 				while (x != 0)
 				{
 					k++;
 					x /= 10;
 				}
 			} while (k != n);
+			if (t == -1)
+			{
+				break;
+			}
 			for (int i = n - 1; i >= 0; i--)
 			{
 				b[i] = t % 10;
@@ -66,6 +77,10 @@ int main()
 				}
 			}
 		} while (w != 0);
+		if (t == -1)
+		{
+			break;
+		}
 		bull = cow = 0;
 		for (int i = 0; i < n; i++)
 		{
@@ -75,7 +90,7 @@ int main()
 			}
 			else
 			{
-				for (int j = 0 ; j < n; j++)
+				for (int j = 0; j < n; j++)
 				{
 					if ((a[i] == b[j]) && (i != j))
 					{
@@ -84,19 +99,12 @@ int main()
 				}
 			}
 		}
-		printf("Быков: %d, коров: %d \n", bull, cow); 
+		printf("Быков: %d, коров: %d \n", bull, cow);
 		if (bull == n)
 		{
 			break;
 		}
-		printf("Выберите соответствующую цифру: 1 - попытаться угатать ещё раз; 2 - сдаться: \n");
-		scanf_s("%d", &choice);
-		if (choice == 2)
-		{
-			printf("Игра проиграна, в следующий раз тебе повезёт больше. \n");
-			break;
-		}
-    }
+	}
 	if (bull == n)
 	{
 		printf("Ты выйграл игру, ура!!! \n");
