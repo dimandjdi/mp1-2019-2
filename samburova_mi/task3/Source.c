@@ -1,4 +1,4 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <math.h>
 #include <time.h>
 #include <locale.h>
@@ -24,7 +24,7 @@ void main()
 	setlocale(LC_ALL, "Rus");
 	int n = 0, user_number = 0, mass_machine[5], mass_human[5], f = 0, k = 0, r = 0, bull = 0, cow = 0;
 
-	printf("Выберите длину загадываемого числа; от 2 до 5\n");
+	printf("Р’С‹Р±РµСЂРёС‚Рµ РґР»РёРЅСѓ Р·Р°РіР°РґС‹РІР°РµРјРѕРіРѕ С‡РёСЃР»Р°; РѕС‚ 2 РґРѕ 5\n");
 	scanf_s("%d", &n);
 	srand(time(NULL));
 
@@ -39,7 +39,7 @@ void main()
 	do {
 		bull = 0;
 		cow = 0;
-		printf("Введите ваше число\n");
+		printf("Р’РІРµРґРёС‚Рµ РІР°С€Рµ С‡РёСЃР»Рѕ\n");
 		scanf_s("%d", &user_number);
 		for (k = 0; k < n; k++)
 		{
@@ -61,8 +61,8 @@ void main()
 
 
 			if (bull == n)
-				printf("Поздравляем с победой!");
-			else printf("Быков - %d, коров - %d. Почти получилось!\n", bull, cow);
+				printf("РџРѕР·РґСЂР°РІР»СЏРµРј СЃ РїРѕР±РµРґРѕР№!");
+			else printf("Р‘С‹РєРѕРІ - %d, РєРѕСЂРѕРІ - %d. РџРѕС‡С‚Рё РїРѕР»СѓС‡РёР»РѕСЃСЊ!\n", bull, cow);
 		} while (bull != n);
 
 		system("pause>nul");
