@@ -75,6 +75,6 @@ int main(void)
 		}
 	}
 	if (bull == n)
-	   printf("Ура!Вы вы отгадали число!\n");
+        	printf("Ура!Вы вы отгадали число!\n");
 	system("pause");
 }
