@@ -33,12 +33,12 @@ int check(int number[], int length, int attempt, int kol_attempts)
 		c = getchar();
 		switch (c)
 		{
-		case 10:
-			printf("Попробуйте угадать снова:\n");
-			break;
-		case 32:
-			bull = length;
-			break;
+		    case 10:
+			    printf("Попробуйте угадать снова:\n");
+			    break;
+		    case 32:
+			    bull = length;
+			    break;
 		}
 	}
 	else
@@ -83,12 +83,12 @@ void main()
 	c = getchar();
 	switch (c)
 	{
-	case 10:
-		main();
-		break;
-	case 32:
-		exit(0);
-		break;
+	    case 10:
+		    main();
+		    break;
+	    case 32:
+		    exit(0);
+		    break;
 	}
 	system("pause");
 }
