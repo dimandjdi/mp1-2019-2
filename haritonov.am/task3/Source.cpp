@@ -61,12 +61,17 @@ void main()
 		}
 	}
 	else exit(0);
-	printf("Угадывайте\n");
+	printf("Угадывайте, \"00000\" - сдаться\n");
 	log = 1;
 	ch = 0;														//Сравнение чила пользователя и загаданного числа
-	while (log != 0)
+	while ((log != 0) || (log != 2))
 	{
 		scanf_s("%i", &ask);
+		if (ask == 00000)
+		{
+			log = 2;
+			break;
+		}
 		for (i = 0; i != n; i++)
 		{
 			que[4 - i] = ask % 10;
@@ -87,7 +92,10 @@ void main()
 		kor = 0;
 		ch++;
 	}
-	printf("Победа за %i\n попыток, молодец!", ch);
+	if (log == 0)
+		printf("Победа за %i\n попыток, молодец!", ch);
+	else if (log == 2)
+		printf("Либераху порвало");
 	scanf_s("%i", &i);
 
 }
