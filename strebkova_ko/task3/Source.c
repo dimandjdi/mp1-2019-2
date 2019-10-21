@@ -2,10 +2,10 @@
 #include <locale.h> 
 #include <stdlib.h> 
 #include <time.h> 
+#include <conio.h>
 int check(int number[], int length, int attempt, int kol_attempts)
 {
 	int cow = 0, bull = 0, i, j, k = length - 1;
-	char c;
 	for (j = 0; j < length; j++)
 	{
 		for (i = length - 1; i >= 0; i--)
@@ -28,18 +28,9 @@ int check(int number[], int length, int attempt, int kol_attempts)
 	printf("Количество коров: %d\n", cow);
 	if (bull != length)
 	{
-		printf("Нажмите Enter для продолжения игры или введите пробел, если хотите сдаться\n");
-		getchar();
-		c = getchar();
-		switch (c)
-		{
-		    case 10:
-			    printf("Попробуйте угадать снова:\n");
-			    break;
-		    case 32:
-			    bull = length;
-			    break;
-		}
+		printf("Попробуйте снова или нажмите Esc, если хотите сдаться\n");
+		if (_getch() == 27)
+			bull = length;
 	}
 	else
 		printf("Количество попыток: %d\n", kol_attempts);
@@ -60,9 +51,9 @@ void main()
 		{
 			flag = 0;
 			number[i] = rand() % 10;
-			for (j = 0; j < length; j++)
+			for (j = 0; j < i; j++)
 			{
-				if ((number[j] == number[i]) && (j != i))
+				if (number[j] == number[i])
 				{
 					flag = 1;
 					break;
@@ -72,23 +63,22 @@ void main()
 		} while (flag == 1);
 
 	}
-	printf("\nПредположите, какое число загадал компьютер:\n");
+	printf("Предположите, какое число загадал компьютер:\n");
 	do 
 	{
 		kol_attempts = kol_attempts + 1;
 		scanf_s("%d", &attempt);
 	} while (check(number, length, attempt, kol_attempts) != length);
-	printf("Нажмите Enter для начала новой игры или введите пробел для выхода из игры\n");
-	getchar();
-	c = getchar();
+	printf("Нажмите Enter для начала новой игры или Esc для выхода из игры\n");
+	c = _getch();
 	switch (c)
 	{
-	    case 10:
-		    main();
-		    break;
-	    case 32:
-		    exit(0);
-		    break;
+	    case 27:
+			exit(0);
+			break; 
+	    default:
+			main();
+			break;
 	}
 	system("pause");
 }
