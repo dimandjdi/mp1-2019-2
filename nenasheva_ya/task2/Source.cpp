@@ -73,4 +73,8 @@ int main()
 		break;
 	}
 	system("pause");
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> cde8bdce5f001fe9430e4a5dbef8371e383c2a87
