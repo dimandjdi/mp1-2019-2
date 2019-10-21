@@ -6,7 +6,7 @@ void main()
 
 	int word, numder;
 	char c;
-	char n ;
+	char n;
 	word = numder = c = 0;
 	printf("Введите строку: ");
 
@@ -30,13 +30,11 @@ void main()
 				do
 				{
 					c = getchar();
-				}
-				while ((c != ' ') && (c != '\t') && (c != '\n'));
+				} while ((c != ' ') && (c != '\t') && (c != '\n'));
 				word++;
 			}
 		}
-     } 
-	while (c != '\n');
+	} while (c != '\n');
 
 	printf("Количество чисел: %d \n", numder);
 	printf("Количество слов: %d \n", word);
