@@ -53,7 +53,8 @@ void main()
 	if ((n > 1) && (n < 6))
 	{
 		num = number(n);
-															//Превращение числа обратно в массив
+		printf("%i\n", num);
+																//Превращение числа обратно в массив
 		for (i = 0; i != n; i++)
 		{
 			ans[4 - i] = num % 10;
@@ -64,7 +65,7 @@ void main()
 	printf("Угадывайте, \"00000\" - сдаться\n");
 	log = 1;
 	ch = 0;														//Сравнение чила пользователя и загаданного числа
-	while ((log != 0) || (log != 2))
+	while ((log != 0) && (log != 2))
 	{
 		scanf_s("%i", &ask);
 		if (ask == 00000)
@@ -87,15 +88,16 @@ void main()
 			}
 		if (byk == n)
 			log = 0;
+
 		else printf("Быки - %i Коровы - %i\n", byk, kor);
 		byk = 0;
 		kor = 0;
 		ch++;
 	}
 	if (log == 0)
-		printf("Победа за %i\n попыток, молодец!", ch);
+		printf("Победа за %i попыток, молодец!\n", ch);
 	else if (log == 2)
 		printf("Либераху порвало");
-	scanf_s("%i", &i);
+	scanf_s("%i", i);
 
 }
