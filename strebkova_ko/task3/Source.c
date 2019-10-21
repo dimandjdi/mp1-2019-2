@@ -1,8 +1,8 @@
 ﻿#include <stdio.h> 
 #include <locale.h> 
 #include <stdlib.h> 
+#include <conio.h> 
 #include <time.h> 
-#include <conio.h>
 int check(int number[], int length, int attempt, int kol_attempts)
 {
 	int cow = 0, bull = 0, i, j, k = length - 1;
@@ -36,6 +36,7 @@ int check(int number[], int length, int attempt, int kol_attempts)
 		printf("Количество попыток: %d\n", kol_attempts);
 	return bull;
 }
+
 void main()
 {
 	setlocale(LC_ALL, "Rus");
@@ -59,9 +60,7 @@ void main()
 					break;
 				}
 			}
-
 		} while (flag == 1);
-
 	}
 	printf("Предположите, какое число загадал компьютер:\n");
 	do 
