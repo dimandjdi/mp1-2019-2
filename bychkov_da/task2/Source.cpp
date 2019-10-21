@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -9,7 +9,6 @@ int main() {
 	char znak = 0;
 	printf("Выбор ржима: \n 1 - компьютер загадывает число \n 2 - вы загадываете число \n");
 	scanf_s("%d", &mode);
-
 	if (mode == 1)
 	{
 		c = 1 + (rand() % 1000);
@@ -33,19 +32,16 @@ int main() {
 		printf("\n");
 		system("pause");
 	}
-
 	if (mode == 2)
 	{
-
 		ugadal = 500;
 		razbros = ugadal / 2;
 		while (znak != '=')
 		{
 			printf("Ваше число %d? \n", ugadal);
-			scanf_s(" %c", &znak);
+			scanf_s("%c", &znak);
 			if (znak == '>')
 			{
-
 				ugadal = ugadal + razbros;
 
 			}
@@ -55,12 +51,9 @@ int main() {
 			}
 			razbros = (razbros + 1) / 2;
 			k2++;
-
-
 		}
 		printf("Ваше число - %d \n", ugadal);
 		printf("Компьютер угадал за %d попыток \n", k2);
 		system("pause");
-
 	}
 }
