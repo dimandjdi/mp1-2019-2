@@ -17,8 +17,6 @@ int unique(int n, int mass_machine[])
 	else return 0;
 }
 
-
-
 void main()
 {
 	setlocale(LC_ALL, "Rus");
@@ -32,8 +30,6 @@ void main()
 	{
 		for (f = 0; f < n; f++)
 			mass_machine[f] = rand() % 10;
-
-
 	} while (unique(n, mass_machine) == 0);
 	
 	do {
@@ -46,25 +42,22 @@ void main()
 			mass_human[k] = user_number % 10;
 			user_number = user_number / 10;
 		}
-
 		for (f = 0; f < n; f++)
 		{
 			if (mass_machine[f] == mass_human[f])
 				bull++;
 		}
 		for (f = 0; f < n; f++)
-				for (k = 0; k < n; k++)
-
-					if (mass_machine[f] == mass_human[k])
-						if (f!=k) 
-							cow++;
-
-
-			if (bull == n)
+			for (k = 0; k < n; k++)
+			{
+				if (mass_machine[f] == mass_human[k])
+					if (f != k)
+						cow++;
+			}
+		if (bull == n)
 				printf("Поздравляем с победой!");
 			else printf("Быков - %d, коров - %d. Почти получилось!\n", bull, cow);
 		} while (bull != n);
-
 		system("pause>nul");
 	}
 
