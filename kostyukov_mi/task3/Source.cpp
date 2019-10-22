@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 
 #include "windows.h"
 #include <iostream>
@@ -69,7 +69,7 @@ void startgame(void)
 	{
 		clrscr();
 		gotoxy(0, 0);
-		printf("Введите длинну загадавыемого числа\n");
+		printf("Р’РІРµРґРёС‚Рµ РґР»РёРЅРЅСѓ Р·Р°РіР°РґР°РІС‹РµРјРѕРіРѕ С‡РёСЃР»Р°\n");
 		number_input(1, 1, 1, nn);
 		n = nn[0];
 		if (n == -1)
@@ -87,7 +87,7 @@ void startgame(void)
 	while (true) 
 	{	
 		gotoxy(0, 0);
-		printf("Ваша попытка угадать:");
+		printf("Р’Р°С€Р° РїРѕРїС‹С‚РєР° СѓРіР°РґР°С‚СЊ:");
 		do
 		{
 			for (int i = 0; i < 10; i++)
@@ -104,7 +104,7 @@ void startgame(void)
 					flag[0] = -1;
 					gotoxy(0, 0);
 					textbackground(RED);
-					printf("Есть повторяющиеся цифры!");
+					printf("Р•СЃС‚СЊ РїРѕРІС‚РѕСЂСЏСЋС‰РёРµСЃСЏ С†РёС„СЂС‹!");
 					textbackground(BLACK);
 					break;
 				}
@@ -121,7 +121,7 @@ void startgame(void)
 		draw(cow_pic, 20, 12);
 		draw(numbers[cows], 30, 12);
 		gotoxy(50, 0);
-		printf("Предыдущие попытки");
+		printf("РџСЂРµРґС‹РґСѓС‰РёРµ РїРѕРїС‹С‚РєРё");
 		for (int i = 14; i > 0; i--)
 		{
 			for (int j = 0;j<3;j++)
@@ -143,8 +143,8 @@ void startgame(void)
 		}
 	}
 	clrscr();
-	printf("Вы выйграли за %d попыток!\n", &counter);
-	puts("Для выхода в главное меню нажмите любую клавишу");
+	printf("Р’С‹ РІС‹Р№РіСЂР°Р»Рё Р·Р° %d РїРѕРїС‹С‚РѕРє!\n", &counter);
+	puts("Р”Р»СЏ РІС‹С…РѕРґР° РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ");
 }
 void closegame(void)
 {
@@ -154,8 +154,8 @@ void closegame(void)
 void MainMenu()
 {
 	MenuElement MainMenu[] = {
-		{"Старт", startgame},
-		{"Выход", closegame},
+		{"РЎС‚Р°СЂС‚", startgame},
+		{"Р’С‹С…РѕРґ", closegame},
 	};
 	Switcher(MainMenu, 2);
 }
