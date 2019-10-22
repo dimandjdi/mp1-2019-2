@@ -52,11 +52,11 @@ int main(void)
 			if (mass2[i] == mass1[i])
 			bull++;
 			else
-			for (z = 0; z < n; z++)
-			{
-				if (mass2[i] == mass1[z])
-					cow++;
-			}
+				for (z = 0; z < n; z++)
+				{
+					if (mass2[i] == mass1[z])
+						cow++;
+				}
 		}
 		printf("%d быков %d коров\n", bull, cow);
 	}
