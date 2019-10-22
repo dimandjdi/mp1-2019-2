@@ -133,8 +133,8 @@ void startgame(void)
 			tries[0][0] *= 10;
 			tries[0][0] += u[i];
 		}
-		tries[0][1] = cows;
-		tries[0][2] = bulls;
+		tries[0][1] = bulls;
+		tries[0][2] = cows;
 		for (int i = 0; i < 15; i++)
 		{
 			gotoxy(50,i+2);
@@ -145,6 +145,7 @@ void startgame(void)
 	clrscr();
 	printf("Вы выйграли за %d попыток!\n", &counter);
 	puts("Для выхода в главное меню нажмите любую клавишу");
+	_getch();
 }
 void closegame(void)
 {
