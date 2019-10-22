@@ -1,69 +1,74 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 #include <locale.h>
-int main(void)
+#include <stdlib.h>
+#include <iostream>
+#include <math.h>
+int main()
 {
-	int  a, x, y, n;
-	char simbol;
-	setlocale(LC_ALL, "Russian");
-	printf("Выберите режим программы: \n 1 (Вы отгадываете число от 0 до 1000, которое загадала программа) или 2 (программа отгадывает число от 0 до 1000, которое загадали Вы)\n ");//Вы, Ваше и тп пишется с большой буквы, потому что если программа не работает, то она хотя бы будет максимально вежливой. Клиентоориентированность - наше все:)
-	scanf_s("%i", &a);
-	switch (a)
+	setlocale(LC_ALL, "Rus");
+	int z, num, i, j, end; //n - длина числа, num - число игрока, i, j - счетчики для циклов
+	int cow = 0; // количество коров
+	int bull = 0; // количество быков
+	int comp[5] = { 0 }; // массив для числа компьютера
+	int number[5] = { 0 }; // массив для числа игрока
+	int a, b; // d - делитель, a - вспомогательная переменная
+	int attempt = 0;
+	srand(time(NULL));
+	printf("Игра 'Быки и коровы'!\nВыберите длину загадываемого числа.\nВведите 2, 3, 4 или 5.\n");
+	scanf_s("%i", &z);
+	while ((z < 2) || (z > 5))
 	{
-	case 1:
-		x = n = 0;
-		y = rand() % 1000 + 1;
-		srand(time(NULL));
-		while (x != y)
+		printf("Количество разрядов может быть только 2, 3, 4 или 5. Введите длину заново.\n");
+		scanf_s("%i", &z);
+	}
+	for (i = 0; i < z; i++)
+	{
+		comp[i] = (rand() % 9 + 1);
+		for (j = 0; j < i; j++)
 		{
-			printf("Введите свою отгадку от 0 до 1000 \n");
-			scanf_s("%i", &x);
-			if (x < y)
-				printf("Ваше число меньше загаданного \n");
-			else if (x > y)
-				printf("Ваше число больше загаданного \n");
-			else
-				printf("Поздравляю, Вы угадали! \n");
-			n++;
-		}
-		printf("Количество попыток: %i \n", n);
-		break;
-	case 2:
-		a = 0;
-		x = 1000;
-		simbol = n = 0;
-		printf("Загадайте число от 1 до 1000.\n");
-		while (simbol != '=')
-		{
-			y = (a + x) / 2;
-			printf("Ваше число %i? Если да, введите '=', если нет, введите '<' или '>'\n", y);
-			scanf_s("%c", &simbol);
-			scanf_s("%c", &simbol);
-			n++;
-			switch (simbol)
+			while (comp[i] == comp[j])
 			{
-			case '<':
-				x = y;
-				break;
-			case '>':
-				a = y;
-				break;
-
-			case '=':
-
-				printf("Программа угадала Ваше число за %i попыток.\n", n);
-				break;
-			default:
-
-				printf("Введите '=', '<' или '>'\n");
-				break;
+				comp[i] = (rand() % 9 + 1);
 			}
 		}
-		break;
-	default:
-		printf("Вы допустили ошибку при выборе режима программы, пожалуйста, попробуйте еще раз \n");
-		break;
 	}
-	system("pause");
+	printf("Введите Ваш вариант числа с неповторяющимися цифрами.\n");
+	scanf_s("%i", &num);
+	while (bull != z)
+	{
+		while ((num < pow(10, (z - 1))) || (num >= pow(10, (z + 1))))
+		{
+			printf("Число не входит в выбранный диапазон!\n");
+			scanf_s("%i", &num);
+		}
+		attempt++;
+		b = num;
+		for (i = z - 1; i >= 0; i--)
+		{
+			a = pow(10, i);
+			number[i] = b / a;
+			b %= a;
+		}
+		bull = 0;
+		cow = 0;
+		for (i = 0; i < z; i++)
+		{
+			if (number[i] == comp[i])
+				bull++;
+			else
+				for (j = 0; j < z; j++)
+				{
+					if ((i != j) && (number[i] == comp[j]))
+						cow++;
+				}
+		}
+		if (bull == n)
+			break;
+		printf("Быков: %i\nКоров: %i\n", bull, cow);
+		scanf_s("%i", &num);
+	}
+	printf("В самом деле! Это число %i. Количество попыток: %i\n", num, attempt);
+	scanf_s("%i", &end);
+	return 0;
 }
