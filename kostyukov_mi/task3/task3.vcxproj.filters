@@ -17,8 +17,5 @@
     <ClCompile Include="Console.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Interface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
