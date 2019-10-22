@@ -5,7 +5,7 @@
 int main()
 {
 	setlocale(LC_ALL, "Rus");
-	int n, g = 1;
+	int n, g = 1, a;
 	while (g == 1)
 	{
 		printf("Выберите длину загадываемого числа(от 2 до 5)\n");
@@ -15,7 +15,6 @@ int main()
 			printf("Неверная длина числа");
 			return(0);
 		}
-		//printf("%d\n", n);
 		else
 		{
 			srand(time(0));
@@ -31,46 +30,44 @@ int main()
 						j = 0;
 					}
 				}
-				//printf("%d", x[i]);
 			}
-
-			int c[5], p, r, m, k = 0, b = 0;
+			int c[5], p, m, k = 0, b = 0;
 			while (b != n)
 			{
 				printf("Попробуйте угадать число\n");
 				scanf_s("%d", &m);
 				for (int p = n - 1; p >= 0; p = p - 1)
 				{
-					k = 0;
-					b = 0;
 					c[p] = m % 10;
 					m = m / 10;
 				}
-				/*for (int p = 0; p < n; p = p + 1)
-				{
-					printf("%i", c[p]);
-				}*/
 				for (int r = 0; r < n; r = r + 1)
 				{
-					//printf("%d", c[r]);
 					if (x[r] == c[r])
-					{
 						b = b + 1;
-					}
 					else
 					{
 						for (p = 0; p < n; p++)
+						{
 							if ((x[r] == c[p]) && (r != p))
 								k = k + 1;
+						}
 					}
 				}
-				printf("Быков %d    Коров %d\n", b, k);
-				if (b == n)
+				printf("Быков(цифр угадано на своих позициях) %d    Коров(цифр угадано НЕ на своих позициях) %d\n", b, k);
+				a = b;
+				b = 0;
+				k = 0;
+				if (a == n)
+				{
 					printf("Вы выиграли!!!");
-				g = 0;
+					g = 0;
+					n = 0;
+					printf("Если хотите сыграть ещё раз, нажмите 1\n");
+					scanf_s("%d", &g);
+
+				}
 			}
 		}
-		printf("Если хотите сыграть ещё раз, нажмите 1\n");
-		scanf_s("%d", &g);
 	}
 }
