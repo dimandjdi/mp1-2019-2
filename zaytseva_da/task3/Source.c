@@ -2,13 +2,12 @@
 #include <time.h>
 #include <locale.h>
 #include <stdlib.h>
-#include <iostream>
 #include <math.h>
 int main()
 {
 	setlocale(LC_ALL, "Rus");
 	int z, n, i, j, end, a, c;
-	int t = k = b = 0;
+	int t = 0,  k = 0, b = 0;
 	int m[5] = { 0 };
 	int p[5] = { 0 };
 	srand(time(NULL));
