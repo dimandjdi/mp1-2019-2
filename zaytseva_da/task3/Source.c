@@ -48,13 +48,16 @@ int main()
 		}
 		b = 0;
 		k = 0;
-		for ((i = 0; i < z; i++) && (j = 0; j < z; j++))
+		for (i = 0; i < z; i++)
 		{
-			if (p[i]==m[i])
-				if (i==j)
-					b++;
-				else
-					k++;
+			if (p[i] == m[i])
+				b++;
+			else
+				for (j = 0; j < z; j++)
+				{
+					if ((i != j) && (p[i] == m[j]))
+						k++;
+				}
 		}
 		if (b == z)
 			break;
