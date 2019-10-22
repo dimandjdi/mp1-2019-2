@@ -24,12 +24,11 @@ void main()
 		    flag = 0;
 		    mas[i] = rand() % 9 + 1;
 		    for (int j = 0; j < i; j++)
-			if (mas[i] == mas[j])
-			{
-				flag= 1;
-				break;
-			}
-
+				if (mas[i] == mas[j])
+				{
+					flag = 1;
+					break;
+				}
 	    }
 	}
 	printf("Компьютер загадал число,попробуй угадать, если хочешь закончить игру напиши '1'\n");
@@ -71,5 +70,5 @@ void main()
 		}
 	}
 	printf("Ура,ты победил\n");
-		system("pause");
+	system("pause");
 }
