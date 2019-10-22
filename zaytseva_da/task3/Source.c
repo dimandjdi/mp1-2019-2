@@ -56,7 +56,7 @@ int main()
 				else
 					k++;
 		}
-		if (b == n)
+		if (b == z)
 			break;
 		printf("Количество быков: %i \n Количество коров: %i \n", b, k);
 		scanf_s("%i", &n);
