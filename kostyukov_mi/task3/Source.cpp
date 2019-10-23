@@ -111,10 +111,11 @@ void startgame(void)
 				flag[u[i]] = 1;
 			}
 		} while (flag[0] == -1);
-		counter++;
 		count(n, g, u, &bulls, &cows);
 		if (bulls == n)
 			break;
+		else
+			counter++;
 		clrscr();
 		draw(bull_pic, 3, 12);
 		draw(numbers[bulls], 15, 12);
@@ -143,7 +144,7 @@ void startgame(void)
 		}
 	}
 	clrscr();
-	printf("Вы выйграли за %d попыток!\n", &counter);
+	printf("Вы выйграли за %d попыток!\n", counter);
 	puts("Для выхода в главное меню нажмите любую клавишу");
 	_getch();
 }
