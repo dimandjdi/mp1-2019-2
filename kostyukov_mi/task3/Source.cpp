@@ -112,10 +112,9 @@ void startgame(void)
 			}
 		} while (flag[0] == -1);
 		count(n, g, u, &bulls, &cows);
+		counter++;
 		if (bulls == n)
 			break;
-		else
-			counter++;
 		clrscr();
 		draw(bull_pic, 3, 12);
 		draw(numbers[bulls], 15, 12);
