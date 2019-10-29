@@ -98,6 +98,6 @@ void main()
 		printf("Победа за %i попыток, молодец!\n", ch);
 	else if (log == 2)
 		printf("Либераху порвало");
-	scanf_s("%i", i);
-
+	getchar();
+	getchar();
 }
