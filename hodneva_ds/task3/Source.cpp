@@ -13,12 +13,12 @@ int main()
 	int my[5] = { 0 }; // массив с числом, которое вводит пользователь
 	int cow = 0; //коровы
 	int bull = 0; //быки
-	int i,j,z;
+	int i, j, z;
 	int p = 1;
 	bool alreadyThere; //если в массиве число повторяется, то alreadyThere принимает значение true
-		printf_s("Введите количество цифр в числе\n");
-		scanf_s("%d", &n);
-		while (n < 2 || n > 5) 
+	printf_s("Введите количество цифр в числе\n");
+	scanf_s("%d", &n);
+	while (n < 2 || n > 5)
 	{
 		printf_s("Неправильный ввод. Введите количество цифр в числе\n");
 		scanf_s("%d", &n);
@@ -29,7 +29,7 @@ int main()
 		alreadyThere = false;
 		for (i = 0; i < n; i++)
 		{
-				comp[i] = 1 + rand() % 9;
+			comp[i] = 1 + rand() % 9;
 		}
 		for (i = 0; i < n; i++)
 		{
@@ -81,8 +81,7 @@ int main()
 								break;
 							}
 				}
-		} 
-		while (r != true);
+		} while (r != true);
 
 		cow = 0;
 		bull = 0;
