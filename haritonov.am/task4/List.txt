@@ -1,1 +1,12 @@
-0000 Check 120 100
+1000 38 Bread
+1001 104 Butter 
+1002 72 Vegetable_Oil
+1003 66 Egg_10
+1004 73 Milk_1l
+1005 94 Baked_milk_600ml
+1006 130 Cheese_350g
+1007 37 Apples_500g
+1008 61 Cucumber_250g
+1009 82 Tomato_250g
+1010 23 Onion_250g
+1011 32 Water_1l
