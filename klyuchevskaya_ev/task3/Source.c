@@ -74,7 +74,7 @@ int main(void)
 			printf("Быков  %d, коров %d \n", bull, cow);
 		}
 	}
-	if (bull==n)
-		printf("Ура!Вы вы отгадали число!\n");
-		system("pause");
+	if (bull == n)
+        	printf("Ура!Вы вы отгадали число!\n");
+	system("pause");
 }
