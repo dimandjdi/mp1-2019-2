@@ -3,8 +3,6 @@
 #include<stdio.h>
 #include<math.h>
 #include<string.h>
-#include<memory.h>
-#define _CRT_SECURE_NO_WARNINGS
 int main(void)
 {
 	setlocale(LC_ALL, "Rus");
