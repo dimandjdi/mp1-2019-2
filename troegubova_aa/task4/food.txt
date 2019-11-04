@@ -1,0 +1,34 @@
+1234 65 Milk
+5432 39 Buckwheat
+9876 133 Stew
+8765 50 Pasta
+0012 25 Water
+9012 17 Salt
+4006 40 Sugar
+3400 65 Flour
+0123 200 Dumplings
+5098 87 Ketchup
+1409 60 Cookie
+0908 40 Lemonade
+0807 345 Meat
+7675 255 Cake
+5607 40 Yogurt
+0706 356 Wine
+6050 42 Sprite
+5040 378 Caviar
+2109 120 Sausage
+5098 156 Cheese
+7689 35 Waffles
+8675 234 Coffee
+0654 60 Eggs
+7568 15 Mayonnaise
+6345 65 Candys
+3098 15 Cinnamon
+0987 45 Juice
+9708 35 Rice
+1208 32 Decoy
+ 
+
+
+
+
