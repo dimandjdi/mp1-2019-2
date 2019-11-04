@@ -71,7 +71,7 @@ int main(void)
 			obsh = obsh + (kol[i] * newce[i]);
 		}
 	}
-	printf("Итого:\nОбщая стоимость покупки: %d руб.\n", obsh);
+	printf("Итого: \nОбщая стоимость покупки: %d руб.\n", obsh);
 	printf("Спасибо за покупку, приходите ещё!\n");
 	system("pause");
 }
