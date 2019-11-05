@@ -67,12 +67,12 @@ void main()
 	c = _getch();
 	switch (c)
 	{
-	case 27:
-		exit(0);
-		break;
-	default:
-		main();
-		break;
+	    case 27:
+		    exit(0);
+		    break;
+	    default:
+		    main();
+		    break;
 	}
 	system("pause");
 }
