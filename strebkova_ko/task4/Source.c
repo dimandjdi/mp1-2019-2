@@ -11,7 +11,7 @@ struct storecheck
 	int count;
 };
 
-struct storecheck search_product (int code)
+struct storecheck search_product(int code)
 {
 	FILE *products;
 	struct storecheck product;
@@ -20,16 +20,29 @@ struct storecheck search_product (int code)
 	while (!feof(products))
 	{
 		fscanf_s(products, "%d %f %d", &product.barcode, &product.price, &product.discount);
-		fgets (product.name, 30, products);
-		product.price = product.price * (100 -  product.discount) / 100;
+		fgets(product.name, 30, products);
+		product.price = product.price * (100 - product.discount) / 100;
 		if (code == product.barcode)
 		{
-			printf("\n%d %s%.2f р\n", product.barcode, product.name, product.price);
 			break;
 		}
 	}
 	fclose(products);
 	return product;
+}
+void list()
+{
+	FILE *products;
+	struct storecheck product;
+	products = fopen("products.txt", "r");
+	while (!feof(products))
+	{
+		fscanf_s(products, "%d %f", &product.barcode, &product.price);
+		fgets(product.name, 30, products);
+		if (product.barcode != 0)
+			printf("%d %s%.2f р\n", product.barcode, product.name, product.price);
+	}
+	fclose(products);
 }
 
 void main()
@@ -39,6 +52,7 @@ void main()
 	char c;
 	float fullsum = 0, discount_sum = 0;
 	struct storecheck product[100];
+	list();
 	printf("Введите штрихкод\n");
 	scanf_s("%d", &code);
 	while (code != 0)
@@ -54,12 +68,12 @@ void main()
 		i++;
 		printf("Введите штрихкод или 0 для завершения покупок\n");
 		scanf_s("%d", &code);
-	} 
+	}
 	printf("Check:\n");
 	for (j = 0; j < i; j++)
 	{
 		printf("%d %s\n%.2f\t *%d\t =%.2f\n", product[j].barcode, product[j].name, product[j].price, product[j].count, product[j].price*product[j].count);
-		fullsum = fullsum + product[j].price / (100 - product[j].discount) *100 * product[j].count;
+		fullsum = fullsum + product[j].price / (100 - product[j].discount) * 100 * product[j].count;
 		discount_sum = discount_sum + product[j].price * product[j].count;
 	}
 	printf("Итог: %.2f\t скидка: %.2f\n", discount_sum, fullsum - discount_sum);
@@ -67,12 +81,12 @@ void main()
 	c = _getch();
 	switch (c)
 	{
-	    case 27:
-		    exit(0);
-		    break;
-	    default:
-		    main();
-		    break;
+	case 27:
+		exit(0);
+		break;
+	default:
+		main();
+		break;
 	}
 	system("pause");
 }
