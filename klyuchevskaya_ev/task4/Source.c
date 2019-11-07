@@ -14,6 +14,10 @@ int main(void)
 	int ski[8];
 	int newce[8];
 	int kol[8]={ 0 };
+	for (i = 0; i < 8; i++)
+	{
+		ski[i] = 5 * (1 + rand() % (9)) + 5;
+	}
 	printf("Рады приветствовать Вас в магазине 'Чистюля'!\n");
 	while (r == 0)
 	{
@@ -24,10 +28,9 @@ int main(void)
 			for (i = 0; i < 8; i++)
 			{
 				printf("%d ", shtr[i]);
+				puts(tov[i]);
 			}
-			printf("\n");
 			scanf_s("%d", &sh);
-
 			for (i = 0; i < 10; i++)
 			{
 				a = 0;
@@ -48,12 +51,11 @@ int main(void)
 				printf("Ваш товар:\n");
 				puts(tov[i]);
 				srand(time(0));
-				ski[i] = 5*(1 + rand() % (9))+5;
 				newce[i] = cena[i] * (100 - ski[i]) / 100;
 				printf("Цена %d руб/шт.\nСкидка на товар : %d проц.\nЦена на товар с учетом скидки %d руб/шт.\n", cena[i], ski[i], newce[i]);
 				printf("Введите количество покупаемого товара: \n");
 				scanf_s("%d", &n);
-				kol[i] = n;
+				kol[i] = kol[i] + n;
 				printf("Это все ваши продукты?\nЕсли да, введите 1, если нет, введите 0\n");
 				scanf_s("%d", &r);
 				break;
@@ -73,7 +75,7 @@ int main(void)
 		}
 		obski = sum - obsh;
 	}
-	printf("Итого: \nОбщая стоимость покупки без скидки: %d руб.\nСуммарная скидка: %d руб.\nИтоговая сумма к оплате : %d руб.", sum,obski, obsh);
+	printf("Итого: \nОбщая стоимость покупки без скидки: %d руб.\nСуммарная скидка: %d руб.\nИтоговая сумма к оплате : %d руб.\n", sum, obski, obsh);
 	printf("Спасибо за покупку, приходите ещё!\n");
 	system("pause");
 }
