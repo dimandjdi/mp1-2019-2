@@ -15,7 +15,7 @@ int main()
 		int sum;
 	};
 	int mas[4] = { 0 };
-	float cost_discount, discount;
+	double cost_discount, discount;
 	int cost, a, i, t, j, b, n, w, x, s;
 	cost = i = x = s = 0;
 	cost_discount = discount = 0;
@@ -26,7 +26,7 @@ int main()
 	f = fopen("food.txt", "r");
 	while (!feof(f))
 	{
-		fscanf_s(f, "%d%d%s", &a, &mass[i].price, &mass[i].name);
+		fscanf(f, "%d%d%s", &a, &mass[i].price, &mass[i].name);
 		n = 0;
 		b = a;
 		mass[i].k = 0;
@@ -107,9 +107,9 @@ int main()
 		}
 	}
 	printf("Общая стоймость товаров: %d руб \n", cost);
-	printf("Суммарная скидка: %.2f руб \n", discount);
+	printf("Суммарная скидка: %.2lf руб \n", discount);
 	cost_discount = cost - discount;
-	printf("Итоговая сумма к оплате: %.2f руб \n", cost_discount);
+	printf("Итоговая сумма к оплате: %.2lf руб \n", cost_discount);
 	printf("Спасибо за покупку! \n");
 	system("pause");
 }
