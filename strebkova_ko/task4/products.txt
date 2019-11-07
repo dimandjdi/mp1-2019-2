@@ -1,0 +1,18 @@
+1000 198 15 Apple 1kg           
+1001 328 20 Avocado 2pc         
+1002 198 0  Grape-fruit 1kg     
+1003 164 0  Broccoli 1kg        
+1004 71  15 Sweet pepper 1kg      
+1005 248 0  Tomato 1kg           
+1006 710 25 Prawns 700g         
+1007 480 10 Steak of beef 400g  
+1008 192 0  Pasta 250g           
+1009 113 0  Rice 500g            
+1010 85  30 Floar 2lg            
+1011 68  0  Sugar 900g           
+1012 54  0  Salt 500g            
+1013 332 50 Green Tea           
+1014 251 35 Black Tea           
+1015 476 40 Coffee
+1016 100 0  Tabak ot Ilushi
+0                      
