@@ -15,9 +15,13 @@ struct list
 void main()
 {
 	srand(time(NULL));
-	int percent, k, i, j = 0, sum = 0, x, chance, input[100];
 	struct list viev[12];
 	FILE *spisok = fopen("list.txt", "r");
+
+	int percent, k, i, j = 0, sum = 0, x, chance, in, input[100], count[100];
+	for (i = 0; i < 100; i++)
+		count[i] = 1;
+	
 	printf("Bar      Price       Name\n\n");
 	for(i = 0; i<12; i++)
 	{
@@ -44,7 +48,16 @@ void main()
 	printf("Enter product codes, 0 - end of list\n\n");
 	do
 	{
-		scanf_s("%i", &input[j]);
+		scanf_s("%i", &in);
+		for (i = 0; i < j; i++)
+		{
+			if (in == input[i])
+			{
+				count[i]++;
+				in = 1;
+			}
+		}
+		input[j] = in;
 		j++;
 	} while (input[j - 1] != 0);
 	printf("\nCHECK\n");
@@ -54,9 +67,11 @@ void main()
 		{
 			if (viev[i].bar == input[k])
 			{
+				if (count[i] != 0)
+					printf("%2i*", count[i]);
 				printf("%4i   ", viev[i].price);
 				printf("%s \n", viev[i].name);
-				sum += viev[i].price;
+				sum = sum + count[i]* viev[i].price;
 			}
 		}
 	}
