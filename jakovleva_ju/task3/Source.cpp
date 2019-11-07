@@ -5,16 +5,14 @@
 #include <locale.h>
 int main(void)
 {
-	int mass1[5],
-		mass2[5],
-		i, z, n, x, bull = 0, cow = 0;
+	int mass1[5], mass2[5], i, z, n, x, bull = 0, cow = 0;
 	int l = 1;
 	setlocale(LC_ALL, "Rus");
-	printf("Выберите и введите длину числа от 2 до 5 символов\n");
+	printf("РІРІРµРґРёС‚Рµ РґР»РёРЅСѓ С‡РёСЃР»Р° РѕС‚ 2 РґРѕ 5\n");
 	scanf_s("%d", &n);
 	while ((n < 2) || (n > 5))
 	{
-		printf("Вы неправльно ввели длину числа, попробуйте еще раз\n");
+		printf("РІС‹ РЅРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµР»Рё РґР»РёРЅСѓ С‡РёСЃР»Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·\n");
 		scanf_s("%d", &n);
 	}
 	while (l == 1)
@@ -40,7 +38,7 @@ int main(void)
 	}
 	while (bull != n)
 	{
-		printf("Попробуйте угадать число\n");
+		printf("РїРѕРїСЂРѕР±СѓР№С‚Рµ СѓРіР°РґР°С‚СЊ С‡РёСЃР»Рѕ\n");
 		scanf_s("%d", &x);
 		bull = 0;
 		cow = 0;
@@ -52,16 +50,17 @@ int main(void)
 		for (i = 0; i < n; i++)
 		{
 			if (mass2[i] == mass1[i])
-				bull++;
-			else for (z = 0; z < n; z++)
-			{
-				if (mass2[i] == mass1[z])
-					cow++;
-			}
+			bull++;
+			else
+				for (z = 0; z < n; z++)
+				{
+					if (mass2[i] == mass1[z])
+						cow++;
+				}
 		}
-		printf("%d быков %d коров\n", bull, cow);
+		printf("%d Р±С‹РєРѕРІ %d РєРѕСЂРѕРІ\n", bull, cow);
 	}
 	if (bull == n)
-		printf("число отгадано!\n");
+		printf("РІС‹ СѓРіР°РґР°Р»Рё!\n");
 	system("pause");
 }
