@@ -1,59 +1,35 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <malloc.h>
-#include <stdlib.h>
-#include <time.h>
+#include <stdio.h>  
+#include <stdlib.h>  
+#include <io.h>  
+#include <time.h>  
 
-class vector
+int main(void)
 {
-private:
-		long long pos;
-		long long size;
-		int* arr;
-public:
-	vector(int s)
-	{
-		size = s;
-		pos = 0;
-		arr = (int*)malloc(size * sizeof(int));
-	}
-	~vector()
-	{
-		free(arr);
-	}
-	int get(int i)
-	{
-		if (i < pos)
-			return arr[i];
-		else
-			return 0;
-	}
-	void resize()
-	{
-		int* buf = (int*)malloc(size * sizeof(int));
-		for (int i = 0; i < pos; i++) buf[i] = arr[i];
-		free(arr);
-		size *= 2;
-		arr = (int*)malloc(size * sizeof(int));
-		for (int i = 0; i < pos; i++) arr[i] = buf[i];
-		free(buf);
-	}
-	void push_back(int el)
-	{
-		if (pos >= size) resize();
-		arr[pos++] = el;
-	}
-};
+	struct _finddata_t c_file;
+	intptr_t hFile;
+	char path[200];
+	int count = 0;
 
-int main()
-{
-	int t = time(NULL);
-	vector v(1000000005);
-	for (int i = 1; i <= 10e9; i++)
+	// Find first .c file in directory c:\temp
+	if ((hFile = _findfirst("c:\\temp\\*", &c_file)) == -1L)
+		printf("No *.c files in current directory!\n");
+	else
 	{
-		v.push_back(1);
+		printf("Listing of .c files\n\n");
+		printf("FILE         DATE %24c   SIZE\n", ' ');
+		printf("----         ---- %24c   ----\n", ' ');
+		do {
+			char buffer[30];
+			ctime_s(buffer, _countof(buffer), &c_file.time_write);
+			if ((count <= 20) && (c_file.size != 0))
+			{
+				printf("%-13.13s %.24s  %10ld\n", c_file.name, buffer, c_file.size);
+				count++;
+			}
+		} while (_findnext(hFile, &c_file) == 0);
+		_findclose(hFile);
+		printf("\ncount of files: %d", count);
 	}
-	t = time(NULL) - t;
-	printf("%d\n", t);
 	getchar();
 }
