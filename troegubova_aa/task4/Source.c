@@ -31,6 +31,7 @@ int main()
 		b = a;
 		mass[i].k = 0;
 		mass[i].sum = 0;
+		mass[i].discount = 0;
 		while (b)
 		{
 			n++;
