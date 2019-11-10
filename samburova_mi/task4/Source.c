@@ -1,4 +1,4 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <locale.h>
 
 void main()
@@ -8,10 +8,10 @@ void main()
 	setlocale(LC_ALL, "Rus");
 
 	int code[4] = { 1001, 1002, 1003, 1004 }, price[4] = { 90, 40 , 60, 80 }, discount[4] = { 10, 20, 30, 40 }, lowerprice[4], kolvo[4] = { 0 }, j, scode, total_discount, price1 = 0, price2 = 0;
-	char name[4][10] = { {"молоко"}, {"хлебушек"}, {"чипсеки"}, {"чай"} };
+	char name[4][10] = { {"РјРѕР»РѕРєРѕ"}, {"С…Р»РµР±СѓС€РµРє"}, {"С‡РёРїСЃРµРєРё"}, {"С‡Р°Р№"} };
 
 
-	printf("Введите штрихкоды, по окончании ввода нажмите 0\n");
+	printf("Р’РІРµРґРёС‚Рµ С€С‚СЂРёС…РєРѕРґС‹, РїРѕ РѕРєРѕРЅС‡Р°РЅРёРё РІРІРѕРґР° РЅР°Р¶РјРёС‚Рµ 0\n");
 	scanf_s("%d", &scode);
 	do
 	{
@@ -20,9 +20,9 @@ void main()
 		{
 			if (scode == code[j])
 			{
-				printf("Ваш товар:%s\n", name[j]);
+				printf("Р’Р°С€ С‚РѕРІР°СЂ:%s\n", name[j]);
 				lowerprice[j] = price[j] * (100 - discount[j]) / 100;
-				printf("Цена - %d, скидка - %d, цена со скидкой - %d\n", price[j], discount[j], lowerprice[j]);
+				printf("Р¦РµРЅР° - %d, СЃРєРёРґРєР° - %d, С†РµРЅР° СЃРѕ СЃРєРёРґРєРѕР№ - %d\n", price[j], discount[j], lowerprice[j]);
 				kolvo[j]++;
 				scanf_s("%d", &scode);
 			}
@@ -40,13 +40,13 @@ void main()
 	}
 	total_discount = price1 - price2;
 
-	printf("ЧЕК\n");
+	printf("Р§Р•Рљ\n");
 	for (j = 0; j < 4; j++)
 	{
 		if (kolvo[j] != 0)
-			printf_s("%s: %d - %d, цена со скидкой - %d\n", name[j], price[j], kolvo[j], lowerprice[j]);
+			printf_s("%s: %d - %d, С†РµРЅР° СЃРѕ СЃРєРёРґРєРѕР№ - %d\n", name[j], price[j], kolvo[j], lowerprice[j]);
 	}
-	printf("Общая стоимость без скидки:%d, суммарная скидка:%d, итоговая стоимость:%d\n", price1, total_discount, price2);
+	printf("РћР±С‰Р°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ Р±РµР· СЃРєРёРґРєРё:%d, СЃСѓРјРјР°СЂРЅР°СЏ СЃРєРёРґРєР°:%d, РёС‚РѕРіРѕРІР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ:%d\n", price1, total_discount, price2);
 
 	system("pause>nul");
 
