@@ -1,25 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-
-
 int main()
 {   
 	setlocale(LC_ALL, "Russian");
-	char *tovar[6] = { "Товар №1", "Товар №2", "Товар №3", "Товар №4", "Товар №5", "Товар №6" };
+	char *tovar[6] = { "РўРѕРІР°СЂ в„–1", "РўРѕРІР°СЂ в„–2", "РўРѕРІР°СЂ в„–3", "РўРѕРІР°СЂ в„–4", "РўРѕРІР°СЂ в„–5", "РўРѕРІР°СЂ в„–6" };
 	int firstprice[6] = { 100, 500 , 1400, 1600, 2000, 9000 };
 	int shcode[6] = {1001, 1002, 1003, 1004, 1005, 1006};
 	int lastprice[6] = { 0, 0, 0, 0, 0, 0 };
 	int s = 5;
 	int shk;
 	int chekqq[6] = { 0, 0, 0, 0, 0, 0 };
-	printf("Введите штрихкод: \n");
-	
-	
 	int k;
 	int g = 0;
 	int z = 0;
-
+	printf("Р’РІРµРґРёС‚Рµ С€С‚СЂРёС…РєРѕРґ: \n");
 	do 
 	{	scanf_s("%d", &shk);
 		for (k = 0; k < 6; k++)
@@ -34,27 +29,19 @@ int main()
 				{
 					s = s + 5;
 				}
-				printf("%s, цена без скидки: %d, цена со скидкой %d \n", tovar[k], firstprice[k], lastprice[k]);
+				printf("%s, С†РµРЅР° Р±РµР· СЃРєРёРґРєРё: %d, С†РµРЅР° СЃРѕ СЃРєРёРґРєРѕР№ %d \n", tovar[k], firstprice[k], lastprice[k]);
 				chekqq[k]++;
-
-
 			}
 		}
-		
 	} while (shk != 0);
-	
-	printf("\n         Чек \n ______________________________________\n \n");
+	printf("\n         Р§РµРє \n ______________________________________\n \n");
 	for (k=0; k<6; k++)
 	{
 		if (chekqq[k] != 0) 
 		{	
-			printf(" %s, цена без скидки: %d, количество: %d \n  ", tovar[k], firstprice[k], chekqq[k]);
-			
+			printf(" %s, С†РµРЅР° Р±РµР· СЃРєРёРґРєРё: %d, РєРѕР»РёС‡РµСЃС‚РІРѕ: %d \n  ", tovar[k], firstprice[k], chekqq[k]);
 		}
 	}
-	printf("Общая скидка: %d \n, Итого: %d \n", g, z);
-
-
-
+	printf("РћР±С‰Р°СЏ СЃРєРёРґРєР°: %d \n, РС‚РѕРіРѕ: %d \n", g, z);
 	system("pause");
 }
