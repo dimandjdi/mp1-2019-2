@@ -29,8 +29,7 @@ int main(void)
 	int count = 0;
 	long size[MAX_FILES];
 	char* names[MAX_FILES];
-	printf("Введите путь до директории: ");
-	//scanf_s("%s", &path);
+	printf("Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ РґРѕ РґРёСЂРµРєС‚РѕСЂРёРё: ");
 	gets_s(path);
 
 	// Find first .c file in directory c:\temp
@@ -40,12 +39,12 @@ int main(void)
 	{
 		do
 		{
-			if (c_file.name[0] == '.') // убираем файлы, начинающиеся с '.'
+			if (c_file.name[0] == '.') // РЈР±РёСЂР°РµРј С„Р°Р№Р»С‹ '.', '.'
 				continue;
 
 			size[count] = c_file.size;
-			names[count] = (char*)malloc(strlen(c_file.name) + 1); // выделили место под название файла
-			strcpy(names[count], c_file.name); // скопировали название файла
+			names[count] = (char*)malloc(strlen(c_file.name) + 1); // Р’С‹РґРµР»РёР»Рё РјРµСЃС‚Рѕ РїРѕРґ РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°
+			strcpy(names[count], c_file.name); // РЎРєРѕРїРёСЂРѕРІР°Р»Рё РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°
 
 			count++;
 
@@ -55,11 +54,11 @@ int main(void)
 		_findclose(hFile);
 
 		int q;
-		printf("Сортировки:\n1 bubbleSort\n2 selectSort\n3 incertSort\n4 mergeSort\n5 quickSortR\n6 shellSort\n7 countingSort\n");
-		printf("Выберите метод сортировки: ");
+		printf("РЎРѕСЂС‚РёСЂРѕРІРєРё:\n1 bubbleSort\n2 selectSort\n3 incertSort\n4 mergeSort\n5 quickSortR\n6 shellSort\n7 countingSort\n");
+		printf("Р’С‹Р±РµСЂРёС‚Рµ РјРµС‚РѕРґ СЃРѕСЂС‚РёСЂРѕРІРєРё: ");
 		scanf_s("%d", &q);
 
-		print_size(count, size, names); // порядок до сортировки
+		print_size(count, size, names); // РџРѕСЂСЏРґРѕРє РґРѕ СЃРѕСЂС‚РёСЂРѕРІРєРё
 		clock_t begin = clock();
 
 		switch (q)
@@ -86,7 +85,7 @@ int main(void)
 			countingSort(count, size, names);
 			break;
 		default:
-			printf("Неверный номер алгоритма\n");
+			printf("РќРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ Р°Р»РіРѕСЂРёС‚РјР°\n");
 			system("pause");
 			return 0;
 		}
@@ -94,9 +93,9 @@ int main(void)
 		clock_t end = clock();
 		double timeSpent = (double)(end - begin) / CLOCKS_PER_SEC;
 
-		printf("\nВремя работы: %.3lf sec\n", timeSpent);
+		printf("\nР’СЂРµРјСЏ СЂР°Р±РѕС‚С‹ СЃРѕСЂС‚РёСЂРѕРІРєРё: %.3lf sec\n", timeSpent);
 
-		print_size(count, size, names); // порядок после сортировки
+		print_size(count, size, names); // РџРѕСЂСЏРґРѕРє РїРѕСЃР»Рµ СЃРѕСЂС‚РёСЂРѕРІРєРё
 	}
 	system("pause");
 }
@@ -118,10 +117,10 @@ void bubbleSort(int count, long size[MAX_FILES], char* names[MAX_FILES])
 	long x1;
 	char* x2;
 
-	for (i = 0; i < count; i++) {            // i - номер прохода
-		for (j = count - 1; j > i; j--)     // внутренний цикл прохода
+	for (i = 0; i < count; i++) {            // i - РЅРѕРјРµСЂ РїСЂРѕС…РѕРґР°
+		for (j = count - 1; j > i; j--)     // Р’РЅСѓС‚СЂРµРЅРЅРёР№ С†РёРєР» РїСЂРѕС…РѕРґР°
 		{
-			if (size[j - 1] > size[j])    // сравниваем 2 размера файлов
+			if (size[j - 1] > size[j])    // РЎСЂР°РІРЅРёРІР°РµРј 2 СЂР°Р·РјРµСЂР° С„Р°Р№Р»РѕРІ
 			{
 				x1 = size[j - 1];
 				size[j - 1] = size[j];
@@ -141,22 +140,22 @@ void selectSort(int count, long size[MAX_FILES], char* names[MAX_FILES])
 	long x1;
 	char* x2;
 
-	for (i = 0; i < count; i++)   // i - номер текущего шага
+	for (i = 0; i < count; i++)   // i - РЅРѕРјРµСЂ С‚РµРєСѓС‰РµРіРѕ С€Р°РіР°
 	{
 		k = i;
 		x1 = size[i];
 		x2 = names[i];
 
-		for (j = i + 1; j < count; j++)	// цикл выбора наименьшего элемента
+		for (j = i + 1; j < count; j++)	// Р¦РёРєР» РІС‹Р±РѕСЂР° РЅР°РёРјРµРЅСЊС€РµРіРѕ СЌР»РµРјРµРЅС‚Р°
 			if (size[j] < x1)
 			{
-				k = j;   // k - индекс наименьшего элемента
+				k = j;   // k - РёРЅРґРµРєСЃ РЅР°РёРјРµРЅСЊС€РµРіРѕ СЌР»РµРјРµРЅС‚Р°
 				x1 = size[j];
 				x2 = names[j];
 			}
 
 		size[k] = size[i];
-		size[i] = x1;   	// меняем местами наименьший с size[i]
+		size[i] = x1;   	// РјРµРЅСЏРµРј РјРµСЃС‚Р°РјРё РЅР°РёРјРµРЅСЊС€РёР№ СЃ size[i]
 
 		names[k] = names[i];
 		names[i] = x2;
@@ -169,19 +168,19 @@ void insertSort(int count, long size[MAX_FILES], char* names[MAX_FILES])
 	long x1;
 	char* x2;
 
-	for (i = 0; i < count; i++)   // цикл проходов, i - номер прохода
+	for (i = 0; i < count; i++)   // Р¦РёРєР» РїСЂРѕС…РѕРґРѕРІ, i - РЅРѕРјРµСЂ РїСЂРѕС…РѕРґР°
 	{
 		x1 = size[i];
 		x2 = names[i];
 
-		// поиск места элемента в готовой последовательности 
+		// РџРѕРёСЃРє РјРµСЃС‚Р° СЌР»РµРјРµРЅС‚Р° РІ РіРѕС‚РѕРІРѕР№ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё 
 		for (j = i - 1; j >= 0 && size[j] > x1; j--)
 		{
-			size[j + 1] = size[j];  	// сдвигаем элемент направо, пока не дошли
+			size[j + 1] = size[j];  	// РЎРґРІРёРіР°РµРј СЌР»РµРјРµРЅС‚ РЅР°РїСЂР°РІРѕ, РїРѕРєР° РЅРµ РґРѕС€Р»Рё
 			names[j + 1] = names[j];
 		}
 
-		//место найдено, вставить элемент
+		// РњРµСЃС‚Рѕ РЅР°Р№РґРµРЅРѕ, РІСЃС‚Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚
 		size[j + 1] = x1;
 		names[j + 1] = x2;
 	}
@@ -189,21 +188,13 @@ void insertSort(int count, long size[MAX_FILES], char* names[MAX_FILES])
 
 void merge(long size[MAX_FILES], char* names[MAX_FILES], int lb, int split, int ub)
 {
-	// Слияние упорядоченных частей массива в буфер temp с дальнейшим переносом содержимого temp в a[lb]...a[ub]
-
-   //текущая позиция чтения из первой последовательности a[lb]...a[split]
 	long pos1 = lb;
-
-	// текущая позиция чтения из второй последовательности a[split+1]...a[ub]
 	long pos2 = split + 1;
-
-	//текущая позиция записи в temp
 	long pos3 = 0;
 
 	long* temp1 = new long[ub - lb + 1];
 	char** temp2 = new char*[ub - lb + 1];
 
-	//идет слияние, пока есть хоть один элемент в каждой последовательности
 	while (pos1 <= split && pos2 <= ub) {
 		if (size[pos1] < size[pos2])
 		{
@@ -216,21 +207,18 @@ void merge(long size[MAX_FILES], char* names[MAX_FILES], int lb, int split, int 
 			temp2[pos3++] = names[pos2++];
 		}
 	}
-
-	// одна последовательность закончилась - 
-	// копировать остаток другой в конец буфера 
-	while (pos2 <= ub)   // пока вторая последовательность непуста 
+	while (pos2 <= ub)   
 	{
 		temp1[pos3] = size[pos2];
 		temp2[pos3++] = names[pos2++];
 	}
-	while (pos1 <= split)  // пока первая последовательность непуста
+	while (pos1 <= split) 
 	{
 		temp1[pos3] = size[pos1];
 		temp2[pos3++] = names[pos1++];
 	}
 
-	// скопировать буфер temp в a[lb]...a[ub]
+	// Г±ГЄГ®ГЇГЁГ°Г®ГўГ ГІГј ГЎГіГґГҐГ° temp Гў a[lb]...a[ub]
 	for (pos3 = 0; pos3 < ub - lb + 1; pos3++)
 	{
 		size[lb + pos3] = temp1[pos3];
@@ -242,31 +230,28 @@ void merge(long size[MAX_FILES], char* names[MAX_FILES], int lb, int split, int 
 
 void mergeSort(long size[MAX_FILES], char* names[MAX_FILES], int lb, int ub)
 {
-	long split;                   // индекс, по которому делим массив
+	long split;                  
 
-	if (lb < ub)    // если есть более 1 элемента
+	if (lb < ub) 
 	{
 
 		split = (lb + ub) / 2;
 
-		mergeSort(size, names, lb, split);       // сортировать левую половину 
-		mergeSort(size, names, split + 1, ub);// сортировать правую половину 
-		merge(size, names, lb, split, ub);    // слить результаты в общий массив
+		mergeSort(size, names, lb, split);        
+		mergeSort(size, names, split + 1, ub); 
+		merge(size, names, lb, split, ub);    
 	}
 }
 
 
 void quickSortR(int count, long size[MAX_FILES], char* names[MAX_FILES])
 {
-	//На входе - массив a[], a[N] - его последний элемент.
-
-	long i = 0, j = count - 1; 		// поставить указатели на исходные места
+	long i = 0, j = count - 1; 		
 	long temp1, p;
 	char* temp2;
 
-	p = size[count >> 1];		// центральный элемент
+	p = size[count >> 1];		
 
-	 //процедура разделения
 	do
 	{
 		while (size[i] < p) i++;
@@ -286,7 +271,6 @@ void quickSortR(int count, long size[MAX_FILES], char* names[MAX_FILES])
 		}
 	} while (i <= j);
 
-	//рекурсивные вызовы, если есть, что сортировать 
 	if (j > 0) quickSortR(j, size, names);
 	if (count > i) quickSortR(count - i, size + i, names + i);
 }
@@ -320,11 +304,9 @@ void shellSort(int count, long size[MAX_FILES], char* names[MAX_FILES])
 	long inc, i, j, seq[40];
 	int s;
 
-	//вычисление последовательности приращений
 	s = increment(seq, count);
 	while (s >= 0)
 	{
-		//сортировка вставками с инкрементами inc[] 
 		inc = seq[s--];
 
 		for (i = inc; i < count; i++)
@@ -344,7 +326,7 @@ void shellSort(int count, long size[MAX_FILES], char* names[MAX_FILES])
 
 void countingSort(int count, long size[MAX_FILES], char* names[MAX_FILES])
 {
-	const int k = 900000;  // Максимальный размер файла
+	const int k = 900000;  // РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°
 	int* c = new int[k];
 
 	for (int i = 0; i < k; i++)
