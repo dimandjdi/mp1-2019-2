@@ -47,16 +47,6 @@ void SelectSort(struct _finddata_t *file, long size)
 	}
 }
 
-void upend(struct _finddata_t *file, int size)
-{
-	for (int i = 0; i < size / 2; i++)
-	{
-		struct _finddata_t x = file[i];
-		file[i] = file[size - 1 - i];
-		file[size - 1 - i] = x;
-	}
-}
-
 inline void InsertSortGuarded(struct _finddata_t *file, long size)
 {
 	long x;
@@ -174,6 +164,15 @@ void ShellSort(struct _finddata_t *file, int n)
 	}
 }
 
+void upend(struct _finddata_t *file, int size)
+{
+	for (int i = 0; i < size / 2; i++)
+	{
+		struct _finddata_t x = file[i];
+		file[i] = file[size - 1 - i];
+		file[size - 1 - i] = x;
+	}
+}
 
 int main(void)
 {
@@ -252,10 +251,9 @@ int main(void)
 		{
 			printf("%-32.32s %10lu\n", file[i].name, file[i].size);
 		}
-		printf("\nВремя сортировки: %.3lf sec\n", time);
+		printf("\nВремя сортировки: %.6lf sec\n", time);
 		printf("Выбери действие:\n1)выбрать другой метод сортировки\n2)закончить работу программы\n");
 		scanf_s("%d", &a);
 	} while (a == 1);
 	system("pause");
-	return 0;
 }		
