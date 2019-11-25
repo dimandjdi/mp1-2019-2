@@ -5,14 +5,15 @@
 #include <io.h>  
 #include <time.h> 
 #include <string.h>
-void Puziryok(int massiv[], int size)
+void Puziryok(struct _finddata_t massiv[], int size)
 {
-	int i, j, temp;
+	struct _finddata_t temp;
+	int i, j, names;
 	for (i = 0; i < size; i++)
 	{
 		for (j = size - 1; j > i; j--)
 		{
-			if (massiv[j - 1] > massiv[j])
+			if (massiv[j - 1].size > massiv[j].size)
 			{
 				temp = massiv[j - 1];
 				massiv[j - 1] = massiv[j];
@@ -21,41 +22,37 @@ void Puziryok(int massiv[], int size)
 		}
 	}
 }
-void Vibor(int massiv[], int size)
+void Vibor(struct _finddata_t massiv[], int size)
 {
-	int i, j, k, x;
+	int i, j, k;
+	struct _finddata_t x;
 	for (i = 0; i < size; i++)
-	{   	// i - номер текущего шага
+	{
 		k = i;
 		x = massiv[i];
-
-		for (j = i + 1; j < size; j++)	// цикл выбора наименьшего элемента
-			if (massiv[j] < x)
-			{
-				k = j; x = massiv[j];	        // k - индекс наименьшего элемента
-			}
-
+		for (j = i + 1; j < size; j++)
+			if (massiv[j].size < x.size)
+				k = j; x = massiv[j];
 		massiv[k] = massiv[i];
-		massiv[i] = x;   	// меняем местами наименьший с a[i]
+		massiv[i] = x;
 	}
 }
-void Vstavka(int massiv[], int size) // сортировка вставками
+void Vstavka(struct _finddata_t massiv[], int size)
 {
-	int x, j; // временная переменная для хранения значения элемента сортируемого массива
-		 // индекс предыдущего элемента
+	int x, j;
 	for (int i = 1; i < size; i++)
 	{
-		x = massiv[i]; // инициализируем временную переменную текущим значением элемента массива
-		j = i - 1; // запоминаем индекс предыдущего элемента массива
-		while (j >= 0 && massiv[j] > x) // пока индекс не равен 0 и предыдущий элемент массива больше текущего
+		x = massiv[i].size;
+		j = i - 1;
+		while (j >= 0 && massiv[j].size > x)
 		{
-			massiv[j + 1] = massiv[j]; // перестановка элементов массива
-			massiv[j] = x;
+			massiv[j + 1] = massiv[j];
+			massiv[j].size = x;
 			j--;
 		}
 	}
 }
-void Sliyanie(int massiv[], long size)
+void Sliyanie(struct _finddata_t massiv[], long size)
 {
 	int rght, rend;
 	int i, j, m;
@@ -70,148 +67,128 @@ void Sliyanie(int massiv[], long size)
 			m = left; i = left; j = rght;
 			while (i < rght && j < rend)
 			{
-				if (massiv[i] <= massiv[j])
+				if (massiv[i].size <= massiv[j].size)
 				{
-					b[m] = massiv[i]; i++;
+					b[m] = massiv[i].size; i++;
 				}
 				else
 				{
-					b[m] = massiv[j]; j++;
+					b[m] = massiv[j].size; j++;
 				}
 				m++;
 			}
 			while (i < rght)
 			{
-				b[m] = massiv[i];
+				b[m] = massiv[i].size;
 				i++; m++;
 			}
 			while (j < rend)
 			{
-				b[m] = massiv[j];
+				b[m] = massiv[j].size;
 				j++; m++;
 			}
 			for (m = left; m < rend; m++)
 			{
-				massiv[m] = b[m];
+				massiv[m].size = b[m];
 			}
 		}
 	}
 	for (int i = 0; i < size; i++)
-		massiv[i] = b[i];
+		massiv[i].size = b[i];
+	free(b);
 
 }
-void QuickSort(int* massiv, int left, int right)
+void QuickSort(struct _finddata_t* massiv, int size)
 {
-	int pivot; // разрешающий элемент
-	int l_hold = left; //левая граница
-	int r_hold = right; // правая граница
-	pivot = massiv[left];
-	while (left < right) // пока границы не сомкнутся
-	{
-		while ((massiv[right] >= pivot) && (left < right))
-			right--; // сдвигаем правую границу пока элемент [right] больше [pivot]
-		if (left != right) // если границы не сомкнулись
+	int i = 0, j = size - 1;
+	struct _finddata_t temp;
+	long p;
+	p = massiv[size >> 1].size;
+	do {
+		while (massiv[i].size < p)
+			i++;
+		while (massiv[j].size > p)
+			j--;
+		if (i <= j)
 		{
-			massiv[left] = massiv[right]; // перемещаем элемент [right] на место разрешающего
-			left++; // сдвигаем левую границу вправо
+			temp = massiv[i];
+			massiv[i] = massiv[j];
+			massiv[j] = temp;
+			i++;
+			j--;
 		}
-		while ((massiv[left] <= pivot) && (left < right))
-			left++; // сдвигаем левую границу пока элемент [left] меньше [pivot]
-		if (left != right) // если границы не сомкнулись
-		{
-			massiv[right] = massiv[left]; // перемещаем элемент [left] на место [right]
-			right--; // сдвигаем правую границу вправо
-		}
-	}
-	massiv[left] = pivot; // ставим разрешающий элемент на место
-	pivot = left;
-	left = l_hold;
-	right = r_hold;
-	if (left < pivot) // Рекурсивно вызываем сортировку для левой и правой части массива
-		QuickSort(massiv, left, pivot - 1);
-	if (right > pivot)
-		QuickSort(massiv, pivot + 1, right);
+	} while (i <= j);
+	if (j > 0) QuickSort(massiv, j + 1);
+	if (size > i) QuickSort(massiv + i, size - i);
 }
-int increment(int inc[], int size) {
-	// inc[] массив, в который заносятся инкременты
-	// size размерность этого массива
+int increment(long inc[], long size)
+{
 	int p1, p2, p3, s;
-
 	p1 = p2 = p3 = 1;
 	s = -1;
-	do {// заполняем массив элементов по формуле Роберта Седжвика
-		if (++s % 2) {
+	do {
+		if (++s % 2)
 			inc[s] = 8 * p1 - 6 * p2 + 1;
-		}
-		else {
+		else
+		{
 			inc[s] = 9 * p1 - 9 * p3 + 1;
 			p2 *= 2;
 			p3 *= 2;
 		}
 		p1 *= 2;
-		// заполняем массив, пока текущая инкремента хотя бы в 3 раза меньше количества элементов в массиве
 	} while (3 * inc[s] < size);
-
-	return s > 0 ? --s : 0;// возвращаем количество элементов в массиве
+	return s > 0 ? --s : 0;
 }
-template<class T>
-void shellSort(T massiv[], long size) {
-	// inc инкремент, расстояние между элементами сравнения
-	// i и j стандартные переменные цикла
-	// seq[40] массив, в котором хранятся инкременты
-	int inc, i, j, seq[40];
-	int s;//количество элементов в массиве seq[40]
-
-	// вычисление последовательности приращений
+void ShellSort(struct _finddata_t* massiv, int size)
+{
+	long inc, i, j, seq[40];
+	int s;
+	struct _finddata_t temp;
 	s = increment(seq, size);
-	while (s >= 0) {
-		//извлекаем из массива очередную инкременту
+	while (s >= 0)
+	{
 		inc = seq[s--];
-		// сортировка вставками с инкрементами inc
-		for (i = inc; i < size; i++) {
-			T temp = massiv[i];
-			// сдвигаем элементы до тех пор, пока не дойдем до конца или не упорядочим в нужном порядке
-			for (j = i - inc; (j >= 0) && (massiv[j] > temp); j -= inc)
+		for (i = inc; i < size; i++)
+		{
+			temp = massiv[i];
+			for (j = i - inc; (j >= 0) && (massiv[j].size > temp.size); j -= inc)
 				massiv[j + inc] = massiv[j];
-			// после всех сдвигов ставим на место j+inc элемент, который находился на i месте
 			massiv[j + inc] = temp;
 		}
 	}
 }
-void Podschyot(int massiv[], int size, int sortedMass[])
+void Podschyot(struct _finddata_t massiv[], int size, int sortedMass[])
 {
 	for (int i = 0; i < size; i++)
 	{
 		int k = 0;
 		for (int j = 0; j < size; j++)
 		{
-			if (massiv[i] > massiv[j])
+			if (massiv[i].size > massiv[j].size)
 				k++;
 		}
-		sortedMass[i] = massiv[k];
+		sortedMass[i] = massiv[k].size;
 	}
-	
-		
+
+
 }
 
-int main(void)
+void main()
 {
 	setlocale(LC_ALL, "rus");
-	struct _finddata_t c_file;
+	struct _finddata_t file;
+	struct _finddata_t massiv[1000];
 	intptr_t hFile;
 	char path[200];
 	int size = 0;
 	int sortedMass[100] = { 0 };
-	int massiv[100];
-	char name[100][100];
 	int tip, mode, i = 0, sort = 1;
-	double tt;
+	float tt;
 	clock_t t1, t2;
-	// Find first .c file in directory c:\temp
 	printf("Введите путь до папки, в которой надо отсортировать файлы\n");
 	gets_s(path);
 	strcat(path, "\\*.*");
-	if ((hFile = _findfirst(path, &c_file)) == -1L)
+	if ((hFile = _findfirst(path, &file)) == -1L)
 		printf("No files in current directory!\n");
 	else
 	{
@@ -219,11 +196,10 @@ int main(void)
 		printf("FILE               SIZE\n");
 		printf("----               ----\n");
 		do {
-			printf("%-12.12s  %10ld\n", c_file.name, c_file.size);
-			strcpy(name[size], c_file.name);
-			massiv[size] = c_file.size;
+			printf("%-12.12s  %10ld\n", file.name, file.size);
+			massiv[size] = file;
 			size++;
-		} while (_findnext(hFile, &c_file) == 0);
+		} while (_findnext(hFile, &file) == 0);
 		_findclose(hFile);
 
 		while (sort != 0)
@@ -261,13 +237,13 @@ int main(void)
 				break;
 			case(5):
 				t1 = clock();
-				QuickSort(massiv, 0, size - 1);
+				QuickSort(massiv, size);
 				t2 = clock();
 				sort = 0;
 				break;
 			case(6):
 				t1 = clock();
-				shellSort(massiv, size);
+				ShellSort(massiv, size);
 				t2 = clock();
 				sort = 0;
 				break;
@@ -285,13 +261,13 @@ int main(void)
 
 			if (mode == 1)
 				for (int i = 0; i < size; i++)
-					printf("%-12.12s  %10ld\n", name[i], massiv[i]);
+					printf("%-12.12s  %10ld\n", massiv[i].name, massiv[i].size);
 			if (mode == 2)
 				for (int i = size - 1; i >= 0; i--)
-					printf("%-12.12s  %10ld\n", name[i], massiv[i]);
+					printf("%-12.12s  %10ld\n", massiv[i].name, massiv[i].size);
 
-			tt = (t2 - t1) / CLOCKS_PER_SEC;
-			printf("Время сортировки = %lf\n", tt);
+			tt = float(t2 - t1) / CLOCKS_PER_SEC;
+			printf("Время сортировки = %f\n", tt);
 			printf("Хотите отсортировать ещё раз? да - 1, нет - 0\n");
 			scanf_s("%d", &sort);
 		}
