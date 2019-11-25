@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>  
 #include <stdlib.h>  
 #include <io.h>  
@@ -35,7 +35,7 @@ long readfolder(char* path, _finddata_t* files)
 }
 void printFiles(_finddata_t* files, long size)
 {
-	printf("\nENTER - отсортировать файлы по размеру\nESC - ввести путь\n");
+	printf("\nENTER - РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ С„Р°Р№Р»С‹ РїРѕ СЂР°Р·РјРµСЂСѓ\nESC - РІРІРµСЃС‚Рё РїСѓС‚СЊ\n");
 	printf("FILE %30c DATE %24c   SIZE\n", ' ', ' ');
 	printf("---- %30c ---- %24c   ----\n", ' ', ' ');
 	for (int i = 0; i < size; i++)
@@ -59,13 +59,13 @@ int sortFiles(int menustate)
 void chooseSort()
 {
 	MenuElement menuSort[] = {
-		{"Сортировка пузырьком" , sortFiles},
-		{"Сортировка выбором" , sortFiles},
-		{"Сортировка вставками" , sortFiles},
-		{"Сортировка слиянием " , sortFiles},
-		{"Сортировка Хоара(quick sort)" , sortFiles},
-		{"Сортировка Шелла" , sortFiles},
-		{"Сортировка подсчетом" , sortFiles},
+		{"РЎРѕСЂС‚РёСЂРѕРІРєР° РїСѓР·С‹СЂСЊРєРѕРј" , sortFiles},
+		{"РЎРѕСЂС‚РёСЂРѕРІРєР° РІС‹Р±РѕСЂРѕРј" , sortFiles},
+		{"РЎРѕСЂС‚РёСЂРѕРІРєР° РІСЃС‚Р°РІРєР°РјРё" , sortFiles},
+		{"РЎРѕСЂС‚РёСЂРѕРІРєР° СЃР»РёСЏРЅРёРµРј " , sortFiles},
+		{"РЎРѕСЂС‚РёСЂРѕРІРєР° РҐРѕР°СЂР°(quick sort)" , sortFiles},
+		{"РЎРѕСЂС‚РёСЂРѕРІРєР° РЁРµР»Р»Р°" , sortFiles},
+		{"РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕРґСЃС‡РµС‚РѕРј" , sortFiles},
 	};
 	Switcher(menuSort, 7);
 }
@@ -79,7 +79,7 @@ void main(void)
 	char input[10000];
 	while (true)
 	{
-		printf("Введите путь(Введите '..', чтобы выйти)\n");
+		printf("Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ(Р’РІРµРґРёС‚Рµ '..', С‡С‚РѕР±С‹ РІС‹Р№С‚Рё)\n");
 		scanf("%s", path);
 		if (!(strcmp(path, "..")))
 			break;
@@ -111,7 +111,7 @@ void main(void)
 		}
 		else
 		{
-			printf("Папка пуста или имеет неправильный путь\nESC - ввести путь заново");
+			printf("РџР°РїРєР° РїСѓСЃС‚Р° РёР»Рё РёРјРµРµС‚ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РїСѓС‚СЊ\nESC - РІРІРµСЃС‚Рё РїСѓС‚СЊ Р·Р°РЅРѕРІРѕ");
 			char kb = 0;
 			while (true)
 				if (_kbhit())
