@@ -35,7 +35,7 @@ long readfolder(char* path, _finddata_t* files)
 }
 void printFiles(_finddata_t* files, long size)
 {
-	printf("ENTER - отсортировать файлы по размеру\nESC - ввести путь\n");
+	printf("\nENTER - отсортировать файлы по размеру\nESC - ввести путь\n");
 	printf("FILE %30c DATE %24c   SIZE\n", ' ', ' ');
 	printf("---- %30c ---- %24c   ----\n", ' ', ' ');
 	for (int i = 0; i < size; i++)
@@ -74,7 +74,6 @@ void main(void)
 {
 	setlocale(LC_ALL, "Rus");
 	HideCursor();
-	setwindow(120, 39);
 	gotoxy(0, 0);
 	char path[10000] ="c:\\temp\\*";
 	char input[10000];

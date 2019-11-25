@@ -6,6 +6,7 @@
 
 void bubbleSort(_finddata_t* files, long size)
 {
+	clock_t t = clock();
 	long i, j;
 	_finddata_t temp;
 
@@ -17,10 +18,12 @@ void bubbleSort(_finddata_t* files, long size)
 				files[j - 1] = files[j];
 				files[j] = temp;
 			}
+	printf("%d ms", clock() - t);
 }
 
 void selectSort(_finddata_t* files, long size)
 {
+	clock_t t = clock();
 	long i, j, k;
 	_finddata_t temp;
 
@@ -38,16 +41,18 @@ void selectSort(_finddata_t* files, long size)
 		files[k] = files[i];
 		files[i] = temp;
 	}
+	printf("%d ms", clock() - t);
 }
 
-void quickSort(_finddata_t* files, long N)
+void quickSort(_finddata_t* files, long size)
 {
-	long i = 0, j = N - 1;
+	clock_t t = clock();
+	long i = 0, j = size-1;
 	unsigned long p;
 	_finddata_t temp;
 
-	p = files[N >> 1].size;
-	do
+	p = files[(size-1) / 2].size;
+	while (i <= j)
 	{
 		while (files[i].size < p) i++;
 		while (files[j].size > p) j--;
@@ -59,9 +64,10 @@ void quickSort(_finddata_t* files, long N)
 			files[j] = temp;
 			i++; j--;
 		}
-	} while (i <= j);
-	if (j > 0) quickSort(files, j);
-	if (N > i) quickSort(files + i, N - i);
+	};
+	if (j > 0) quickSort(files, j+1);
+	if (size-1 > i) quickSort(files+i, size-i);
+	printf("%d ms", clock() - t);
 }
 
 int increment(long inc[], long size)
@@ -86,6 +92,7 @@ int increment(long inc[], long size)
 }
 void shellSort(_finddata_t* files, long size)
 {
+	clock_t t = clock();
 	long inc, i, j, seq[40];
 	int s;
 	s = increment(seq, size);
@@ -100,10 +107,12 @@ void shellSort(_finddata_t* files, long size)
 			files[j + inc] = temp;
 		}
 	}
+	printf("%d ms", clock() - t);
 }
 
 void insertSort(_finddata_t* files, long n)
 {
+	clock_t t = clock();
 	long i, j;
 	_finddata_t temp;
 
@@ -114,10 +123,12 @@ void insertSort(_finddata_t* files, long n)
 			files[j + 1] = files[j];
 		files[j + 1] = temp;
 	}
+	printf("%d ms", clock() - t);
 }
 
 void countingSort(_finddata_t* files, long n)
 {
+	clock_t t = clock();
 	long max = 0;
 	long i = 0;
 	_finddata_t* sortedfiles = (_finddata_t*)malloc(n * sizeof(_finddata_t));
@@ -149,6 +160,7 @@ void countingSort(_finddata_t* files, long n)
 	memmove(files, sortedfiles, n * sizeof(_finddata_t));
 	free(C);
 	free(sortedfiles);
+	printf("%d ms", clock() - t);
 }
 
 void merge(_finddata_t* files, long begin, long split, long end)
@@ -188,7 +200,9 @@ void _mergeSort(_finddata_t* files, long begin, long end)
 
 void mergeSort(_finddata_t* files, long size)
 {
+	clock_t t = clock();
 	_mergeSort(files, 0, size - 1);
+	printf("%d ms", clock() - t);
 }
 
 void(*Sorts[7])(_finddata_t* files, long len) = {
