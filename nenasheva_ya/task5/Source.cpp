@@ -39,7 +39,7 @@ int main(void)
 	{
 		do
 		{
-			if (c_file.name[0] == '.') // Убираем файлы '.', '.'
+			if (c_file.name[0] == '.') // Убираем файлы '.', '..'
 				continue;
 
 			size[count] = c_file.size;
