@@ -114,7 +114,7 @@ void CountingSort(struct _finddata_t* file, int q)
 	}
 	max++;
 	t = (int*)malloc(max * sizeof(int));
-	do
+	if (t!=0)
 	{
 		memset(t, 0, max * sizeof(int));
 		for (i = 0; i < q; i++)
@@ -134,7 +134,7 @@ void CountingSort(struct _finddata_t* file, int q)
 			}
 		}
 		free(t);
-	} while (t != 0);
+	} 
 }
 void ShellSort(struct _finddata_t* file, int q)
 {
@@ -176,7 +176,7 @@ int main(void)
 	intptr_t hFile;
 	char path[200];
 	long count = 0;
-	int sort = 0, mode = 0, choice;
+	int sort = 0, mode = 0, choice=0;
 	double timeSpent;
 	setlocale(LC_ALL, "Rus");
 	printf("Введите путь до директории, в которой необходимо отсортировать содержимое: ");
@@ -198,6 +198,8 @@ int main(void)
 	}
 	do
 	{
+		sort = 0;
+		mode = 0;
 		while ((sort < 1) || (sort > 6))
 		{
 			printf("Выберите метод сортировки:\n1)Пузырьком\n2)Выбором\n3)Вставками\n4)Хоара (быстрая сортировка)\n5)Подсчетом\n6)Шелла\n");
@@ -241,14 +243,15 @@ int main(void)
 			printf("%-32.32s   %10lu\n", files[i].name, files[i].size);
 		}
 		printf("\nВремя сортировки: %.3lf sec\n", timeSpent);
-		printf("Желаете изменить метод сортировки?\n0 - да, 1 - нет.\n");
+		printf("Желаете изменить метод сортировки?\n1 - да, 2 - нет.\n");
 		scanf_s("%i", &choice);
-		while ((choice != 0) && (choice != 1))
+		while ((choice != 1) && (choice != 2))
 		{
-			printf("Введите 0 или 1.\n");
+			printf("Введите 1 или 12\n");
 			scanf_s("%i", &choice);
 		}
-	} while (choice == 0);
+	} while (choice == 1);
+	
 
 	system("pause");
 	return 0;
