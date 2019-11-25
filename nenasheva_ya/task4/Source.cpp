@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define p 4 //количество товаров
-#define M 2// целочисленные показатели чека + то, что не выводим
-#define N 4 //все целочисленные показатели продукта
+#define p 4 // РєРѕР»Р»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂРѕРІ
+#define M 2// С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹Рµ РїРѕРєР°Р·Р°С‚РµР»Рё С‡РµРєР° + С‚Рѕ, С‡С‚Рѕ РЅРµ РІС‹РІРѕРґРёРј
+#define N 4 // РІСЃРµ С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹Рµ РїРѕРєР°Р·Р°С‚РµР»Рё РїСЂРѕРґСѓРєС‚Р°
 
 int main()
 {
 	int barcode = 0, count = 0, u, g, all = 0, all_sale = 0, all_cost = 0;
-	int products[p][N] = { 0 }, check[p][M] = { 0 };// все целочисленные параметры
+	int products[p][N] = { 0 }, check[p][M] = { 0 };// РІСЃРµ С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹Рµ РїР°СЂР°РјР°С‚СЂС‹
 	char products_char[p][20] = { {"Pen"},{"Notebook"},{"Diary"},{"Pencil"} };
 	srand(time(0));
 	for (int i = 0; i < p; i++)
@@ -20,25 +20,25 @@ int main()
 			{
 			case 0:
 				products[i][j] = rand() % 1000 + 1000;
-				printf("%d ", products[i][j]);//штрихкод
+				printf("%d ", products[i][j]);// С€С‚СЂРёС…РєРѕРґ
 				puts(products_char[i]);
 				break;
 			case 1:
-				products[i][j] = rand() % 500 + 1;//цена
+				products[i][j] = rand() % 500 + 1;// С†РµРЅР°
 				break;
 			case 2:
 				g = rand() % 10 + 1;
-				products[i][j] = g * 5;//скидка с шагом в 5
+				products[i][j] = g * 5;//СЃРєРёРґРєР°
 				break;
 			case 3:
-				products[i][j] = (float)(products[i][1] * (100 - products[i][2])) / 100;//цена со скидкой
+				products[i][j] = (float)(products[i][1] * (100 - products[i][2])) / 100;// С†РµРЅР° СЃРѕ СЃРєРёРґРєРѕР№
 				break;
-			} // итого, заполнили двумерный массив
+			} 
 		}
 	}
-	printf("Dobro pozhalovat' v magazin office supplies\n");
-	printf("Vvedite number of products: ");
-	scanf_s("%d", &u); //пусть конечное количество товаров неизвестно
+	printf("Dobro pozhalovat' v magazin 'Office supplies'\n");
+	printf("Vvedite kollichestvo produktov: ");
+	scanf_s("%d", &u); 
 	printf("Vvedite shtrichkod: \n");
 	while (u != 0)
 	{
@@ -67,10 +67,10 @@ int main()
 				all_sale += (products[j][1] - products[j][3])*check[i][1];
 				all_cost += products[j][1] * check[i][1];
 				all += products[j][3] * check[i][1];
-				printf("%s\t", products_char[j]);//вывели название
-				printf("%d\t", products[j][1]);//вывели цену
-				printf("%d\t", check[i][1]);//вывели количество
-				printf("%d\n", products[j][3] * check[i][1]);//вывели общую стоимость товара
+				printf("%s\t", products_char[j]); //РІС‹РІРµР»Рё РЅР°Р·РІР°РЅРёРµ
+				printf("%d\t", products[j][1]);// РІС‹РІРµР»Рё С†РµРЅСѓ
+				printf("%d\t", check[i][1]);// РІС‹РІРµР»Рё РєРѕР»Р»РёС‡РµСЃС‚РІРѕ
+				printf("%d\n", products[j][3] * check[i][1]);// РІС‹РІРµР»Рё РѕР±С‰СѓСЋ СЃС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРІР°СЂР°
 			}
 		}
 		if (check[i + 1][0] == 0)
