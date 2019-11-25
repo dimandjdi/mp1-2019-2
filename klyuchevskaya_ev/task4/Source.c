@@ -13,7 +13,11 @@ int main(void)
 	int cena[8] = { 75 , 25 , 170 , 200 , 230 , 140 , 125 , 50 };
 	int ski[8];
 	int newce[8];
+<<<<<<< HEAD
 	int kol[8] = { 0 };
+=======
+	int kol[8]={ 0 };
+>>>>>>> 6f348077736c1b252e7006dd61d1a83072341ae2
 	for (i = 0; i < 8; i++)
 	{
 		ski[i] = 5 * (1 + rand() % (9)) + 5;
