@@ -249,14 +249,14 @@ void main()
 	printf("Введите путь до директории:\n");
 	gets(path);
 	strcat(path, "*");
-	if ((n = countfile(path)) != 0)
+	do
 	{
-		file = (struct _finddata_t*)malloc(n * sizeof(struct _finddata_t));
-		hFile = _findfirst(path, &file[0]);
-		for (i = 1; i < n; i++)
-			_findnext(hFile, &file[i]);
-		do
+		if ((n = countfile(path)) != 0)
 		{
+			file = (struct _finddata_t*)malloc(n * sizeof(struct _finddata_t));
+			hFile = _findfirst(path, &file[0]);
+			for (i = 1; i < n; i++)
+				_findnext(hFile, &file[i]);
 			c = choice_sorting();
 			start = clock();
 			switch (c)
@@ -286,11 +286,11 @@ void main()
 			end = clock();
 			outputfiles(file, n);
 			printf("Время сортировки: %.30lf с\n", (double)(end - start) / CLOCKS_PER_SEC);
-			printf("Введите 1 для новой сортировки, 2 - для изменения пути до директории, 0 - для завершения сортировки\n");
-			scanf_s("%d", &c);
-		} while (c == 1);
-		free(file);
-	}
+			free(file);
+		}
+		printf("Введите 1 для новой сортировки, 2 - для изменения пути до директории, 0 - для завершения сортировки\n");
+		scanf_s("%d", &c);
+	} while (c == 1);
 	switch (c)
 	{
 	    case 0:
