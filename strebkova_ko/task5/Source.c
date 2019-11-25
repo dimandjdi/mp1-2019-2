@@ -102,15 +102,12 @@ void merge(struct _finddata_t *file, long lb, long split, long ub)
 		else
 			temp[pos3++] = file[pos2++];
 	}
-
 	while (pos2 <= ub)
 		temp[pos3++] = file[pos2++];
 	while (pos1 <= split)
 		temp[pos3++] = file[pos1++];
-
 	for (pos3 = 0; pos3 < ub - lb + 1; pos3++)
 		file[lb + pos3] = temp[pos3];
-
 	free(temp);
 }
 
@@ -266,27 +263,27 @@ void main()
 			start = clock();
 			switch (c)
 			{
-			case 1:
-				BubbleSort(file, n);
-				break;
-			case 2:
-				SelectSort(file, n);
-				break;
-			case 3:
-				InsertSort(file, n);
-				break;
-			case 4:
-				MergeSort(file, 0, n - 1);
-				break;
-			case 5:
-				QuickSort(file, n);
-				break;
-			case 6:
-				ShellSort(file, n);
-				break;
-			case 7:
-				CountingSort(file, n);
-				break;
+				case 1:
+					BubbleSort(file, n);
+					break;
+				case 2:
+					SelectSort(file, n);
+					break;
+				case 3:
+					InsertSort(file, n);
+					break;
+				case 4:
+					MergeSort(file, 0, n - 1);
+					break;
+				case 5:
+					QuickSort(file, n);
+					break;
+				case 6:
+					ShellSort(file, n);
+					break;
+				case 7:
+					CountingSort(file, n);
+					break;
 			}
 			end = clock();
 			outputfiles(file, n);
