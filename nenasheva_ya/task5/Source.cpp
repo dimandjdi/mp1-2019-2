@@ -32,7 +32,6 @@ int main(void)
 	printf("Введите путь до директории: ");
 	gets_s(path);
 
-	// Find first .c file in directory c:\temp
 	if ((hFile = _findfirst(path, &c_file)) == -1L)
 		printf("No files in current directory!\n");
 	else
@@ -117,10 +116,11 @@ void bubbleSort(int count, long size[MAX_FILES], char* names[MAX_FILES])
 	long x1;
 	char* x2;
 
-	for (i = 0; i < count; i++) {            // i - номер прохода
-		for (j = count - 1; j > i; j--)     // Внутренний цикл прохода
+	for (i = 0; i < count; i++) 
+	{            
+		for (j = count - 1; j > i; j--)     
 		{
-			if (size[j - 1] > size[j])    // Сравниваем 2 размера файлов
+			if (size[j - 1] > size[j])    
 			{
 				x1 = size[j - 1];
 				size[j - 1] = size[j];
@@ -140,22 +140,22 @@ void selectSort(int count, long size[MAX_FILES], char* names[MAX_FILES])
 	long x1;
 	char* x2;
 
-	for (i = 0; i < count; i++)   // i - номер текущего шага
+	for (i = 0; i < count; i++) 
 	{
 		k = i;
 		x1 = size[i];
 		x2 = names[i];
 
-		for (j = i + 1; j < count; j++)	// Цикл выбора наименьшего элемента
+		for (j = i + 1; j < count; j++)
 			if (size[j] < x1)
 			{
-				k = j;   // k - индекс наименьшего элемента
+				k = j;  
 				x1 = size[j];
 				x2 = names[j];
 			}
 
 		size[k] = size[i];
-		size[i] = x1;   	// меняем местами наименьший с size[i]
+		size[i] = x1;   	
 
 		names[k] = names[i];
 		names[i] = x2;
@@ -168,19 +168,17 @@ void insertSort(int count, long size[MAX_FILES], char* names[MAX_FILES])
 	long x1;
 	char* x2;
 
-	for (i = 0; i < count; i++)   // Цикл проходов, i - номер прохода
+	for (i = 0; i < count; i++)   
 	{
 		x1 = size[i];
 		x2 = names[i];
 
-		// Поиск места элемента в готовой последовательности 
 		for (j = i - 1; j >= 0 && size[j] > x1; j--)
 		{
-			size[j + 1] = size[j];  	// Сдвигаем элемент направо, пока не дошли
+			size[j + 1] = size[j];  	
 			names[j + 1] = names[j];
 		}
 
-		// Место найдено, вставить элемент
 		size[j + 1] = x1;
 		names[j + 1] = x2;
 	}
@@ -195,7 +193,8 @@ void merge(long size[MAX_FILES], char* names[MAX_FILES], int lb, int split, int 
 	long* temp1 = new long[ub - lb + 1];
 	char** temp2 = new char*[ub - lb + 1];
 
-	while (pos1 <= split && pos2 <= ub) {
+	while (pos1 <= split && pos2 <= ub)
+	{
 		if (size[pos1] < size[pos2])
 		{
 			temp1[pos3] = size[pos1];
@@ -217,8 +216,6 @@ void merge(long size[MAX_FILES], char* names[MAX_FILES], int lb, int split, int 
 		temp1[pos3] = size[pos1];
 		temp2[pos3++] = names[pos1++];
 	}
-
-	// ñêîïèðîâàòü áóôåð temp â a[lb]...a[ub]
 	for (pos3 = 0; pos3 < ub - lb + 1; pos3++)
 	{
 		size[lb + pos3] = temp1[pos3];
@@ -242,7 +239,6 @@ void mergeSort(long size[MAX_FILES], char* names[MAX_FILES], int lb, int ub)
 		merge(size, names, lb, split, ub);    
 	}
 }
-
 
 void quickSortR(int count, long size[MAX_FILES], char* names[MAX_FILES])
 {
