@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>  
 #include <stdlib.h>  
@@ -182,7 +182,7 @@ long count_(char* path, struct _finddata_t* files)
 void output(struct _finddata_t* files, long size)
 {
 	int metod;
-	printf("Ñîðòèðîâàòü ïî âîçðàñòàíèþ èëè ïî óáûâàíèþ? Ïî âîçðàñòàíèþ - íàæìèòå 1, Ïî óáûâàíèþ - íàæìèòå 2");
+	printf("Ð¡Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¿Ð¾ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚Ð°Ð½Ð¸ÑŽ Ð¸Ð»Ð¸ Ð¿Ð¾ ÑƒÐ±Ñ‹Ð²Ð°Ð½Ð¸ÑŽ? ÐŸÐ¾ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚Ð°Ð½Ð¸ÑŽ - Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ 1, ÐŸÐ¾ ÑƒÐ±Ñ‹Ð²Ð°Ð½Ð¸ÑŽ - Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ 2");
 	printf("Listing of .c files\n\n");
 	printf("FILE         DATE %24c   SIZE\n", ' ');
 	printf("----         ---- %24c   ----\n", ' ');
@@ -220,12 +220,12 @@ void reverse(struct _finddata_t* files, long size)
 		clock_t start, finish;
 
 		int sort;
-		printf("Ââåäèòå ïóòü äëÿ ñîðòèðîâêè ôàéëîâ\n");
+		printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿ÑƒÑ‚ÑŒ Ð´Ð»Ñ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ Ñ„Ð°Ð¹Ð»Ð¾Ð²\n");
 		scanf("%s", path);
 		size = count_(path, files);
 		output(files, size);
-		printf("Âûáåðèòå ìåòîä ñîðòèðîâêè:\n");
-		printf("Ïóçûðüêîì - íàæìèòå 1\n Âûáîðîì - 2\n Âñòàâêàìè - 3\n Õîàðà - 4\n Øåëëà - 5\n Ïîäñ÷åòîì - 6\n");
+		printf("Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¼ÐµÑ‚Ð¾Ð´ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸:\n");
+		printf("ÐŸÑƒÐ·Ñ‹Ñ€ÑŒÐºÐ¾Ð¼ - Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ 1\n Ð’Ñ‹Ð±Ð¾Ñ€Ð¾Ð¼ - 2\n Ð’ÑÑ‚Ð°Ð²ÐºÐ°Ð¼Ð¸ - 3\n Ð¥Ð¾Ð°Ñ€Ð° - 4\n Ð¨ÐµÐ»Ð»Ð° - 5\n ÐŸÐ¾Ð´ÑÑ‡ÐµÑ‚Ð¾Ð¼ - 6\n");
 		scanf_s("%d", &sort);
 		start = clock();
 		switch (sort) {
@@ -268,7 +268,7 @@ void reverse(struct _finddata_t* files, long size)
 		}
 		
 		finish = clock();
-		printf("Âðåìÿ ñîðòèðîâêè - %f", (double)(finish - start) / CLOCKS_PER_SEC);
+		printf("Ð’Ñ€ÐµÐ¼Ñ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ - %f", (double)(finish - start) / CLOCKS_PER_SEC);
 
 		system("pause>nul");
 	}
