@@ -187,7 +187,7 @@ int main(void)
 	float tt;
 	clock_t t1, t2;
 	printf("Введите путь до папки, в которой надо отсортировать файлы\n");
-	gets_s(path);
+	gets_s(path, 200);
 	strcat(path, "\\*.*");
 	if ((hFile = _findfirst(path, &file)) == -1L)
 		printf("Нет таких файлов в выбранной папке\n");
@@ -267,7 +267,7 @@ int main(void)
 				for (int i = size - 1; i >= 0; i--)
 					printf("%-12.12s  %10ld\n", massiv[i].name, massiv[i].size);
 
-			tt = float(t2 - t1) / CLOCKS_PER_SEC;
+			tt = (float)(t2 - t1) / CLOCKS_PER_SEC;
 			printf("Время сортировки = %f\n", tt);
 			printf("Хотите отсортировать ещё раз? да - 1, нет - 0\n");
 			scanf_s("%d", &sort);
