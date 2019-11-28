@@ -15,7 +15,7 @@ int countfile(char path[])
 	intptr_t hFile;
 	int count = 0;
 	if ((hFile = _findfirst(path, &c_file)) == -1L)
-		printf("В данной директории нет файлов\n");
+		printf("Г‚ Г¤Г Г­Г­Г®Г© Г¤ГЁГ°ГҐГЄГІГ®Г°ГЁГЁ Г­ГҐГІ ГґГ Г©Г«Г®Гў\n");
 	else
 		do {
 			count++;
@@ -225,16 +225,17 @@ void main()
 	struct _finddata_t* file;
 	struct _finddata_t c_file;
 	clock_t start = clock();
-	printf("Введите путь до директории:\n");
+	printf("Г‚ГўГҐГ¤ГЁГІГҐ ГЇГіГІГј Г¤Г® Г¤ГЁГ°ГҐГЄГІГ®Г°ГЁГЁ:\n");
 	gets_s(path);
-	printf("Сортировки:\n1 Пузырьком\n");
-	printf("2 Выбором\n");
-	printf("3 Вставками\n");
-	printf("4 Слиянием\n");
-	printf("5 Хоара\n");
-	printf("6 Шелла\n");
-	printf("7 Подсчетом\n");
-	printf("Введите номер нужной сортировки: ");
+	strcat(path, "*");
+	printf("Г‘Г®Г°ГІГЁГ°Г®ГўГЄГЁ:\n1 ГЏГіГ§Г»Г°ГјГЄГ®Г¬\n");
+	printf("2 Г‚Г»ГЎГ®Г°Г®Г¬\n");
+	printf("3 Г‚Г±ГІГ ГўГЄГ Г¬ГЁ\n");
+	printf("4 Г‘Г«ГЁГїГ­ГЁГҐГ¬\n");
+	printf("5 Г•Г®Г Г°Г \n");
+	printf("6 ГГҐГ«Г«Г \n");
+	printf("7 ГЏГ®Г¤Г±Г·ГҐГІГ®Г¬\n");
+	printf("Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®Г¬ГҐГ° Г­ГіГ¦Г­Г®Г© Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ: ");
 	scanf_s("%d", &sort);
 	if ((n = countfile(path)) != 0)
 	{
@@ -270,7 +271,7 @@ void main()
 		clock_t end = clock();
 		pupa(file, n);
 		double Time = (double)(end - start) / CLOCKS_PER_SEC;
-		printf("Время сортировки: %.3lf с\n", Time);
+		printf("Г‚Г°ГҐГ¬Гї Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ: %.3lf Г±\n", Time);
 	}
 	system("pause");
 }
