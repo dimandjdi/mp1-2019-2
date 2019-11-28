@@ -31,6 +31,7 @@ int main(void)
 	char* names[MAX_FILES];
 	printf("Введите путь до директории: ");
 	gets_s(path);
+        strcat(path, "*");
 
 	if ((hFile = _findfirst(path, &c_file)) == -1L)
 		printf("No files in current directory!\n");
