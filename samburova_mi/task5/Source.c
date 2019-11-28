@@ -170,8 +170,6 @@ long count_(char* path, struct _finddata_t* files)
 				files[count] = file;
 				count++;
 			}
-			if (count > 1000)
-				break;
 		} while (_findnext(hFile, &file) == 0);
 		return count;
 	}
@@ -182,7 +180,6 @@ long count_(char* path, struct _finddata_t* files)
 void output(struct _finddata_t* files, long size)
 {
 	int metod;
-	printf("Сортировать по возрастанию или по убыванию? По возрастанию - нажмите 1, По убыванию - нажмите 2");
 	printf("Listing of .c files\n\n");
 	printf("FILE         DATE %24c   SIZE\n", ' ');
 	printf("----         ---- %24c   ----\n", ' ');
@@ -227,65 +224,43 @@ void reverse(struct _finddata_t* files, long size)
 		printf("Выберите метод сортировки:\n");
 		printf("Пузырьком - нажмите 1\n Выбором - 2\n Вставками - 3\n Хоара - 4\n Шелла - 5\n Подсчетом - 6\n");
 		scanf_s("%d", &sort);
-		
+		start = clock();
 		switch (sort) {
 		case 1:
 		{
-			start = clock();
 			bubble_sort(files, size);
-			finish = clock();
-			output(files, size);
-			printf("Время сортировки - %f", (double)(finish - start) / CLOCKS_PER_SEC);
 			break;
 		}
 		case 2:
 		{
-			start = clock();
 			select_sort(files, size);
-			finish = clock();
-			output(files, size);
-			printf("Время сортировки - %f", (double)(finish - start) / CLOCKS_PER_SEC);
 			break;
 		}
 		case 3:
 		{
-			start = clock();
 			insert_sort(files, size);
-			finish = clock();
-			output(files, size);
-			printf("Время сортировки - %f", (double)(finish - start) / CLOCKS_PER_SEC);
 			break;
 		}
 		case 4:
 		{
-			start = clock();
 			quick_sort(files, size);
-			finish = clock();
-			output(files, size);
-			printf("Время сортировки - %f", (double)(finish - start) / CLOCKS_PER_SEC);
 			break;
 		}
 		case 5:
 		{
 			start = clock();
-			shell_sort(files, size);
 			finish = clock();
-			output(files, size);
-			printf("Время сортировки - %f", (double)(finish - start) / CLOCKS_PER_SEC);
 			break;
 		}
 		case 6:
 		{
-			start = clock();
 			counting_sort(files, size);
-			finish = clock();
-			output(files, size);
-			printf("Время сортировки - %f", (double)(finish - start) / CLOCKS_PER_SEC);
 			break;
 		}
 		}
-		
-		
+		finish = clock();
+		output(files, size);
+		printf("Время сортировки - %f", (double)(finish - start) / CLOCKS_PER_SEC);
 		
 
 		system("pause>nul");
