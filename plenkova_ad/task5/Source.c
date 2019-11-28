@@ -6,6 +6,20 @@
 #include <time.h> 
 #include <string.h>
 #include <conio.h>
+int countfile(char path[])
+{
+	struct _finddata_t c_file;
+	intptr_t hFile;
+	int size = 0;
+	if ((hFile = _findfirst(path, &c_file)) == -1L)
+		printf("В данной директории нет файлов\n");
+	else
+		do {
+			size++;
+		} while (_findnext(hFile, &c_file) == 0);
+		_findclose(hFile);
+		return size;
+}
 void Puziryok(struct _finddata_t massiv[], int size)
 {
 	struct _finddata_t temp;
@@ -158,18 +172,50 @@ void ShellSort(struct _finddata_t* massiv, int size)
 		}
 	}
 }
-void Podschyot(struct _finddata_t massiv[], int size, int sortedMass[])
+void Podschyot(struct _finddata_t massiv[], int size)
 {
-	for (int i = 0; i < size; i++)
+	unsigned long max, min;
+	int i, j, k = 0, * sortedMassiv;
+	struct _finddata_t t;
+	max = min = massiv[0].size;
+	for (i = 0; i < size; i++)
 	{
-		int k = 0;
+		if (massiv[i].size > max)
+			max = massiv[i].size;
+		if (massiv[i].size < min)
+			min = massiv[i].size;
+	}
+	max++;
+	sortedMassiv = (int*)malloc(max * sizeof(int));
+	memset(sortedMassiv, 0, max * sizeof(int));
+	for (i = 0; i < size; i++)
+		sortedMassiv[massiv[i].size]++;
+	for (i = min; i < max; i++)
+	{
+		if (sortedMassiv[i] != 0)
+		{
+			for (j = k; j < size; j++)
+				if (massiv[j].size == i)
+				{
+					t = massiv[j];
+					massiv[j] = massiv[k];
+					massiv[k] = t;
+					k++;
+				}
+		}
+	}
+	free(sortedMassiv);
+	/*for (int i = 0; i < size; i++)
+	{
+		//int k = 0;
+
 		for (int j = 0; j < size; j++)
 		{
 			if (massiv[i].size > massiv[j].size)
 				k++;
 		}
-		sortedMass[i] = massiv[k].size;
-	}
+		sortedMass[i] = massiv[k];
+	}*/
 
 
 }
@@ -178,30 +224,38 @@ int main(void)
 {
 	setlocale(LC_ALL, "rus");
 	struct _finddata_t file;
-	struct _finddata_t massiv[1000];
+	//struct _finddata_t massiv[1000];
+	int size = 0;
+	struct _finddata_t* massiv; //= (struct _finddata_t*)malloc(size * sizeof(struct _finddata_t));
 	intptr_t hFile;
 	char path[200];
-	int size = 0;
-	int sortedMass[1000] = { 0 };
+	//int sortedMass[1000] = { 0 };
+	//struct _finddata_t* sortedMassiv = (struct _finddata_t*)malloc(size * sizeof(struct _finddata_t));
 	int tip, mode, i = 0, sort = 1;
 	float tt;
 	clock_t t1, t2;
 	printf("Введите путь до папки, в которой надо отсортировать файлы\n");
 	gets_s(path, 200);
 	strcat(path, "\\*.*");
-	if ((hFile = _findfirst(path, &file)) == -1L)
-		printf("Нет таких файлов в выбранной папке\n");
-	else
+	if ((size = countfile(path)) != 0)
 	{
-		printf("Список файлов\n\n");
-		printf("FILE               SIZE\n");
-		printf("----               ----\n");
-		do {
-			printf("%-12.12s  %10ld\n", file.name, file.size);
-			massiv[size] = file;
-			size++;
-		} while (_findnext(hFile, &file) == 0);
-		_findclose(hFile);
+		massiv = (struct _finddata_t*)malloc(size * sizeof(struct _finddata_t));
+		hFile = _findfirst(path, &massiv[0]);
+		for (int a = 1; a < size; a++)
+			_findnext(hFile, &massiv[a]);
+
+		if ((hFile = _findfirst(path, &file)) == -1L)
+			printf("Нет таких файлов в выбранной папке\n");
+		else
+		{
+			printf("Список файлов\n\n");
+			printf("FILE               SIZE\n");
+			printf("----               ----\n");
+			do {
+				printf("%-12.12s  %10ld\n", file.name, file.size);
+			} while (_findnext(hFile, &file) == 0);
+			_findclose(hFile);
+		}
 
 		while (sort != 0)
 		{
@@ -250,7 +304,7 @@ int main(void)
 				break;
 			case(7):
 				t1 = clock();
-				Podschyot(massiv, size, sortedMass);
+				Podschyot(massiv, size);
 				t2 = clock();
 				sort = 0;
 				break;
@@ -272,5 +326,6 @@ int main(void)
 			printf("Хотите отсортировать ещё раз? да - 1, нет - 0\n");
 			scanf_s("%d", &sort);
 		}
+		free(massiv);
 	}
 }
