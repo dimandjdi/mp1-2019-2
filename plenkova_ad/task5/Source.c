@@ -205,18 +205,6 @@ void Podschyot(struct _finddata_t massiv[], int size)
 		}
 	}
 	free(sortedMassiv);
-	/*for (int i = 0; i < size; i++)
-	{
-		//int k = 0;
-
-		for (int j = 0; j < size; j++)
-		{
-			if (massiv[i].size > massiv[j].size)
-				k++;
-		}
-		sortedMass[i] = massiv[k];
-	}*/
-
 
 }
 
@@ -224,13 +212,10 @@ int main(void)
 {
 	setlocale(LC_ALL, "rus");
 	struct _finddata_t file;
-	//struct _finddata_t massiv[1000];
 	int size = 0;
-	struct _finddata_t* massiv; //= (struct _finddata_t*)malloc(size * sizeof(struct _finddata_t));
+	struct _finddata_t* massiv; 
 	intptr_t hFile;
 	char path[200];
-	//int sortedMass[1000] = { 0 };
-	//struct _finddata_t* sortedMassiv = (struct _finddata_t*)malloc(size * sizeof(struct _finddata_t));
 	int tip, mode, i = 0, sort = 1;
 	float tt;
 	clock_t t1, t2;
