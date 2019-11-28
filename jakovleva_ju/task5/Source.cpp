@@ -15,11 +15,7 @@ int countfile(char path[])
 	intptr_t hFile;
 	int count = 0;
 	if ((hFile = _findfirst(path, &c_file)) == -1L)
-<<<<<<< HEAD
 		printf("В данной директории нет файлов\n");
-=======
-		printf("Â äàííîé äèðåêòîðèè íåò ôàéëîâ\n");
->>>>>>> 8316dbeaf06f6dccf2f990c1612b8ab210e1ed17
 	else
 		do {
 			count++;
@@ -229,7 +225,6 @@ void main()
 	struct _finddata_t* file;
 	struct _finddata_t c_file;
 	clock_t start = clock();
-<<<<<<< HEAD
 	printf("Введите путь до директории:\n");
 	gets_s(path);
 	strcat(path, "*");
@@ -241,19 +236,6 @@ void main()
 	printf("6 Шелла\n");
 	printf("7 Подсчетом\n");
 	printf("Введите номер нужной сортировки: ");
-=======
-	printf("Ââåäèòå ïóòü äî äèðåêòîðèè:\n");
-	gets_s(path);
-	strcat(path, "*");
-	printf("Ñîðòèðîâêè:\n1 Ïóçûðüêîì\n");
-	printf("2 Âûáîðîì\n");
-	printf("3 Âñòàâêàìè\n");
-	printf("4 Ñëèÿíèåì\n");
-	printf("5 Õîàðà\n");
-	printf("6 Øåëëà\n");
-	printf("7 Ïîäñ÷åòîì\n");
-	printf("Ââåäèòå íîìåð íóæíîé ñîðòèðîâêè: ");
->>>>>>> 8316dbeaf06f6dccf2f990c1612b8ab210e1ed17
 	scanf_s("%d", &sort);
 	if ((n = countfile(path)) != 0)
 	{
@@ -289,11 +271,7 @@ void main()
 		clock_t end = clock();
 		pupa(file, n);
 		double Time = (double)(end - start) / CLOCKS_PER_SEC;
-<<<<<<< HEAD
 		printf("Время сортировки: %.3lf с\n", Time);
-=======
-		printf("Âðåìÿ ñîðòèðîâêè: %.3lf ñ\n", Time);
->>>>>>> 8316dbeaf06f6dccf2f990c1612b8ab210e1ed17
 	}
 	system("pause");
 }
