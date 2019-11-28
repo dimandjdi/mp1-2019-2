@@ -67,7 +67,6 @@ void main()
 	printf("\n1)ПК загадывает число");
 	printf("\n2)ПК отгадывает число\n");
 	scanf_s("%i", &sw);
-
 	switch (sw)
 	{
 	case 1:
