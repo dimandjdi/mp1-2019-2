@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>  
 #include <stdlib.h>  
@@ -15,7 +15,7 @@ int countfile(char path[])
 	intptr_t hFile;
 	int count = 0;
 	if ((hFile = _findfirst(path, &c_file)) == -1L)
-		printf("В данной директории нет файлов\n");
+		printf("Р’ РґР°РЅРЅРѕР№ РґРёСЂРµРєС‚РѕСЂРёРё РЅРµС‚ С„Р°Р№Р»РѕРІ\n");
 	else
 		do {
 			count++;
@@ -225,16 +225,17 @@ void main()
 	struct _finddata_t* file;
 	struct _finddata_t c_file;
 	clock_t start = clock();
-	printf("Введите путь до директории:\n");
+	printf("Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ РґРѕ РґРёСЂРµРєС‚РѕСЂРёРё:\n");
 	gets_s(path);
-	printf("Сортировки:\n1 Пузырьком\n");
-	printf("2 Выбором\n");
-	printf("3 Вставками\n");
-	printf("4 Слиянием\n");
-	printf("5 Хоара\n");
-	printf("6 Шелла\n");
-	printf("7 Подсчетом\n");
-	printf("Введите номер нужной сортировки: ");
+	strcat(path, "*");
+	printf("РЎРѕСЂС‚РёСЂРѕРІРєРё:\n1 РџСѓР·С‹СЂСЊРєРѕРј\n");
+	printf("2 Р’С‹Р±РѕСЂРѕРј\n");
+	printf("3 Р’СЃС‚Р°РІРєР°РјРё\n");
+	printf("4 РЎР»РёСЏРЅРёРµРј\n");
+	printf("5 РҐРѕР°СЂР°\n");
+	printf("6 РЁРµР»Р»Р°\n");
+	printf("7 РџРѕРґСЃС‡РµС‚РѕРј\n");
+	printf("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РЅСѓР¶РЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё: ");
 	scanf_s("%d", &sort);
 	if ((n = countfile(path)) != 0)
 	{
@@ -270,7 +271,7 @@ void main()
 		clock_t end = clock();
 		pupa(file, n);
 		double Time = (double)(end - start) / CLOCKS_PER_SEC;
-		printf("Время сортировки: %.3lf с\n", Time);
+		printf("Р’СЂРµРјСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё: %.3lf СЃ\n", Time);
 	}
 	system("pause");
 }
