@@ -1,10 +1,11 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>  
 #include <locale.h>
 #include <stdlib.h>  
 #include <io.h>  
 #include <time.h> 
 #include <string.h>
+#include <conio.h>
 void Puziryok(struct _finddata_t massiv[], int size)
 {
 	struct _finddata_t temp;
@@ -32,24 +33,24 @@ void Vibor(struct _finddata_t massiv[], int size)
 		x = massiv[i];
 		for (j = i + 1; j < size; j++)
 			if (massiv[j].size < x.size)
-				k = j; x = massiv[j];
+			{
+				k = j;
+				x = massiv[j];
+			}
 		massiv[k] = massiv[i];
 		massiv[i] = x;
 	}
 }
 void Vstavka(struct _finddata_t massiv[], int size)
 {
-	int x, j;
-	for (int i = 1; i < size; i++)
+	int i, j;
+	struct _finddata_t x;
+	for (i = 1; i < size; i++)
 	{
-		x = massiv[i].size;
-		j = i - 1;
-		while (j >= 0 && massiv[j].size > x)
-		{
+		x = massiv[i];
+		for (j = i - 1; j >= 0 && massiv[j].size > x.size; j--)
 			massiv[j + 1] = massiv[j];
-			massiv[j].size = x;
-			j--;
-		}
+		massiv[j + 1] = x;
 	}
 }
 void Sliyanie(struct _finddata_t massiv[], long size)
@@ -173,7 +174,7 @@ void Podschyot(struct _finddata_t massiv[], int size, int sortedMass[])
 
 }
 
-void main()
+int main(void)
 {
 	setlocale(LC_ALL, "rus");
 	struct _finddata_t file;
@@ -181,18 +182,18 @@ void main()
 	intptr_t hFile;
 	char path[200];
 	int size = 0;
-	int sortedMass[100] = { 0 };
+	int sortedMass[1000] = { 0 };
 	int tip, mode, i = 0, sort = 1;
 	float tt;
 	clock_t t1, t2;
-	printf("Введите путь до папки, в которой надо отсортировать файлы\n");
+	printf("Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ РґРѕ РїР°РїРєРё, РІ РєРѕС‚РѕСЂРѕР№ РЅР°РґРѕ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ С„Р°Р№Р»С‹\n");
 	gets_s(path);
 	strcat(path, "\\*.*");
 	if ((hFile = _findfirst(path, &file)) == -1L)
-		printf("No files in current directory!\n");
+		printf("РќРµС‚ С‚Р°РєРёС… С„Р°Р№Р»РѕРІ РІ РІС‹Р±СЂР°РЅРЅРѕР№ РїР°РїРєРµ\n");
 	else
 	{
-		printf("Listing of files\n\n");
+		printf("РЎРїРёСЃРѕРє С„Р°Р№Р»РѕРІ\n\n");
 		printf("FILE               SIZE\n");
 		printf("----               ----\n");
 		do {
@@ -204,9 +205,9 @@ void main()
 
 		while (sort != 0)
 		{
-			printf("\nОтсортировать по возрастанию - 1, по убыванию - 2\n");
+			printf("\nРћС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ - 1, РїРѕ СѓР±С‹РІР°РЅРёСЋ - 2\n");
 			scanf_s("%d", &mode);
-			printf("\nВыберите тип сортировки:\nСортировка Пузырьком 1\nСортировка Выбором 2\nСортировка Вставками 3\nСортировка Слиянием 4\nСортировка Хоара(Быстрая сортировка) 5\nСортировка Шелла 6\nСортировка подсчётом 7\n");
+			printf("\nР’С‹Р±РµСЂРёС‚Рµ С‚РёРї СЃРѕСЂС‚РёСЂРѕРІРєРё:\nРЎРѕСЂС‚РёСЂРѕРІРєР° РџСѓР·С‹СЂСЊРєРѕРј 1\nРЎРѕСЂС‚РёСЂРѕРІРєР° Р’С‹Р±РѕСЂРѕРј 2\nРЎРѕСЂС‚РёСЂРѕРІРєР° Р’СЃС‚Р°РІРєР°РјРё 3\nРЎРѕСЂС‚РёСЂРѕРІРєР° РЎР»РёСЏРЅРёРµРј 4\nРЎРѕСЂС‚РёСЂРѕРІРєР° РҐРѕР°СЂР°(Р‘С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°) 5\nРЎРѕСЂС‚РёСЂРѕРІРєР° РЁРµР»Р»Р° 6\nРЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕРґСЃС‡С‘С‚РѕРј 7\n");
 			scanf_s("%d", &tip);
 			switch (tip)
 			{
@@ -255,9 +256,9 @@ void main()
 				break;
 			}
 
-			printf("\ncount of files: %d\n", size);
-			printf("FILE               SIZE\n");
-			printf("----               ----\n");
+			printf("\nРљРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ: %d\n", size);
+			printf("FILE                SIZE\n");
+			printf("----                ----\n");
 
 			if (mode == 1)
 				for (int i = 0; i < size; i++)
@@ -267,8 +268,8 @@ void main()
 					printf("%-12.12s  %10ld\n", massiv[i].name, massiv[i].size);
 
 			tt = float(t2 - t1) / CLOCKS_PER_SEC;
-			printf("Время сортировки = %f\n", tt);
-			printf("Хотите отсортировать ещё раз? да - 1, нет - 0\n");
+			printf("Р’СЂРµРјСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё = %f\n", tt);
+			printf("РҐРѕС‚РёС‚Рµ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РµС‰С‘ СЂР°Р·? РґР° - 1, РЅРµС‚ - 0\n");
 			scanf_s("%d", &sort);
 		}
 	}
