@@ -232,7 +232,7 @@ void main()
 				InsertSort(file, count);
 				break;
 			case 4:
-				MergeSort(file, 0, count);
+				MergeSort(file, 0, count-1);
 				break;
 			case 5:
 				QuickSort(file, count);
