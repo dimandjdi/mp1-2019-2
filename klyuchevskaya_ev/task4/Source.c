@@ -7,13 +7,17 @@ int main(void)
 {
 	setlocale(LC_ALL, "Rus");
 	int i, j;
-	int sh, prov = 0, a, r = 0, obsh=0, n, sum=0, obski;
-	int shtr[8] = { 7564 , 1209 , 1221 , 6390 , 3210 , 5671 , 9232 , 6749  };
+	int sh, prov = 0, a, r = 0, obsh = 0, n, sum = 0, obski;
+	int shtr[8] = { 7564 , 1209 , 1221 , 6390 , 3210 , 5671 , 9232 , 6749 };
 	char tov[8][25] = { {"Порошок для стирки"},{"Мыло"},{"Кондиционер для стирки"},{"Шампунь"}, {"Бальзам для волос"}, {"Пена для ванны"}, {"Гель для душа"}, {"Мочалка"} };
 	int cena[8] = { 75 , 25 , 170 , 200 , 230 , 140 , 125 , 50 };
 	int ski[8];
 	int newce[8];
+<<<<<<< HEAD
+	int kol[8] = { 0 };
+=======
 	int kol[8]={ 0 };
+>>>>>>> 6f348077736c1b252e7006dd61d1a83072341ae2
 	for (i = 0; i < 8; i++)
 	{
 		ski[i] = 5 * (1 + rand() % (9)) + 5;
@@ -70,7 +74,7 @@ int main(void)
 		{
 			puts(tov[i]);
 			printf("%d шт. x %d руб. + скидка %d проц.\n", kol[i], cena[i], ski[i]);
-			sum=sum+ (kol[i] * cena[i]);
+			sum = sum + (kol[i] * cena[i]);
 			obsh = obsh + (kol[i] * newce[i]);
 		}
 		obski = sum - obsh;
