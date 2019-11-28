@@ -27,7 +27,7 @@ struct sortirovochka
 	int razmer;
 	char name[200];
 };
-struct sortirovochka sortirovka[20];
+struct sortirovochka sortirovka[1004];
 int increment(long inc[], long size) 
 {
 	int p1, p2, p3, s;
@@ -177,7 +177,7 @@ void CountingSort(struct sortirovochka *sortirovka, int k)
 	int i, j, m = 0, *p;
 	struct sortirovochka x;
 	max = min = sortirovka[0].razmer;
-	for (i = 0; i < k; i++)
+	for (i = 0; i < k+1; i++)
 	{
 		if (sortirovka[i].razmer > max)
 			max = sortirovka[i].razmer;
@@ -212,20 +212,23 @@ int main(void)
 	struct _finddata_t c_file;
 	intptr_t hFile;
 	char path[200];
-	int count = 0, sort, i, k;
+	int count = 0, sort, i, flag, k;
 	printf("Введите путь\n");
 	gets(path);
 	strcat(path, "*");
-	i = 0;
+	i = 0; flag = 1;
 	if ((hFile = _findfirst(path, &c_file)) == -1L)
+	{
 		printf("No *.c files in current directory!\n");
+	    flag = 0;
+    }
 	else
 	{
 		printf("Listing of .c files\n\n");
 		printf("FILE              SIZE\n", ' ');
 		printf("----              ----\n", ' ');
 		do {
-			if (count <= 20)
+			if (count <= 1000)
 			{
 				strcpy(sortirovka[i].name, c_file.name);
 				sortirovka[i].razmer = c_file.size;
@@ -238,6 +241,11 @@ int main(void)
 		printf("\ncount of files: %d\n", count);
 		k = i - 1 ;
 	}
+	if (flag == 0)
+		return(0);
+	int choice;
+	do
+	{
 		sort = vibori();
 		clock_t nachalo = clock();
 		switch (sort)
@@ -266,30 +274,14 @@ int main(void)
 		}
 		clock_t konec = clock();
 		printf("Время сортировки: %.30lf с\n", (double)(konec - nachalo) / CLOCKS_PER_SEC);
-	for (i = 0; i <= k; i++)
-	{
-		printf("%-12.12s     %i\n", sortirovka[i].name, sortirovka[i].razmer);
-	}
-	int choice;
-	do
-	{
-		printf("Выберете соответствующую цифру:\n");
-		printf("1)Новая сортировка\n");
-		printf("2)Конец \n");
-		scanf_s("%d", &choice);
-		switch (choice)
+	    for (i = 0; i <= k; i++)
 		{
-		case 1:
-			getchar();
-			main();
-			break;
-		case 2:
-			return 0;
-			break;
-		default:
-			printf("Ошибка выбора\n");
-			break;
+			printf("%-12.12s     %i\n", sortirovka[i].name, sortirovka[i].razmer);
 		}
-	} while ((choice != 1) || (choice != 2));
+
+		printf("Хотите ещё?\n Нажмите 1:\n");
+		scanf_s("%d", &choice);
+	} 
+	while (choice == 1);
 	system("pause");
 }
