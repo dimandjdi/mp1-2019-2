@@ -1,5 +1,6 @@
 ﻿#include <stdio.h>        
 #include <locale.h>
+#define _CRT_SECURE_NO_WARNINGS
 int const N = 25; // кол-во товаров существующих в магазине, столько же должно быть в файле для коректной работы программы или больше.
 int main() {
 	setlocale(LC_ALL, "Russian");
@@ -7,7 +8,7 @@ int main() {
 	int i;
 	char product[100];
 	FILE *fout;
-	fout = fopen("C:\\Users\\HP\\Desktop\\out.txt", "w"); // формирование чека
+	fout = fopen("out.txt", "w"); // формирование чека
 	fprintf(fout, "Кассовый чек ");
 	int  barcode, y, barcodev, k = 0; //barcode - штрихкод из файла,  barcodev - штрихкод введенный продавцом , k - та самая переменная
 	float discount, sum = 0, cost; // discount - скидка, sum - общая сумма , cost - цена товара из файла
