@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+﻿#define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>  
 #include <conio.h>
@@ -8,7 +8,7 @@
 #include <string.h>
 #include <locale.h>
 
-#define MAX_FILES 200
+#define MAX_FILES 4550
 
 void print_size(int count, long size[MAX_FILES], char* names[MAX_FILES]);
 void bubbleSort(int count, long size[MAX_FILES], char* names[MAX_FILES]);
@@ -31,7 +31,7 @@ int main(void)
 	char* names[MAX_FILES];
 	printf("Введите путь до директории: ");
 	gets_s(path);
-        strcat(path, "*");
+    strcat(path, "*");
 
 	if ((hFile = _findfirst(path, &c_file)) == -1L)
 		printf("No files in current directory!\n");
