@@ -36,7 +36,7 @@ void my_sin(double x, float E, int k)
 		func = func + term;
 		delta = fabs(sin_c - func);	
 	}
-	printf("%-2.d   %.7lf   %.6lf\n", i - 1, func, delta);
+	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
 }
 
 void my_cos(double x, float E, int k)
@@ -49,7 +49,7 @@ void my_cos(double x, float E, int k)
 		func = func + term;
 		delta = fabs(cos_c - func);
 	}
-	printf("%-2.d   %.7lf   %.6lf\n", i - 1, func, delta);
+	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
 }
 
 void my_exp(double x, float E, int k)
@@ -62,7 +62,7 @@ void my_exp(double x, float E, int k)
 		func = func + term;
 		delta = fabs(exp_c - func);
 	}
-	printf("%-2.d   %.7lf   %.6lf\n", i - 1, func, delta);
+	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
 }
 
 void my_ch(double x, float E, int k)
@@ -75,7 +75,7 @@ void my_ch(double x, float E, int k)
 		func = func + term;
 		delta = fabs(ch_c - func);
 	}
-	printf("%-2.d   %.7lf   %.6lf\n", i - 1, func, delta);
+	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
 }
 
 void output_one(void(*f)(double, float, int), double x, double func)
@@ -86,7 +86,8 @@ void output_one(void(*f)(double, float, int), double x, double func)
 	scanf_s("%f", &E);
 	printf("Введите количество слагаемых от 1 до 1000\n");
 	scanf_s("%d", &k);
-	printf("%lf\n", func);
+	printf("Эталонное значение: %lf\n", func);
+	printf("Кол-во слагаемых   Вычисленная оценка функции   Разница между оценкой и эталоном\n");
 	f(x, E, k);
 }
 
@@ -103,7 +104,8 @@ void output_two(void(*f)(double, float, int), double x, double func)
 		printf("Введите количество слагаемых от 1 до 1000 для %d-ого эксперимента\n", i + 1);
 		scanf_s("%d", &k[i]);
 	}
-	printf("%lf\n", func);
+	printf("Эталонное значение: %lf\n", func);
+	printf("Кол-во слагаемых   Вычисленная оценка функции   Разница между оценкой и эталоном\n");
 	for (i = 0; i < k[i]; i++)
 		f(x, E[i], k[i]);
 }
