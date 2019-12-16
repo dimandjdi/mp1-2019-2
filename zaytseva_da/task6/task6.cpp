@@ -87,6 +87,32 @@ long double myacos(long double x, int& N, long double eps)
 
 
 
+long double myatanh(long double x, int& N, long double eps)
+{
+	int i, z = 0, j = 3;
+	double y = x, buffer = x;
+	if ((x >= 1) || (x <= -1))
+	{
+		if (x == 1)
+			return INFINITY;
+		if (x == -1)
+			return -INFINITY;
+		return -NAN;
+	}
+	for (i = 2; i <= N; i++)
+	{
+		y += (y * x * x) / j;
+		j = j + 2;
+		if (fabs(atanh(x) - y) < eps)
+			break;
+		z++;
+	}
+	N = z + 1;
+	eps = fabs(atanh(x) - y);
+	return y;
+}
+
+
 void main()
 {
 	setlocale(LC_ALL, "Rus");
@@ -98,11 +124,13 @@ void main()
 	myfunc[1] = mysin;
 	myfunc[2] = mycos;
 	myfunc[3] = myacos;
+	myfunc[4] = myatanh;
 	double(*ITfunc[5])(double);
 	ITfunc[0] = exp;
 	ITfunc[1] = sin;
 	ITfunc[2] = cos;
 	ITfunc[3] = acos;
+	ITfunc[4] = atanh;
 	long double result, myresult;
 	setlocale(LC_ALL, "Rus");
 	while (a == 0)
@@ -117,7 +145,7 @@ void main()
 		switch (r)
 		{
 		case 1:
-			printf("Выберите функцию:\n0) e^(x);\n1) sin(x);\n2) cos(x);\n3) arccos(x);\n");
+			printf("Выберите функцию:\n0) e^(x);\n1) sin(x);\n2) cos(x);\n3) arccos(x);\n4) atanh(x);\n");
 			flag0 = 0;
 			while (flag0 == 0)
 			{
@@ -156,7 +184,7 @@ void main()
 		case 2:
 			N = 0;
 			t = -1;
-			printf("Выберите функцию:\n0 - e^(x);\n1 - sin(x);\n2 - cos(x);\n3 - arccos(x);\n");
+			printf("Выберите функцию:\n0) e^(x);\n1) sin(x);\n2) cos(x);\n3) arccos(x);\n4) atanh(x);\n");
 			flag0 = 0;
 			while (flag0 == 0)
 			{
@@ -171,7 +199,7 @@ void main()
 			}
 			printf("Введите x, который хотите посчитать:\n");
 			if ((f == 3)||(f==4))
-				printf("Для подсчета функций arccos(x), пожалуйста, введите x в диапазоне от -1 до 1 и с двумя знаками после запятой \n");
+				printf("Для подсчета функций arccos(x) и atanh(x), пожалуйста, введите x в диапазоне от -1 до 1 и с двумя знаками после запятой \n");
 			scanf("%lf.2", &x);
 			do {
 				printf("Выберите число экспериментов для выполнения расчета\n (минимальное количество 1, максимальное - 25)\n");
