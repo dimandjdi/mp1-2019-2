@@ -1,8 +1,11 @@
-﻿"task3.exe" (Win32). Загружено "C:\Users\Galina Sherstneva\mp1-2019-2\troegubova_aa\x64\Release\task3.exe". Символы загружены.
-"task3.exe" (Win32). Загружено "C:\Windows\System32\ntdll.dll". Невозможно найти или открыть PDB-файл.
-"task3.exe" (Win32). Загружено "C:\Windows\System32\kernel32.dll". Невозможно найти или открыть PDB-файл.
-"task3.exe" (Win32). Загружено "C:\Windows\System32\KernelBase.dll". Невозможно найти или открыть PDB-файл.
-"task3.exe" (Win32). Загружено "C:\Windows\System32\ucrtbase.dll". Невозможно найти или открыть PDB-файл.
-"task3.exe" (Win32). Загружено "C:\Windows\System32\vcruntime140.dll". Невозможно найти или открыть PDB-файл.
-Поток 0x23b4 завершился с кодом 0 (0x0).
-Поток 0x3464 завершился с кодом 0 (0x0).
+﻿"task6.exe" (Win32). Загружено "C:\Users\troeg\OneDrive\Рабочий стол\mp1-2019-2\troegubova_aa\Debug\task6.exe". Символы загружены.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\ntdll.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\kernel32.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\KernelBase.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\vcruntime140d.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\ucrtbased.dll". Символы загружены.
+Поток 0x3d90 завершился с кодом -1073741510 (0xc000013a).
+Поток 0x1b2c завершился с кодом -1073741510 (0xc000013a).
+Поток 0x44bc завершился с кодом -1073741510 (0xc000013a).
+Поток 0x10e4 завершился с кодом -1073741510 (0xc000013a).
+Программа "[21016] task6.exe" завершилась с кодом -1073741510 (0xc000013a).
