@@ -27,7 +27,7 @@ struct sortirovochka
 	int razmer;
 	char name[200];
 };
-struct sortirovochka sortirovka[1004];
+struct sortirovochka sortirovka[3000];
 int increment(long inc[], long size) 
 {
 	int p1, p2, p3, s;
@@ -213,7 +213,7 @@ int main(void)
 	intptr_t hFile;
 	char path[200];
 	int count = 0, sort, i, flag, k;
-	printf("Введите путь\n");
+	printf("Введите путь вида: с:\\..\\ \n");
 	gets(path);
 	strcat(path, "*");
 	i = 0; flag = 1;
@@ -228,7 +228,7 @@ int main(void)
 		printf("FILE              SIZE\n", ' ');
 		printf("----              ----\n", ' ');
 		do {
-			if (count <= 1000)
+			if (count <= 3000)
 			{
 				strcpy(sortirovka[i].name, c_file.name);
 				sortirovka[i].razmer = c_file.size;
@@ -273,12 +273,11 @@ int main(void)
 			break;
 		}
 		clock_t konec = clock();
-		printf("Время сортировки: %.30lf с\n", (double)(konec - nachalo) / CLOCKS_PER_SEC);
-	    for (i = 0; i <= k; i++)
+		for (i = 0; i <= k; i++)
 		{
 			printf("%-12.12s     %i\n", sortirovka[i].name, sortirovka[i].razmer);
 		}
-
+		printf("Время сортировки: %.30lf с\n", (double)(konec - nachalo) / CLOCKS_PER_SEC);
 		printf("Хотите ещё?\n Нажмите 1:\n");
 		scanf_s("%d", &choice);
 	} 
