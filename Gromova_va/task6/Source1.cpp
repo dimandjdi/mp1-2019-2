@@ -30,7 +30,7 @@ void Exponenta(double x, int& N)
 	int i;
 	double result = 1., res = x;
 	double reference = exp(x);
-	for (i = 1; i < N; i++)
+	for (i = 1; i < N+1; i++)
 	{
 		result += res;
 		res *= x / double(i + 1);
@@ -67,7 +67,7 @@ void Sinys(double x, int& N)
 	double result = 0, res = 1;
 	double reference = sin(x);
 	res = x;
-	for (i = 1; i < N; i++)
+	for (i = 1; i < N+1; i++)
 	{
 		result += res;
 		res *= ((-1) * x * x) / ((2 * i) * (2 * i + 1));
@@ -102,7 +102,7 @@ void Cosinys(double x, int& N)
 	int i;
 	double result = 0., res = 1.;
 	double reference = cos(x);
-	for (i = 1; i < N; i++)
+	for (i = 1; i < N+1; i++)
 	{
 		result += res;
 		res *= ((-1.) * x * x) / ((2 * i) * (2 * i - 1));
@@ -164,7 +164,7 @@ void Tangens(double x, int& N)
 	res1 /= x;
 	res2 /= x;
 	double reference = tan(x);
-	for (i = 1; i < N; i++)
+	for (i = 1; i < N+1; i++)
 	{
 		double ber = bernulli(2 * i) / bernulli(2 * i - 2);
 		res1 *= ((-4.) * x*x * ber) / ((2 * i) * (2 * i - 1));
