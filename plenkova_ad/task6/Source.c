@@ -5,10 +5,11 @@
 #include <stdlib.h>
 #include <conio.h>
 
+
 void exponenta(double x, int N, double tochnost)
 {
 	int i;
-	double znachenie = 1., znach1 = x;
+	double znachenie = 1, znach1 = x;
 	double etalon = exp(x);
 	for (i = 1; i < N; i++)
 	{
@@ -17,6 +18,7 @@ void exponenta(double x, int N, double tochnost)
 		if (fabs(znachenie - etalon) < tochnost)
 			break;
 	}
+	N = i - 1;
 	double raznitsa = fabsl(znachenie - etalon);
 	printf("Эталонное значение - %lf\n", etalon);
 	printf("Полученное значение - %lf\n", znachenie);
@@ -38,6 +40,7 @@ void sinus(double x, int N, double tochnost)
 		if (fabs(znachenie - etalon) < tochnost)
 			break;
 	}
+	N = i - 1;
 	double raznitsa = fabsl(znachenie - etalon);
 	printf("Эталонное значение - %lf\n", etalon);
 	printf("Полученное значение - %lf\n", znachenie);
@@ -58,7 +61,7 @@ void cosinus(double x, int N, double tochnost)
 		if (fabs(znachenie - etalon) < tochnost)
 			break;
 	}
-	//N = i - 1;
+	N = i - 1;
 	double raznitsa = fabsl(znachenie - etalon);
 	printf("Эталонное значение - %lf\n", etalon);
 	printf("Полученное значение - %lf\n", znachenie);
@@ -86,6 +89,26 @@ void koshinus(double x, int N, double tochnost)
 		if (fabs(znachenie - etalon) < tochnost)
 			break;
 	}
+	N = i - 1;
+	double raznitsa = fabsl(znachenie - etalon);
+	printf("Эталонное значение - %lf\n", etalon);
+	printf("Полученное значение - %lf\n", znachenie);
+	printf("Разница - %lf\n", raznitsa);
+	printf("Количество слагаемых - %d\n", N);
+}
+void shinus(double x, int N, double tochnost)
+{
+	x *= M_PI / 180;
+	int i;
+	double znach1 = x;
+	double znachenie = x;
+	double etalon = sinh(x);
+	for (i = 2; i <= N; i++)
+	{
+		znach1 *= ((x * x) / ((2 * i - 2) * (2 * i - 1)));
+		znachenie += znach1;
+	}
+	N = i - 1;
 	double raznitsa = fabsl(znachenie - etalon);
 	printf("Эталонное значение - %lf\n", etalon);
 	printf("Полученное значение - %lf\n", znachenie);
@@ -154,6 +177,19 @@ void Koshinus(double x, int N)
 		printf("%2d %20lf %25lf %20lf\n", i, etalon, znachenie, fabs(etalon - znachenie));
 	}
 }
+void Shinus(double x, int N)
+{
+	x *= M_PI / 180;
+	int i;
+	double znachenie = x, znach1 = x;
+	double etalon = sinh(x);
+	for (i = 2; i <= N; i++)
+	{
+		znach1 *= ((x * x) / ((2 * i - 2) * (2 * i - 1)));
+		znachenie += znach1;
+		printf("%2d %20lf %25lf %20lf\n", i, etalon, znachenie, fabs(etalon - znachenie));
+	}
+}
 
 
 int main()
@@ -162,26 +198,28 @@ int main()
 	int vibor_fuctii = 0, Chislo_slagaemih = 0, NMax = 0, mode = 0;
 	double tochnost, tochka_x, raznitsa = 0, znachenie = 0;
 
-	void (*function1[4]) (double, int, double);
+	void (*function1[5]) (double, int, double);
 	function1[0] = sinus;
 	function1[1] = cosinus;
 	function1[2] = exponenta;
 	function1[3] = koshinus;
+	function1[4] = shinus;
 
-	void(*function_series[4])(double, int);
+	void(*function_series[5])(double, int);
 	function_series[0] = Sinus;
 	function_series[1] = Cosinus;
 	function_series[2] = Exponenta;
 	function_series[3] = Koshinus;
-	printf("~~~~~~~~~~~~~~~~~~");
+	function_series[4] = Shinus;
+	printf("~~~~~~~~~~~~~~~~~~\n");
 	printf("Хеллоу!\nВыберите режим:\n1 - Посчитать АДЫН РАЗ,\n2 - Провести несколько рассчётов\n");
 	scanf_s("%d", &mode);
 
-	printf("~~~~~~~~~~~~~~~~~~");
-	printf("Выберите функцию:\n1 - sin(x)\n2 - cos(x)\n3 - exp(x)\n4 - ch(x)\n");
+	printf("~~~~~~~~~~~~~~~~~~\n");
+	printf("Выберите функцию:\n1 - sin(x)\n2 - cos(x)\n3 - exp(x)\n4 - ch(x)\n5 - sh(x)\n");
 	scanf_s("%d", &vibor_fuctii);
 
-	printf("~~~~~~~~~~~~~~~~~~");
+	printf("~~~~~~~~~~~~~~~~~~\n");
 	printf("В окрестности какой точки считать?\n");
 	scanf_s("%lf", &tochka_x);
 	switch (mode)
