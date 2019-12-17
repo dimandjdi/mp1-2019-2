@@ -1,4 +1,4 @@
-#define _USE_MATH_DEFINES 
+п»ї#define _USE_MATH_DEFINES 
 #include <stdio.h>
 #include <locale.h>
 #include <math.h>
@@ -20,10 +20,10 @@ void exponenta(double x, int N, double tochnost)
 	}
 	N = i - 1;
 	double raznitsa = fabsl(znachenie - etalon);
-	printf("Эталонное значение - %lf\n", etalon);
-	printf("Полученное значение - %lf\n", znachenie);
-	printf("Разница - %lf\n", raznitsa);
-	printf("Количество слагаемых - %d\n", N);
+	printf("Р­С‚Р°Р»РѕРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ - %lf\n", etalon);
+	printf("РџРѕР»СѓС‡РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ - %lf\n", znachenie);
+	printf("Р Р°Р·РЅРёС†Р° - %lf\n", raznitsa);
+	printf("РљРѕР»РёС‡РµСЃС‚РІРѕ СЃР»Р°РіР°РµРјС‹С… - %d\n", N);
 
 }
 void sinus(double x, int N, double tochnost)
@@ -42,10 +42,10 @@ void sinus(double x, int N, double tochnost)
 	}
 	N = i - 1;
 	double raznitsa = fabsl(znachenie - etalon);
-	printf("Эталонное значение - %lf\n", etalon);
-	printf("Полученное значение - %lf\n", znachenie);
-	printf("Разница - %lf\n", raznitsa);
-	printf("Количество слагаемых - %d\n", N);
+	printf("Р­С‚Р°Р»РѕРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ - %lf\n", etalon);
+	printf("РџРѕР»СѓС‡РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ - %lf\n", znachenie);
+	printf("Р Р°Р·РЅРёС†Р° - %lf\n", raznitsa);
+	printf("РљРѕР»РёС‡РµСЃС‚РІРѕ СЃР»Р°РіР°РµРјС‹С… - %d\n", N);
 
 }
 void cosinus(double x, int N, double tochnost)
@@ -63,10 +63,10 @@ void cosinus(double x, int N, double tochnost)
 	}
 	N = i - 1;
 	double raznitsa = fabsl(znachenie - etalon);
-	printf("Эталонное значение - %lf\n", etalon);
-	printf("Полученное значение - %lf\n", znachenie);
-	printf("Разница - %lf\n", raznitsa);
-	printf("Количество слагаемых - %d\n", N);
+	printf("Р­С‚Р°Р»РѕРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ - %lf\n", etalon);
+	printf("РџРѕР»СѓС‡РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ - %lf\n", znachenie);
+	printf("Р Р°Р·РЅРёС†Р° - %lf\n", raznitsa);
+	printf("РљРѕР»РёС‡РµСЃС‚РІРѕ СЃР»Р°РіР°РµРјС‹С… - %d\n", N);
 
 }
 void koshinus(double x, int N, double tochnost)
@@ -91,10 +91,10 @@ void koshinus(double x, int N, double tochnost)
 	}
 	N = i - 1;
 	double raznitsa = fabsl(znachenie - etalon);
-	printf("Эталонное значение - %lf\n", etalon);
-	printf("Полученное значение - %lf\n", znachenie);
-	printf("Разница - %lf\n", raznitsa);
-	printf("Количество слагаемых - %d\n", N);
+	printf("Р­С‚Р°Р»РѕРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ - %lf\n", etalon);
+	printf("РџРѕР»СѓС‡РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ - %lf\n", znachenie);
+	printf("Р Р°Р·РЅРёС†Р° - %lf\n", raznitsa);
+	printf("РљРѕР»РёС‡РµСЃС‚РІРѕ СЃР»Р°РіР°РµРјС‹С… - %d\n", N);
 }
 void shinus(double x, int N, double tochnost)
 {
@@ -110,10 +110,10 @@ void shinus(double x, int N, double tochnost)
 	}
 	N = i - 1;
 	double raznitsa = fabsl(znachenie - etalon);
-	printf("Эталонное значение - %lf\n", etalon);
-	printf("Полученное значение - %lf\n", znachenie);
-	printf("Разница - %lf\n", raznitsa);
-	printf("Количество слагаемых - %d\n", N);
+	printf("Р­С‚Р°Р»РѕРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ - %lf\n", etalon);
+	printf("РџРѕР»СѓС‡РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ - %lf\n", znachenie);
+	printf("Р Р°Р·РЅРёС†Р° - %lf\n", raznitsa);
+	printf("РљРѕР»РёС‡РµСЃС‚РІРѕ СЃР»Р°РіР°РµРјС‹С… - %d\n", N);
 }
 
 
@@ -212,26 +212,26 @@ int main()
 	function_series[3] = Koshinus;
 	function_series[4] = Shinus;
 	printf("~~~~~~~~~~~~~~~~~~\n");
-	printf("Хеллоу!\nВыберите режим:\n1 - Посчитать АДЫН РАЗ,\n2 - Провести несколько рассчётов\n");
+	printf("РҐРµР»Р»РѕСѓ!\nР’С‹Р±РµСЂРёС‚Рµ СЂРµР¶РёРј:\n1 - РџРѕСЃС‡РёС‚Р°С‚СЊ РђР”Р«Рќ Р РђР—,\n2 - РџСЂРѕРІРµСЃС‚Рё РЅРµСЃРєРѕР»СЊРєРѕ СЂР°СЃСЃС‡С‘С‚РѕРІ\n");
 	scanf_s("%d", &mode);
 
 	printf("~~~~~~~~~~~~~~~~~~\n");
-	printf("Выберите функцию:\n1 - sin(x)\n2 - cos(x)\n3 - exp(x)\n4 - ch(x)\n5 - sh(x)\n");
+	printf("Р’С‹Р±РµСЂРёС‚Рµ С„СѓРЅРєС†РёСЋ:\n1 - sin(x)\n2 - cos(x)\n3 - exp(x)\n4 - ch(x)\n5 - sh(x)\n");
 	scanf_s("%d", &vibor_fuctii);
 
 	printf("~~~~~~~~~~~~~~~~~~\n");
-	printf("В окрестности какой точки считать?\n");
+	printf("Р’ РѕРєСЂРµСЃС‚РЅРѕСЃС‚Рё РєР°РєРѕР№ С‚РѕС‡РєРё СЃС‡РёС‚Р°С‚СЊ?\n");
 	scanf_s("%lf", &tochka_x);
 	switch (mode)
 	{
 	case 1:
 		do {
 
-			printf("Выберите точность вычислений (желательно >=0,000001)\n");
+			printf("Р’С‹Р±РµСЂРёС‚Рµ С‚РѕС‡РЅРѕСЃС‚СЊ РІС‹С‡РёСЃР»РµРЅРёР№ (Р¶РµР»Р°С‚РµР»СЊРЅРѕ >=0,000001)\n");
 			scanf_s("%lf", &tochnost);
 		} while (tochnost < 0.000001);
 
-		printf("Сколько элементов должно быть в ряду? (от 1 до 1000):\n");
+		printf("РЎРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РІ СЂСЏРґСѓ? (РѕС‚ 1 РґРѕ 1000):\n");
 		scanf_s("%d", &Chislo_slagaemih);
 
 		function1[vibor_fuctii - 1](tochka_x, Chislo_slagaemih, tochnost);
@@ -239,10 +239,10 @@ int main()
 	case 2:
 		while ((NMax < 1) || (NMax > 25))
 		{
-			printf("Сколько провести экспериментов? (от 1 до 25)\n");
+			printf("РЎРєРѕР»СЊРєРѕ РїСЂРѕРІРµСЃС‚Рё СЌРєСЃРїРµСЂРёРјРµРЅС‚РѕРІ? (РѕС‚ 1 РґРѕ 25)\n");
 			scanf_s("%d", &NMax);
 		}
-		printf(" №         ЧТО ДОЛЖНО БЫТЬ          ЧТО ПОЛУЧИЛОСЬ           РАЗНИЦА\n");
+		printf(" в„–         Р§РўРћ Р”РћР›Р–РќРћ Р‘Р«РўР¬          Р§РўРћ РџРћР›РЈР§РР›РћРЎР¬           Р РђР—РќРР¦Рђ\n");
 		printf(" ~              ~~~~~~                   ~~~~~~~              ~~~~~~\n");
 		function_series[vibor_fuctii - 1](tochka_x, NMax);
 	}
