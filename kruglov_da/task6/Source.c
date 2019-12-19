@@ -1,79 +1,79 @@
-#define _USE_MATH_DEFINES
+п»ї#define _USE_MATH_DEFINES
 #define N 25
 
 #include <stdio.h>
 #include <math.h>
 #include <locale.h>
-void farctg (double p, float E, int k)
+void fsin(double p, float E, int k)
 {
 	int i;
-	double arc_tg = atan(p) , func = p, delta = fabs(arc_tg - func), number = p;
-	for (i = 1; (i <= k) && (delta > E); i++) {
-		number = (-1) * p * p * number;
-		func = func + (number / (2 * i + 1));
-		delta = fabs(arc_tg - func);
-	}
-	printf("%16d   %26.7lf   %32.6lf\n", i , func , delta);
-}
-void farcctg(double p, float E, int k)
-{
-	int i;
-	double arc_ctg = M_PI / 2 - atan(p), func = M_PI / 2 - p, delta = fabs(arc_ctg - func), number = - p;
-	for (i = 1; (i <= k) && (delta > E); i++) {
-		number = (-1) * p * p * number;
-		func = func + (number / (2 * i + 1));
-		delta = fabs(arc_ctg - func);
-	}
-	printf("%16d   %26.7lf   %32.6lf\n", i , func, delta);
-}
-void fsin(double x, float E, int k)
-{
-	int i;
-	double sin_c = sin(x), func = x, delta = fabs(sin_c - func), term = x;
+	double sin_c = sin(p), func = p, delta = fabs(sin_c - func), number = p;
 	for (i = 2; (i <= k) && (delta > E); i++)
 	{
-		term = (-1) * term * x * x / ((2 * i - 1) * (2 * i - 2));
-		func = func + term;
+		number = (-1) * number * p * p / ((2 * i - 1) * (2 * i - 2));
+		func = func + number;
 		delta = fabs(sin_c - func);
 	}
 	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
 }
 
-void fcos(double x, float E, int k)
+void fcos(double p, float E, int k)
 {
 	int i;
-	double cos_c = cos(x), func = 1, delta = fabs(cos_c - func), term = 1;
+	double cos_c = cos(p), func = 1, delta = fabs(cos_c - func), number = 1;
 	for (i = 2; (i <= k) && (delta > E); i++)
 	{
-		term = (-1) * term * x * x / ((2 * i - 2) * (2 * i - 3));
-		func = func + term;
+		number = (-1) * number * p * p / ((2 * i - 2) * (2 * i - 3));
+		func = func + number;
 		delta = fabs(cos_c - func);
 	}
 	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
 }
 
-void fexp(double x, float E, int k)
+void fexp(double p, float E, int k)
 {
 	int i;
-	double exp_c = exp(x), func = 1, delta = fabs(exp_c - func), term = 1;
+	double exp_c = exp(p), func = 1, delta = fabs(exp_c - func), number = 1;
 	for (i = 2; (i <= k) && (delta > E); i++)
 	{
-		term = term * x / (i - 1);
-		func = func + term;
+		number = number * p / (i - 1);
+		func = func + number;
 		delta = fabs(exp_c - func);
 	}
 	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
+}
+void farctg(double p, float E, int k)
+{
+		int i;
+		double arc_tg = atan(p), func = p, delta = fabs(arc_tg - func), number = p;
+		for (i = 1; (i <= k) && (delta > E); i++) {
+			number = (-1) * p * p * number;
+			func = func + (number / (2 * i + 1));
+			delta = fabs(arc_tg - func);
+		}
+		printf("%16d   %26.7lf   %32.6lf\n", i, func, delta);
+}
+void farcctg(double p, float E, int k)
+{
+		int i;
+		double arc_ctg = M_PI / 2 - atan(p), func = M_PI / 2 - p, delta = fabs(arc_ctg - func), number = -p;
+		for (i = 1; (i <= k) && (delta > E); i++) {
+			number = (-1) * p * p * number;
+			func = func + (number / (2 * i + 1));
+			delta = fabs(arc_ctg - func);
+		}
+		printf("%16d   %26.7lf   %32.6lf\n", i, func, delta);
 }
 void output_one(void(*f)(double, float, int), double x, double func)
 {
 	float E;
 	int k;
-	printf("Введите точность вычисления (>= 0,000001)\n");
+	printf("Р’РІРµРґРёС‚Рµ С‚РѕС‡РЅРѕСЃС‚СЊ РІС‹С‡РёСЃР»РµРЅРёСЏ (>= 0,000001)\n");
 	scanf_s("%f", &E);
-	printf("Введите количество слагаемых от 1 до 1000\n");
+	printf("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР»Р°РіР°РµРјС‹С… РѕС‚ 1 РґРѕ 100\n");
 	scanf_s("%d", &k);
-	printf("Эталонное значение: %lf\n", func);
-	printf("Кол-во слагаемых   Вычисленная оценка функции   Разница между оценкой и эталоном\n");
+	printf("Р­С‚Р°Р»РѕРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ: %lf\n", func);
+	printf("РљРѕР»-РІРѕ СЃР»Р°РіР°РµРјС‹С…   Р’С‹С‡РёСЃР»РµРЅРЅР°СЏ РѕС†РµРЅРєР° С„СѓРЅРєС†РёРё   Р Р°Р·РЅРёС†Р° РјРµР¶РґСѓ РѕС†РµРЅРєРѕР№ Рё СЌС‚Р°Р»РѕРЅРѕРј\n");
 	f(x, E, k);
 }
 
@@ -81,17 +81,17 @@ void output_two(void(*f)(double, float, int), double x, double func)
 {
 	float E[N];
 	int k[N], experience, i;
-	printf("Введите количество экспериментов от 1 до 25?\n");
+	printf("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌРєСЃРїРµСЂРёРјРµРЅС‚РѕРІ РѕС‚ 1 РґРѕ 25?\n");
 	scanf_s("%d", &experience);
 	for (i = 0; i < experience; i++)
 	{
-		printf("Введите точность вычисления (>= 0,000001) для %d-ого эксперимента\n", i + 1);
+		printf("Р’РІРµРґРёС‚Рµ С‚РѕС‡РЅРѕСЃС‚СЊ РІС‹С‡РёСЃР»РµРЅРёСЏ (>= 0,000001) РґР»СЏ %d-РѕРіРѕ СЌРєСЃРїРµСЂРёРјРµРЅС‚Р°\n", i + 1);
 		scanf_s("%f", &E[i]);
-		printf("Введите количество слагаемых от 1 до 1000 для %d-ого эксперимента\n", i + 1);
+		printf("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР»Р°РіР°РµРјС‹С… РѕС‚ 1 РґРѕ 1000 РґР»СЏ %d-РѕРіРѕ СЌРєСЃРїРµСЂРёРјРµРЅС‚Р°\n", i + 1);
 		scanf_s("%d", &k[i]);
 	}
-	printf("Эталонное значение: %lf\n", func);
-	printf("Кол-во слагаемых   Вычисленная оценка функции   Разница между оценкой и эталоном\n");
+	printf("Р­С‚Р°Р»РѕРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ: %lf\n", func);
+	printf("РљРѕР»-РІРѕ СЃР»Р°РіР°РµРјС‹С…   Р’С‹С‡РёСЃР»РµРЅРЅР°СЏ РѕС†РµРЅРєР° С„СѓРЅРєС†РёРё   Р Р°Р·РЅРёС†Р° РјРµР¶РґСѓ РѕС†РµРЅРєРѕР№ Рё СЌС‚Р°Р»РѕРЅРѕРј\n");
 	for (i = 0; i < k[i]; i++)
 		f(x, E[i], k[i]);
 }
@@ -102,11 +102,11 @@ void main()
 	void(*f)(double, float, int) = NULL;
 	double x, func;
 	int mode, fun ;
-	printf("Выберете режим\n 1 - новичок в матанализе \n 2 - экспериментатор)) \n");
+	printf("Р’С‹Р±РµСЂРµС‚Рµ СЂРµР¶РёРј\n 1 - РЅРѕРІРёС‡РѕРє РІ РјР°С‚Р°РЅР°Р»РёР·Рµ \n 2 - СЌРєСЃРїРµСЂРёРјРµРЅС‚Р°С‚РѕСЂ)) \n");
 	scanf_s("%d", &mode);
-	printf("Выберете функцию\n 1 - sin(x)\n 2 - cos(x)\n 3 - exp(x)\n 4 - arctg(x)\n 5 - arcctg(x) \n");
+	printf("Р’С‹Р±РµСЂРµС‚Рµ С„СѓРЅРєС†РёСЋ\n 1 - sin(x)\n 2 - cos(x)\n 3 - exp(x)\n 4 - arctg(x) ( РґР»СЏ РІСЃРµС… |x| <= 1)\n 5 - arcctg(x) ( РґР»СЏ РІСЃРµС… |x| <= 1) \n");
 	scanf_s("%d", &fun);
-	printf("Введите x\n");
+	printf("Р’РІРµРґРёС‚Рµ x\n");
 	scanf_s("%lf", &x);
 	switch (fun)
 	{
