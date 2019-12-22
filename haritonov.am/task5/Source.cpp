@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>  
 #include <stdlib.h>  
@@ -108,9 +108,9 @@ void merge(_finddata_t *list, int a, int b)
 	if (a < b) 
 	{                
 		split = (a + b) / 2;
-		merge(list, a, split);       // ñîðòèðîâàòü ëåâóþ ïîëîâèíó 
-		merge(list, split + 1, b);// ñîðòèðîâàòü ïðàâóþ ïîëîâèíó 
-		merge_f(list, a, split, b);    // ñëèòü ðåçóëüòàòû â îáùèé ìàññèâ
+		merge(list, a, split);       // ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð»ÐµÐ²ÑƒÑŽ Ð¿Ð¾Ð»Ð¾Ð²Ð¸Ð½Ñƒ 
+		merge(list, split + 1, b);// ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¿Ñ€Ð°Ð²ÑƒÑŽ Ð¿Ð¾Ð»Ð¾Ð²Ð¸Ð½Ñƒ 
+		merge_f(list, a, split, b);    // ÑÐ»Ð¸Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð² Ð¾Ð±Ñ‰Ð¸Ð¹ Ð¼Ð°ÑÑÐ¸Ð²
 	}
 }
 
@@ -213,13 +213,13 @@ int main(void)
 		if ((hFile = _findfirst(path, &c_file)) == -1L)
 			printf("No *.c files in current directory!\n");
 		else
-		{	//Ñ÷èòàþ êîë-âî ôàéëîâ è îïðåäåëÿþ ðàçìåð ìàññèâà
+		{	//Ð¡Ñ‡Ð¸Ñ‚Ð°ÑŽ ÐºÐ¾Ð»-Ð²Ð¾ Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð¸ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÑÑŽ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°
 			do { count++; } while (_findnext(hFile, &c_file) == 0);
 			list = (_finddata64i32_t *)malloc(count * sizeof(c_file));
 			count = 0;
 			hFile = _findfirst(path, &c_file);
 
-			//Âûâîä ôàéëîâ íà ýêðàí è çàïîëíåíèå ìàññèâà
+			//Ð’Ñ‹Ð²Ð¾Ð´ Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð½Ð° ÑÐºÑ€Ð°Ð½ Ð¸ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ Ð¼Ð°ÑÑÐ¸Ð²Ð°
 			printf("Listing of .c files\n\n");
 			printf("FILE         DATE %24c   SIZE\n", ' ');
 			printf("----         ---- %24c   ----\n", ' ');
@@ -240,25 +240,25 @@ int main(void)
 		start = clock();
 		switch (sw)
 		{
-		case 1: //Ïóçûðüêîì
+		case 1: //ÐŸÑƒÐ·Ñ‹Ñ€ÑŒÐºÐ¾Ð¼
 			bubble(list, count);
 			break;
-		case 2: //Âûáîðîì
+		case 2: //Ð’Ñ‹Ð±Ð¾Ñ€Ð¾Ð¼
 			selection(list, count);
 			break;
-		case 3: //Âñòàâêàìè
+		case 3: //Ð’ÑÑ‚Ð°Ð²ÐºÐ°Ð¼Ð¸
 			incertion(list, count);
 			break;
-		case 4: //Ñëèÿíèåì
+		case 4: //Ð¡Ð»Ð¸ÑÐ½Ð¸ÐµÐ¼
 			merge(list, 0, count);
 			break;
-		case 5: //Õîàðà
+		case 5: //Ð¥Ð¾Ð°Ñ€Ð°
 			quick(list, count);
 			break;
-		case 6: //Øåëëà
+		case 6: //Ð¨ÐµÐ»Ð»Ð°
 			shellsort(list, count);
 			break;
-		case 7: //Ïîäñ÷åòîì
+		case 7: //ÐŸÐ¾Ð´ÑÑ‡ÐµÑ‚Ð¾Ð¼
 			counting(list, count);
 			break;
 		};
@@ -267,7 +267,7 @@ int main(void)
 		finish = clock();
 		for (i = 0; i < count; i++)
 			printf("%-12.12s      %10ld\n", list[i].name, list[i].size);
-		printf(" %f ms\n", ((double)(finish - start)));
+		printf(" %3.10f s\n", ((double)(finish - start)/ CLOCKS_PER_SEC));
 		printf("\ntry again? Y/N\n");
 		getchar();
 		scanf_s("%c", &answer);
