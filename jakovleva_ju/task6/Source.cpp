@@ -33,7 +33,7 @@ double Rsin(double x, int* n, double e)
 		for (int i = 1; i < *n; i++)
 		{
 			a = -a * x * x / ((2 * i) * (2 * i + 1));
-			y += a;
+			y = y + a;
 		}
 	}
 	else
@@ -43,7 +43,7 @@ double Rsin(double x, int* n, double e)
 			a = -a * x * x / ((2 * i) * (2 * i + 1));
 			if (fabs(a) < e)
 				break;
-			y += a;
+			y = y + a;
 			*n = i;
 		}
 	}
@@ -59,7 +59,7 @@ double Rcos(double x, int* n, double e)
 		for (int i = 1; i < *n; i++)
 		{
 			a = -a * x * x / ((2 * i - 1) * (2 * i));
-			y = +a;
+			y = y + a;
 		}
 	}
 	else
@@ -69,7 +69,7 @@ double Rcos(double x, int* n, double e)
 			a = -a * x * x / ((2 * i - 1) * (2 * i));
 			if (fabs(a) < e)
 				break;
-			y = +a;
+			y = y + a;
 			*n = i;
 		}
 	}
@@ -80,23 +80,23 @@ double Rexp(double x, int* n, double e)
 {
 	double a = 1;
 	double y = a;
-	if (*n > 0)//ðàçëîæåíèå â òî÷êå x
+	if (*n > 0)
 	{
-		for (int i = 0; i < *n; i++)
+		for (int i = 1; i < *n; i++)
 		{
-			a = a * x / (i + 1);
-			y = +a;
+			a = a * x / i ;
+			y = y + a;
 		}
 	}
 	else
 	{
-		for (int i = 0; ; i++)
+		for (int i = 1; ; i++)
 		{
-			a = a * x / (i + 1);
+			a = a * x / i ;
 			if (fabs(a) < e)
 				break;
-			y = +a;
-			*n = i + 1;
+			y = y + a;
+			*n = i ;
 		}
 	}
 	return y;
@@ -111,7 +111,7 @@ double Rch(double x, int* n, double e)
 		for (int i = 1; i < *n; i++)
 		{
 			a = a * x * x / ((2 * i - 1) * (2 * i));
-			y = +a;
+			y = y + a;
 		}
 	}
 	else
@@ -121,7 +121,7 @@ double Rch(double x, int* n, double e)
 			a = a * x * x / ((2 * i - 1) * (2 * i));
 			if (fabs(a) < e)
 				break;
-			y = +a;
+			y = y + a;
 			*n = i;
 		}
 	}
@@ -131,23 +131,30 @@ double Rch(double x, int* n, double e)
 double Rarth(double x, int* n, double e)
 {
 	double a = 1 / x;
-	double y = a;
+	double y = 0;
 	if (*n > 0)
 	{
-		for (int i = 0; i < *n; i++)
+		int i = 1;
+		a = -(a * 1 * x * x / (2 * i - 1)) * (2 * i - 3);
+		y = a;
+		for (int i = 2; i < *n; i++)
 		{
-			a = a * 1 * x * x / (2 * i + 1);
-			y = +a;
+				a = (a * 1 * x * x / (2 * i - 1)) * (2 * i - 3);
+			y = y + a;
 		}
 	}
 	else
 	{
-		for (int i = 0; ; i++)
+
+		for (int i = 1; ; i++)
 		{
-			a = a * 1 * x * x / (2 * i + 1);
+			if (i==1)
+			a = -(a * 1 * x * x / (2 * i - 1))*(2*i - 3);
+			if (i !=1)
+				a = (a * 1 * x * x / (2 * i - 1)) * (2 * i - 3);
 			if (fabs(a) < e)
 				break;
-			y = +a;
+			y = y + a;
 			*n = i + 1;
 		}
 	}
