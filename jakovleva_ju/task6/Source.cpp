@@ -80,7 +80,7 @@ double Rexp(double x, int* n, double e)
 {
 	double a = 1;
 	double y = a;
-	if (*n > 0)//ðàçëîæåíèå â òî÷êå x
+	if (*n > 0)//Ã°Ã Ã§Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¥ Ã¢ Ã²Ã®Ã·ÃªÃ¥ x
 	{
 		for (int i = 0; i < *n; i++)
 		{
@@ -237,6 +237,6 @@ void Rezim2()
 			y1 = atanh(x);
 			y2 = Rarth(x, &i, 0);
 		}
-		printf("%2d\t %13.12lf\t  %13.12lf\n", i, y2, y1 - y2);
+		printf("Nomer experimenta: %2d\t Etalon: %13.12lf\t Ocenka: %13.12lf\t Raznica: %13.12lf\n", i, y1, y2, y1 - y2);
 	}
 }
