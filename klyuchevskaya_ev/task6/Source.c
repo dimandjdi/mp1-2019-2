@@ -5,16 +5,16 @@
 #include <stdlib.h>
 #include <locale.h>
 
-long double fexp(double x, int N,double eps)
+long double fexp(double x, int *N,double eps)
 {
 	int i;
 	double a = 1, y = 1;
-	double zn = exp(x);
+	double result = exp(x);
 	for (i = 2; i <= N; i++)
 	{
 		a = (a*x) / (i - 1);
 		y = y + a;
-		if (fabsl(zn - y) < eps)
+		if (fabsl(result - y) < eps)
 		{
 			N = i - 1;
 			return y;
@@ -23,12 +23,12 @@ long double fexp(double x, int N,double eps)
 	return y;
 }
 
-long double fsin(double x, int N, double eps)
+long double fsin(double x, int *N, long double eps)
 {
 	int i, j;
-	x = fmod(x, 2 * M_PI);
-	double a = x, y = x;
-	double zn = sin(x);
+	x *= M_PI/180;
+	long double a = x, y = x;
+	long double result = sin(x);
 	for (i = 2, j = 0; i <= N; i++, j++)
 	{
 		a = (a*x*x) / ((i + j)*(i + (j + 1)));
@@ -36,7 +36,7 @@ long double fsin(double x, int N, double eps)
 			y = y - a;
 		else
 			y = y + a;
-		if (fabsl(zn - y) < eps)
+		if (fabsl(result - y) < eps)
 		{
 			N = i - 1;
 			return y;
@@ -45,12 +45,12 @@ long double fsin(double x, int N, double eps)
 	return y;
 }
 
-long double fcos(double x, int N, double eps)
+long double fcos(double x, int *N, double eps)
 {
 	int i, j;
-	x = fmod(x, 2 * M_PI);
+	x *= M_PI / 180;
 	double a = 1, y = 1;
-	double zn = cos(x);
+	double result = cos(x);
 	for (i = 2, j = -1; i <= N; i++, j++)
 	{
 		a = (a*x*x) / ((i + j)*(i + (j + 1)));
@@ -58,7 +58,7 @@ long double fcos(double x, int N, double eps)
 			y = y - a;
 		else
 			y = y + a;
-		if (fabsl(zn - y) < eps)
+		if (fabsl(result - y) < eps)
 		{
 			N = i - 1;
 			return y;
@@ -67,16 +67,16 @@ long double fcos(double x, int N, double eps)
 	return y;
 }
 
-long double facos(double x, int N, double eps)
+long double facos(double x, int *N, double eps)
 {
 	int i = 0;
 	double a = x, y = M_PI / 2 - x;
-	double zn = acos(x);
+	double result = acos(x);
 	for (i = 0; i < N; i++)
 	{
 		a = a * ((2 * i + 1)*x*x*(2 * i + 1)) / (2 * (i + 1)*(2 * i + 3));
 		y = y - a;
-		if (fabsl(zn - y) < eps)
+		if (fabsl(result - y) < eps)
 		{
 			N = i - 1;
 			return y;
@@ -163,14 +163,14 @@ void main()
 			{
 				scanf("%d", &func);
 				ys = 1;
-				if (func < 0 || func > 4)
+				if (func < 1 || func > 4)
 				{
 					printf("Введите верный номер функции!\n");
 					ys = 0;
 				}
 			}
 			printf("Введите x, который хотите посчитать \n");
-			if (func == 3)
+			if (func == 4)
 				printf("Введите x с 2 знаками после запятой в диапазоне от -1 до 1!\n");
 			scanf("%lf.2", &x);
 			do {
