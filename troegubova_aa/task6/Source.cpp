@@ -24,10 +24,10 @@ double control_2(double left, double right, double x)
 	return x;
 }
 //------------------------------------------------------------------------------------------------------------------------------------
- double expon(double x, int n, double accur)
+ double expon(double x, int& n, double accur)
 {
 	double factorial = x;
-	double count;
+	int count;
 	double value = 1;
 	for (count = 2; count < n + 2; count++) 
 	{
@@ -36,16 +36,17 @@ double control_2(double left, double right, double x)
 		if (fabs(exp(x) - value) < accur)
 			break;
 	}
+	n = (n < count ? n : count);
 	return value;
 }
 
- double sin_f(double x, int n, double accur)
+ double sin_f(double x, int& n, double accur)
 {
 	double factorial = x;
 	double value = x;
-	int r = 1;
+	int r = 1; int  i;
 	int sing[4] = { 1, 0, -1, 0 };
-	for (int i = 1; i < n + 1 ; i++)
+	for ( i = 1; i < n + 1; i++)
 	{
 		factorial *= x / (r + 1);
 		r++;
@@ -53,15 +54,17 @@ double control_2(double left, double right, double x)
 		if (fabs(sin(x) - value) < accur)
 			break;
 	}
+	if ((n + 1) > i)
+		n = (i / 2) + 1;
 	return value;
 }
 
-double cos_f(double x, int n, double accur)
+double cos_f(double x, int& n, double accur)
 {
-	double value = 1; int r = 1;
+	double value = 1; int r = 1; int i;
 	double factorial = x;
 	int sing[4] = {0, -1, 0, 1};
-	for (int i = 1; i < n; i++)
+	for ( i = 1; i < n; i++)
 	{
 		factorial *= x / (r + 1);
 		r++;
@@ -69,17 +72,19 @@ double cos_f(double x, int n, double accur)
 		if (fabs(cos(x) - value) < accur)
 			break;
 	}
+	if (n > i)
+		n = (i / 2) + 3;
 	return value;
 }
 
-double arsh_f(double x, int n, double accur)
+double arsh_f(double x, int& n, double accur)
 {
 	x = control_2(-1, 1, x);
 	double value = x;
-	double factorial = x;
+	double factorial = x; int i, j;
 	double k = 1; double r = 1; double v = 0;
 	int sing[4] = { 1, 0, -1, 0 };
-	for (int i = 1, j = 0; i < n; i++, j++)
+	for ( i = 1, j = 0; i < n; i++, j++)
 	{
 		factorial *= (x * r) / (r + 1);
 		r++;
@@ -92,13 +97,16 @@ double arsh_f(double x, int n, double accur)
 		if (fabs(asinh(x) - value) < accur)
 			break;
 	}
+	if (n > i)
+		n = (i / 2) + 2;
 	return value;
 }
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void regime_1()
 {
-	double(*function[4])() = { exp, sin, cos, asinh };
-	double(*mass[4])() = { expon, sin_f, cos_f, arsh_f };
+	double(*function[5])(double x) = { exp, sin, cos, asinh };
+	double(*mass[5])(double x, int& n, double accur) = { expon, sin_f, cos_f, arsh_f };
 	int func; int n;
 	printf("Выберите функцию из предложенного списка: \n1)exp(x)\n2)sin(x)\n3)cos(x)\n4)arsh(x)\n");
 	scanf_s("%d", &func);
@@ -132,8 +140,8 @@ void regime_1()
 
 void regime_2()
 {
-	double(*function[4])() = { exp, sin, cos, asinh };
-	double(*mass[4])() = { expon, sin_f, cos_f, arsh_f };
+	double(*function[4])(double x) = { exp, sin, cos, asinh };
+	double(*mass[4])(double x, int& n, double accur) = { expon, sin_f, cos_f, arsh_f };
 	int func; double value; double accur = 0;
 	printf("Выберите функцию из предложенного списка: \n1)exp(x)\n2)sin(x)\n3)cos(x)\n4)arsh(x)\n");
 	scanf_s("%d", &func);
@@ -188,10 +196,11 @@ int main()
 		int r;
 		printf("Выбери один из двух режимов работы программы:\n1)oднократный расчет функции в заданной точке\n2)серийный эксперимент\n");
 		scanf_s("%d", &r);
+		r = control_1(1, 2, r);
 		regime[r - 1]();
 		printf("Выбери действие:\n1)продолжить работу программы\n2)завершить работу программы\n");
 		scanf_s("%d", &p);
 		p = control_1(1, 2, p);
 	}
-	system("pause");
+	return 0; 
 }
