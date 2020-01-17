@@ -1,8 +1,20 @@
-﻿"task3.exe" (Win32). Загружено "C:\Users\Galina Sherstneva\mp1-2019-2\troegubova_aa\x64\Release\task3.exe". Символы загружены.
-"task3.exe" (Win32). Загружено "C:\Windows\System32\ntdll.dll". Невозможно найти или открыть PDB-файл.
-"task3.exe" (Win32). Загружено "C:\Windows\System32\kernel32.dll". Невозможно найти или открыть PDB-файл.
-"task3.exe" (Win32). Загружено "C:\Windows\System32\KernelBase.dll". Невозможно найти или открыть PDB-файл.
-"task3.exe" (Win32). Загружено "C:\Windows\System32\ucrtbase.dll". Невозможно найти или открыть PDB-файл.
-"task3.exe" (Win32). Загружено "C:\Windows\System32\vcruntime140.dll". Невозможно найти или открыть PDB-файл.
-Поток 0x23b4 завершился с кодом 0 (0x0).
-Поток 0x3464 завершился с кодом 0 (0x0).
+﻿"task6.exe" (Win32). Загружено "D:\mp1-2019-2\troegubova_aa\Debug\task6.exe". Символы загружены.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\ntdll.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\kernel32.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\KernelBase.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\vcruntime140d.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\ucrtbased.dll". Символы загружены.
+Поток 0x2580 завершился с кодом 0 (0x0).
+Поток 0x1450 завершился с кодом 0 (0x0).
+Поток 0x47d4 завершился с кодом 0 (0x0).
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\kernel.appcore.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\msvcrt.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\rpcrt4.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\sspicli.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\cryptbase.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\bcryptprimitives.dll". Невозможно найти или открыть PDB-файл.
+"task6.exe" (Win32). Загружено "C:\Windows\SysWOW64\sechost.dll". Невозможно найти или открыть PDB-файл.
+Поток 0xd48 завершился с кодом 0 (0x0).
+Поток 0x1fec завершился с кодом 0 (0x0).
+Поток 0x458 завершился с кодом 0 (0x0).
+Программа "[4952] task6.exe" завершилась с кодом 0 (0x0).
