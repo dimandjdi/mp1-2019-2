@@ -196,7 +196,7 @@ void main()
 	gets_s(path, 200);
 	strcat(path, "*");
 	if ((hFile = _findfirst(path, &c_file)) == -1L)
-		printf("В данной директории нет файлов\n");
+		printf("Вы ввели неверный директорий или в нем не оказалось файлов\n");
 	else {
 		printf("Неотсортированный список файлов:\n");
 		printf("FILE                SIZE\n", ' ');
