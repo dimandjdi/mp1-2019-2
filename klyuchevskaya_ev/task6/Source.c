@@ -9,12 +9,12 @@ long double fexp(double x, int *N,double eps)
 {
 	int i;
 	double a = 1, y = 1;
-	double result = exp(x);
+	double zn = exp(x);
 	for (i = 2; i <= N; i++)
 	{
 		a = (a*x) / (i - 1);
 		y = y + a;
-		if (fabsl(result - y) < eps)
+		if (fabsl(zn - y) < eps)
 		{
 			N = i - 1;
 			return y;
@@ -23,10 +23,10 @@ long double fexp(double x, int *N,double eps)
 	return y;
 }
 
-long double fsin(double x, int *N, long double eps)
+long double fsin(double x, int *N, double eps)
 {
 	int i, j;
-	x *= M_PI/180;
+	x = fmod(x, 2 * M_PI);
 	long double a = x, y = x;
 	long double result = sin(x);
 	for (i = 2, j = 0; i <= N; i++, j++)
@@ -48,7 +48,7 @@ long double fsin(double x, int *N, long double eps)
 long double fcos(double x, int *N, double eps)
 {
 	int i, j;
-	x *= M_PI / 180;
+	x = fmod(x, 2 * M_PI);
 	double a = 1, y = 1;
 	double result = cos(x);
 	for (i = 2, j = -1; i <= N; i++, j++)
@@ -90,7 +90,7 @@ void main()
 	int exit = 0, regim = 0, func, ys = 0;
 	int N = 0, i;
 	double x, eps;
-	double(*function[4])(double, int, double);
+	long double(*function[4])(double, int, double);
 	function[0] = fexp;
 	function[1] = fsin;
 	function[2] = fcos;
@@ -163,7 +163,7 @@ void main()
 			{
 				scanf("%d", &func);
 				ys = 1;
-				if (func < 1 || func > 4)
+				if (func < 0 || func > 4)
 				{
 					printf("Введите верный номер функции!\n");
 					ys = 0;
@@ -179,7 +179,7 @@ void main()
 				if (N < 1 || N > 25)
 					printf("Введите верное количество\n");
 			} while (N < 1 || N > 25);
-			result = Efunction[func-1](x); 
+			result = 1.0471975512;
 			printf("N      Эталон           Оценка           Разница\n");
 			printf("-      ------           ------           -------\n");
 			for (i = 1; i <= N; i++)
@@ -187,6 +187,8 @@ void main()
 				myresult = function[func-1](x, i, eps);
 				printf("%.2d %16.10lf %16.10lf %16.10lf\n", i, result, myresult, fabsl(result - myresult));
 			}
+			exit = sin(x);
+			printf("%d\n", exit);
 		}
 		printf("Если хотите выйти из программы - введите 1,если хотите продолжить - 0\n");
 		scanf("%d", &exit);
