@@ -1,5 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
-
+п»ї#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h> 
 #include <io.h>
@@ -7,9 +6,7 @@
 #include <io.h> 
 #include <time.h>  
 #include <locale.h>
-
 #define NFiles 5000
-
 void BubbleSort(struct _finddata_t* files, long q)
 {
 	struct _finddata_t file;
@@ -26,7 +23,6 @@ void BubbleSort(struct _finddata_t* files, long q)
 		}
 	}
 }
-
 void SelectSort(struct _finddata_t* file, int q)
 {
 	int i, j, k;
@@ -80,7 +76,6 @@ void QuickSort(struct _finddata_t* file, int q)
 	if (j > 0) QuickSort(file, j + 1);
 	if (q > i) QuickSort(file + i, q - i);
 }
-
 int increment(long inc[], long q)
 {
 	int w, e, r, t;
@@ -114,27 +109,27 @@ void CountingSort(struct _finddata_t* file, int q)
 	}
 	max++;
 	t = (int*)malloc(max * sizeof(int));
-	if (t!=0)
-	{
-		memset(t, 0, max * sizeof(int));
-		for (i = 0; i < q; i++)
-			t[file[i].size]++;
-		for (i = min; i < max; i++)
+		if (t != 0)
 		{
-			if (t[i] != 0)
+			memset(t, 0, max * sizeof(int));
+			for (i = 0; i < q; i++)
+				t[file[i].size]++;
+			for (i = min; i < max; i++)
 			{
-				for (j = r; j < q; j++)
-					if (file[j].size == i)
-					{
-						temp = file[j];
-						file[j] = file[r];
-						file[r] = temp;
-						r++;
-					}
+				if (t[i] != 0)
+				{
+					for (j = r; j < q; j++)
+						if (file[j].size == i)
+						{
+							temp = file[j];
+							file[j] = file[r];
+							file[r] = temp;
+							r++;
+						}
+				}
 			}
-		}
-		free(t);
-	} 
+			free(t);
+}
 }
 void ShellSort(struct _finddata_t* file, int q)
 {
@@ -154,9 +149,7 @@ void ShellSort(struct _finddata_t* file, int q)
 		}
 	}
 }
-
 //-------------------------------------------------
-
 void reverse(struct _finddata_t* files, long n)
 {
 	struct _finddata_t file;
@@ -169,22 +162,20 @@ void reverse(struct _finddata_t* files, long n)
 }
 //-------------------------------------------------
 struct _finddata_t files[NFiles];
-
 int main(void)
 {
 	struct _finddata_t file;
 	intptr_t hFile;
 	char path[200];
 	long count = 0;
-	int sort = 0, mode = 0, choice=0;
+	int sort = 0, mode = 0, choice = 0;
 	double timeSpent;
 	setlocale(LC_ALL, "Rus");
-	printf("Введите путь до директории, в которой необходимо отсортировать содержимое: ");
+	printf("Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ РґРѕ РґРёСЂРµРєС‚РѕСЂРёРё, РІ РєРѕС‚РѕСЂРѕР№ РЅРµРѕР±С…РѕРґРёРјРѕ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ СЃРѕРґРµСЂР¶РёРјРѕРµ: ");
 	gets(path);
 	strcat(path, "*.*");
-
 	if ((hFile = _findfirst(path, &file)) == -1L)
-		printf("К сожалению, по указанному Вами адресу нет файлов, пожалуйста, попробуйте еще раз\n");
+		printf("Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ Р’Р°РјРё Р°РґСЂРµСЃСѓ РЅРµС‚ С„Р°Р№Р»РѕРІ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·\n");
 	else
 	{
 		do {
@@ -202,12 +193,12 @@ int main(void)
 		mode = 0;
 		while ((sort < 1) || (sort > 6))
 		{
-			printf("Выберите метод сортировки:\n1)Пузырьком\n2)Выбором\n3)Вставками\n4)Хоара (быстрая сортировка)\n5)Подсчетом\n6)Шелла\n");
+			printf("Р’С‹Р±РµСЂРёС‚Рµ РјРµС‚РѕРґ СЃРѕСЂС‚РёСЂРѕРІРєРё:\n1)РџСѓР·С‹СЂСЊРєРѕРј\n2)Р’С‹Р±РѕСЂРѕРј\n3)Р’СЃС‚Р°РІРєР°РјРё\n4)РҐРѕР°СЂР° (Р±С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°)\n5)РџРѕРґСЃС‡РµС‚РѕРј\n6)РЁРµР»Р»Р°\n");
 			scanf_s("%d", &sort);
 		}
 		while ((mode < 1) || (mode > 2))
 		{
-			printf("Выберите способ сортировки:\n1)По возрастанию\n2)По убыванию\n");
+			printf("Р’С‹Р±РµСЂРёС‚Рµ СЃРїРѕСЃРѕР± СЃРѕСЂС‚РёСЂРѕРІРєРё:\n1)РџРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ\n2)РџРѕ СѓР±С‹РІР°РЅРёСЋ\n");
 			scanf_s("%d", &mode);
 		}
 		clock_t begin = clock();
@@ -232,27 +223,24 @@ int main(void)
 			ShellSort(files, count);
 			break;
 		}
-
 		if (mode == 2) reverse(files, count);
 		clock_t end = clock();
 		timeSpent = (double)(end - begin) / CLOCKS_PER_SEC;
-		printf("ФАЙЛ    %20c     ДАТА %24c   РАЗМЕР\n", ' ', ' ');
+		printf("Р¤РђР™Р›    %20c     Р”РђРўРђ%24c   Р РђР—РњР•Р \n", ' ', ' ');
 		printf("----    %20c     ---- %24c   ------\n", ' ', ' ');
 		for (int i = 0; i < count; i++)
 		{
 			printf("%-32.32s   %10lu\n", files[i].name, files[i].size);
 		}
-		printf("\nВремя сортировки: %.3lf sec\n", timeSpent);
-		printf("Желаете изменить метод сортировки?\n1 - да, 2 - нет.\n");
+		printf("\nР’СЂРµРјСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё: %.3lf sec\n", timeSpent);
+		printf("Р–РµР»Р°РµС‚Рµ РёР·РјРµРЅРёС‚СЊ РјРµС‚РѕРґ СЃРѕСЂС‚РёСЂРѕРІРєРё?\n1 - РґР°, 2 - РЅРµС‚.\n");
 		scanf_s("%i", &choice);
-		while ((choice != 1) && (choice != 2))
-		{
-			printf("Введите 1 или 12\n");
-			scanf_s("%i", &choice);
-		}
+			while ((choice != 1) && (choice != 2))
+			{
+				printf("Р’РІРµРґРёС‚Рµ 1 РёР»Рё 2\n");
+				scanf_s("%i", &choice);
+			}
 	} while (choice == 1);
-	
-
-	system("pause");
-	return 0;
+system("pause");
+return 0;
 }
