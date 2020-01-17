@@ -94,21 +94,14 @@ void perviy_rezim(void(*f)(double, float, int), double x, double func)
 ////////////////////////////////////////////////////////////////////////////////////////
 void vtoroy_rezim(void(*f)(double, float, int), double x, double func)
 {
-	float E[N];
-	int k[N], opit, i;
+	int i, c, experiment;
+	c = -0, 000001;
 	printf("Введите количество экспериментов от 1 до 25?\n");
-	scanf_s("%i", &opit);
-	for (i = 0; i < opit; i++)
-	{
-		printf("Введите точность вычисления (>= 0,000001) для %i-ого эксперимента\n", i + 1);
-		scanf_s("%f", &E[i]);
-		printf("Введите количество слагаемых от 1 до 1000 для %i-ого эксперимента\n", i + 1);
-		scanf_s("%di", &k[i]);
-	}
+	scanf_s("%i", &experiment);
 	printf("Эталонное значение: %lf\n", func);
 	printf("Кол-во слагаемых   Вычисленная оценка функции   Разница между оценкой и эталоном\n");
-	for (i = 0; i < k[i]; i++)
-		f(x, E[i], k[i]);
+	for (i = 0; i < experiment; i++)
+		f(x, c, i+1);
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////
 void main()
