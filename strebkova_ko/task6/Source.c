@@ -1,5 +1,4 @@
 ﻿#define _USE_MATH_DEFINES
-#define N 25
 
 #include <stdio.h>
 #include <math.h>
@@ -38,7 +37,7 @@ void my_sin(double x, float E, int k)
 		func = func + term;
 		delta = fabs(sin_c - func);	
 	}
-	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
+	printf("%16d   %26.6lf   %32.6lf\n", i - 1, func, delta);
 }
 
 void my_cos(double x, float E, int k)
@@ -51,7 +50,7 @@ void my_cos(double x, float E, int k)
 		func = func + term;
 		delta = fabs(cos_c - func);
 	}
-	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
+	printf("%16d   %26.6lf   %32.6lf\n", i - 1, func, delta);
 }
 
 void my_exp(double x, float E, int k)
@@ -64,7 +63,7 @@ void my_exp(double x, float E, int k)
 		func = func + term;
 		delta = fabs(exp_c - func);
 	}
-	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
+	printf("%16d   %26.6lf   %32.6lf\n", i - 1, func, delta);
 }
 
 void my_ch(double x, float E, int k)
@@ -77,7 +76,7 @@ void my_ch(double x, float E, int k)
 		func = func + term;
 		delta = fabs(ch_c - func);
 	}
-	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
+	printf("%16d   %26.6lf   %32.6lf\n", i - 1, func, delta);
 }
 
 void my_ln(double x, float E, int k)
@@ -90,7 +89,7 @@ void my_ln(double x, float E, int k)
 		func = func + term;
 		delta = fabs(ln_c - func);
 	}
-	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
+	printf("%16d   %26.6lf   %32.6lf\n", i - 1, func, delta);
 }
 
 void my_sqrt(double x, float E, int k)
@@ -103,7 +102,7 @@ void my_sqrt(double x, float E, int k)
 		func = func + term;
 		delta = fabs(sqrt_c - func);
 	}
-	printf("%16d   %26.7lf   %32.6lf\n", i - 1, func, delta);
+	printf("%16d   %26.6lf   %32.6lf\n", i - 1, func, delta);
 }
 
 void output_one(void(*f)(double, float, int), double x, double func)
@@ -121,21 +120,15 @@ void output_one(void(*f)(double, float, int), double x, double func)
 
 void output_two(void(*f)(double, float, int), double x, double func)
 {
-	float E[N];
-	int k[N], experience, i;
-	printf("Введите количество экспериментов от 1 до 25?\n");
+	int experience, i;
+	printf("Введите количество экспериментов от 1 до 25\n");
 	scanf_s("%d", &experience);
-	for (i = 0; i < experience; i++)
-	{
-		printf("Введите точность вычисления (>= 0,000001) для %d-ого эксперимента\n", i + 1);
-		scanf_s("%f", &E[i]);
-		printf("Введите количество слагаемых от 1 до 1000 для %d-ого эксперимента\n", i + 1);
-		scanf_s("%d", &k[i]);
-	}
 	printf("Эталонное значение: %lf\n", func);
 	printf("Кол-во слагаемых   Вычисленная оценка функции   Разница между оценкой и эталоном\n");
-	for (i = 0; i < k[i]; i++)
-		f(x, E[i], k[i]);
+	for (i = 0; i < experience; i++)
+	{
+		f(x, -1, i + 1);
+	}		
 }
 
 void main()
