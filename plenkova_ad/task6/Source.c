@@ -140,8 +140,8 @@ int main()
 	Etalonnye_znacheniya[0] = sinus_etalon;
 	Etalonnye_znacheniya[1] = cosinus_etalon;
 	Etalonnye_znacheniya[2] = exp_etalon;
-	Etalonnye_znacheniya[3] = shinus_etalon;
-	Etalonnye_znacheniya[4] = coshinus_etalon;
+	Etalonnye_znacheniya[3] = coshinus_etalon;
+	Etalonnye_znacheniya[4] = shinus_etalon;
 
 	printf("~~~~~~~~~~~~~~~~~~\n");
 	printf("Хеллоу!\nВыберите режим:\n1 - Посчитать АДЫН РАЗ,\n2 - Провести несколько рассчётов\n");
@@ -172,6 +172,7 @@ int main()
 		printf("Число слагаемых - %d\n", Chislo_slagaemih);
 		break;
 	case 2:
+		tochnost = 0.000001;
 		while ((NMax < 1) || (NMax > 25))
 		{
 			printf("Сколько провести экспериментов? (от 1 до 25)\n");
