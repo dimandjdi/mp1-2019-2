@@ -10,15 +10,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Хлоя\Desktop\task6\Source.cpp">
+    <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Хлоя\Desktop\task6\Source2.cpp">
+    <ClCompile Include="Source2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\Хлоя\Desktop\task6\Source2.h">
+    <ClInclude Include="Source2.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
