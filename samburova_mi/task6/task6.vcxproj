@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Source2.cpp" />
+    <ClCompile Include="C:\Users\Хлоя\Desktop\task6\Source.cpp" />
+    <ClCompile Include="C:\Users\Хлоя\Desktop\task6\Source2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source2.h" />
+    <ClInclude Include="C:\Users\Хлоя\Desktop\task6\Source2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
